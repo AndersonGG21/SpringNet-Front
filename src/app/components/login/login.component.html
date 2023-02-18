@@ -8,31 +8,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login | SpringNet</title>
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
   </head>
   <body>
-    <!-- <header>
-      <img src="" alt="SpringNet - Logo" />
-    </header> -->
     <main>
         <aside>
             <img src="../static/login.png" alt="" srcset="" width="350px" height="350px">
         </aside>
       <article>
         <h1>Welcome Back</h1>
-        <form th:action="@{/login}" method="post">
+        <form [formGroup]="userForm">
           <div class="group">
-            <input type="text" required />
+            <input type="text" id="email" name="email" formControlName="email" required />
             <span class="highlight"></span>
             <span class="bar"></span>
             <label>Email</label>
           </div>
           <div class="group">
-            <input type="password" required id="password" />
+            <input type="password" id="password" name="password" formControlName="password" required/>
             <span class="highlight"></span>
             <span class="bar"></span>
             <label>Password:</label>
@@ -46,7 +42,7 @@
             </button>
           </div>
 
-          <button type="submit" class="login-btn">Login</button>
+          <button type="submit" class="login-btn" (click)="submitForm()">Login</button>
           <span class="message"
             >Not registered? <a href="#">Create an account</a></span
           >
