@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html
   lang="en"
   xmlns="http://www.w3.org/1999/xhtml"
@@ -51,13 +51,47 @@
 
     </main>
   </body>
-
-  <style>
-
-  </style>
-
-  <script>
-
-  </script>
 </html>
+ -->
+
+  <body>
+    <main>
+        <div class="left">
+          <span>Connect with a vibrant SpringNet community.</span>
+          <img src="../../../assets/login.png" alt="login-image" width="350px">
+        </div>
+      <article>
+        <h1>Welcome Back</h1>
+        <form [formGroup]="userForm" class="login-form">
+          <div class="group">
+            <input type="text" id="email" name="email" formControlName="email" required />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Email</label>
+          </div>
+          <div class="group">
+            <input type="password" id="password" name="password" formControlName="password" required/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Password:</label>
+            <button
+              type="button"
+              id="btnToggle"
+              class="toggle active"
+              (click)="toggle()"
+            >
+              <i class="bx bx-hide bx-xs"></i>
+            </button>
+          </div>
+
+          <button type="submit" class="login-btn" (click)="submitForm()">Login</button>
+          <span class="message"
+            >Not registered? <a href="#">Create an account</a></span
+          >
+        </form>
+      </article>
+
+    </main>
+  </body>
+
 
