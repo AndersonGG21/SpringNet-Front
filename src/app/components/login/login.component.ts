@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Login } from 'src/app/models/login.model';
 import { LoginService } from 'src/app/services/login.service';
+import { SwiperOptions } from 'swiper/types/swiper-options';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,19 @@ export class LoginComponent {
   public userForm! : FormGroup;
   public email : string = '';
   public pass : string = '';
+
+  config: SwiperOptions = {
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    spaceBetween: 30
+  }
+
   constructor(private loginService : LoginService, private fb : FormBuilder){
     this.userForm = this.fb.group({
       email : '',

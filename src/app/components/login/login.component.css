@@ -1,220 +1,233 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-    *{box-sizing: border-box; margin: 0; padding: 0;}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* :is(html, body){
+/* :is(html, body){
       height: 100%;
     } */
 
-    body{
-      margin: 0;
-      padding: 0;
-      font-family: "Poppins", sans-serif;
-    }
-    main {
-      height: 100vh;
-      margin: 0px;
-      padding: 0px;
-      gap: 0;
-      display: flex;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+main {
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  gap: 0;
+  display: flex;
+}
 
-    .left{
-      height: 100vh;
-      background-size: contain;
-      background-repeat: repeat-y;
-      border-top-right-radius: 20%;
-      border-bottom-right-radius: 20%;
-      background-color: #4caf50;
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      /* color: white; */
-    }
+.left {
+  height: 100vh;
+  background-size: contain;
+  background-repeat: repeat-y;
+  border-top-right-radius: 20%;
+  border-bottom-right-radius: 20%;
+  background-color: #4caf50;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* color: white; */
+}
 
-    .left span {
-      font-size: 40px;
-      width: 50%;
-    }
+.left span {
+  font-size: 40px;
+  width: 50%;
+}
 
-    .left img {
-      z-index: 2;
-    }
+.left img {
+  z-index: 2;
+}
 
-    article{
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      translate: -50% -50%;
-      width: 90px;
-      padding: 70px 30px 40px;
-      border-radius: 1.25rem;
-      background: #fff;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+article {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 90px;
+  padding: 70px 30px 40px;
+  border-radius: 1.25rem;
+  background: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    .login-form{
-      display: grid;
-      gap: 30px;
-      place-items: center;
-      width: 100%;
-      margin: 0;
-    }
+.login-form {
+  display: grid;
+  gap: 30px;
+  place-items: center;
+  width: 100%;
+  margin: 0;
+}
 
-    @media (width >= 450px) {
-      article { width: 380px;}
-    }
+@media (width >= 450px) {
+  article {
+    width: 380px;
+  }
+}
 
-    @media (width >= 700px) {
-      article {
-        top: 0;
-        right: 0;
-        left: auto;
-        translate: 0 0;
-        margin: 0;
-        height: 100%;
-        border-radius: 0;
-        padding-top: 150px;
-      }
-    }
+@media (width >= 700px) {
+  article {
+    top: 0;
+    right: 0;
+    left: auto;
+    translate: 0 0;
+    margin: 0;
+    height: 100%;
+    border-radius: 0;
+    padding-top: 150px;
+  }
+}
 
-    @media (width >= 1200px) {
-      article { width: 50%; }
-    }
+@media (width >= 1200px) {
+  article {
+    width: 50%;
+  }
+}
 
-    h1 {
-      font-size: 30px;
-      margin-bottom: 20px;
-    }
+h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
 
-    .group {
-      position: relative;
-      margin-bottom: 45px;
-    }
+.group {
+  position: relative;
+  margin-bottom: 45px;
+}
 
-    input {
-      font-size: 18px;
-      padding: 10px 10px 10px 5px;
-      display: block;
-      width: 285px;
-      border: none;
-      border-bottom: 1px solid #757575;
-    }
-    input:focus {
-      outline: none;
-    }
+input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 285px;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+input:focus {
+  outline: none;
+}
 
-    button {
-      display: block;
-    }
+button {
+  display: block;
+}
 
-    /* LABEL ======================================= */
-    label {
-      color: #999;
-      font-size: 18px;
-      font-weight: normal;
-      position: absolute;
-      pointer-events: none;
-      left: 5px;
-      top: 10px;
-      transition: 0.2s ease all;
-      -moz-transition: 0.2s ease all;
-      -webkit-transition: 0.2s ease all;
-    }
+/* LABEL ======================================= */
+label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
 
-    /* active state */
-    input:focus ~ label,
-    input:valid ~ label {
-      top: -20px;
-      font-size: 14px;
-      color: #4caf50;
-    }
+/* active state */
+input:focus ~ label,
+input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #4caf50;
+}
 
-    .bar {
-      position: relative;
-      display: block;
-      width: 300px;
-    }
-    .bar:before,
-    .bar:after {
-      content: "";
-      height: 2px;
-      width: 0;
-      bottom: 1px;
-      position: absolute;
-      background: #4caf50;
-      transition: 0.2s ease all;
-      -moz-transition: 0.2s ease all;
-      -webkit-transition: 0.2s ease all;
-    }
-    .bar:before {
-      left: 50%;
-    }
-    .bar:after {
-      right: 50%;
-    }
+.bar {
+  position: relative;
+  display: block;
+  width: 300px;
+}
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #4caf50;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.bar:before {
+  left: 50%;
+}
+.bar:after {
+  right: 50%;
+}
 
-    /* active state */
-    input:focus ~ .bar:before,
-    input:focus ~ .bar:after {
-      width: 50%;
-    }
+/* active state */
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 50%;
+}
 
-    .message {
-      margin: 15px 0 0;
-      color: #5a5555;
-      font-size: 12px;
-    }
-    .message a {
-      color: #4caf50;
-      text-decoration: none;
-    }
+.message {
+  margin: 15px 0 0;
+  color: #5a5555;
+  font-size: 12px;
+}
+.message a {
+  color: #4caf50;
+  text-decoration: none;
+}
 
-    .toggle {
-      background: none;
-      border: none;
-      color: #4caf50;
-      font-weight: 600;
-      position: absolute;
-      right: 0.75em;
-      top: 15px;
-      z-index: 9;
-      cursor: pointer;
-    }
+.toggle {
+  background: none;
+  border: none;
+  color: #4caf50;
+  font-weight: 600;
+  position: absolute;
+  right: 0.75em;
+  top: 15px;
+  z-index: 9;
+  cursor: pointer;
+}
 
-    .login-btn {
-      padding: 10px;
-      width: 300px;
-      border-radius: 8px;
-      border: 0;
-      background-color: white;
-      box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-size: 15px;
-      transition: all 0.5s ease;
-      border: 1px solid #4caf50;
-      margin-bottom: 20px;
-      cursor: pointer;
-    }
+.login-btn {
+  padding: 10px;
+  width: 300px;
+  border-radius: 8px;
+  border: 0;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all 0.5s ease;
+  border: 1px solid #4caf50;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
 
-    .login-btn:hover {
-      letter-spacing: 3px;
-      background-color: #4caf50;
-      color: hsl(0, 0%, 100%);
-      box-shadow: #4caf50 0px 7px 29px 0px;
-    }
+.login-btn:hover {
+  letter-spacing: 3px;
+  background-color: #4caf50;
+  color: hsl(0, 0%, 100%);
+  box-shadow: #4caf50 0px 7px 29px 0px;
+}
 
-    .login-btn:active {
-      letter-spacing: 3px;
-      background-color: #4caf50;
-      color: hsl(0, 0%, 100%);
-      box-shadow: #4caf50 0px 0px 0px 0px;
-      transform: translateY(10px);
-      transition: 100ms;
-    }
+.login-btn:active {
+  letter-spacing: 3px;
+  background-color: #4caf50;
+  color: hsl(0, 0%, 100%);
+  box-shadow: #4caf50 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
+
+swiper {
+  height: 400px;
+  width: 600px;
+}
