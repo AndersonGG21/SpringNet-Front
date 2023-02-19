@@ -25,11 +25,11 @@ main {
 
 .left {
   height: 100vh;
-  background-size: contain;
+  /* background-size: contain;
   background-repeat: repeat-y;
   border-top-right-radius: 20%;
-  border-bottom-right-radius: 20%;
-  background-color: #4caf50;
+  border-bottom-right-radius: 20%; */
+  /* background-color: #4caf50; */
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -228,6 +228,62 @@ input:focus ~ .bar:after {
 }
 
 swiper {
-  height: 400px;
-  width: 600px;
+  height: 100%;
+  width: 100%;
 }
+
+.swiper-pagination{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: flex-end;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+}
+
+.swiper-pagination {
+  gap: 10px;
+}
+.swiper-pagination .swiper-pagination-bullet{
+  width: 15px;
+  height: 15px;
+  opacity: 0.2;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active{
+  opacity: 10;
+  background: #fff;
+}
+
+.swiper-pagination-bullet{
+  opacity: 1;
+}
+
+.swiper-slide{
+  text-align: center;
+}
+
+.swiper-slide img{
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+
+.swiper-slide span{
+  width: auto;
+  position: absolute;
+  color: white;
+  font-size: large;
+  left: auto;
+  bottom: 0;
+}
+
+/* .swiper-slide:nth-child(2) span{
+  top: 0;
+  left: 25;
+}
+
+.swiper-slide:nth-child(3) span{
+  bottom:0;
+  left: 0;
+} */

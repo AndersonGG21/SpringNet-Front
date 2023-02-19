@@ -1,5 +1,5 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Login } from 'src/app/models/login.model';
 import { LoginService } from 'src/app/services/login.service';
@@ -8,7 +8,8 @@ import { SwiperOptions } from 'swiper/types/swiper-options';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent {
 
@@ -20,13 +21,22 @@ export class LoginComponent {
   config: SwiperOptions = {
     pagination: {
       el: '.swiper-pagination',
-      clickable: true
+      type: 'bullets',
+      clickable: true,
     },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     },
-    spaceBetween: 30
+    spaceBetween: 0,
+    autoplay: {
+      delay: 3000,
+    },
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    loop: true
   }
 
   constructor(private loginService : LoginService, private fb : FormBuilder){
