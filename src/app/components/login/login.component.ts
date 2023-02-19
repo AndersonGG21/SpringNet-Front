@@ -2,7 +2,6 @@ import { HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Login } from 'src/app/models/login.model';
-// import { Login } from 'src/app/models/login.model';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -22,6 +21,8 @@ export class LoginComponent {
       password : ''
     });
   };
+
+  
 
   toggle(): void {
       const pInput = <HTMLInputElement>document.getElementById("password");
