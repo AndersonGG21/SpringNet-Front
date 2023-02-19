@@ -6,21 +6,32 @@
   padding: 0;
 }
 
-/* :is(html, body){
-      height: 100%;
-    } */
-
 body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
 }
+
+header{
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* background-color: red; */
+  gap: 5px;
+}
+
 main {
   height: 100vh;
   margin: 0px;
   padding: 0px;
   gap: 0;
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .left {
@@ -48,11 +59,11 @@ main {
 }
 
 article {
-  position: fixed;
-  top: 50%;
+  position: relative;
+  /* top: 50%;
   left: 50%;
-  translate: -50% -50%;
-  width: 90px;
+  translate: -50% -50%; */
+  /* width: 90px; */
   padding: 70px 30px 40px;
   border-radius: 1.25rem;
   background: #fff;
@@ -60,6 +71,7 @@ article {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .login-form {
@@ -89,15 +101,39 @@ article {
   }
 }
 
+@media (height > 400px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-left: 20px; */
+  }
+}
+
+@media (width >= 820px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (width < 800px) {
+  .left {
+    display: none;
+  }
+}
+
 @media (width >= 1200px) {
   article {
     width: 50%;
+    position: absolute;
   }
 }
 
 h1 {
   font-size: 30px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .group {
@@ -177,6 +213,7 @@ input:focus ~ .bar:after {
   margin: 15px 0 0;
   color: #5a5555;
   font-size: 12px;
+  margin-bottom: 20px;
 }
 .message a {
   color: #4caf50;
@@ -277,13 +314,3 @@ swiper {
   left: auto;
   bottom: 0;
 }
-
-/* .swiper-slide:nth-child(2) span{
-  top: 0;
-  left: 25;
-}
-
-.swiper-slide:nth-child(3) span{
-  bottom:0;
-  left: 0;
-} */

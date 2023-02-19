@@ -1,64 +1,10 @@
-<!-- <!DOCTYPE html>
-<html
-  lang="en"
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:th="https://www.thymeleaf.org"
->
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <main>
-        <aside>
-            <img src="../static/login.png" alt="" srcset="" width="350px" height="350px">
-        </aside>
-      <article>
-        <h1>Welcome Back</h1>
-        <form [formGroup]="userForm">
-          <div class="group">
-            <input type="text" id="email" name="email" formControlName="email" required />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Email</label>
-          </div>
-          <div class="group">
-            <input type="password" id="password" name="password" formControlName="password" required/>
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Password:</label>
-            <button
-              type="button"
-              id="btnToggle"
-              class="toggle active"
-              (click)="toggle()"
-            >
-              <i class="bx bx-hide bx-xs"></i>
-            </button>
-          </div>
-
-          <button type="submit" class="login-btn" (click)="submitForm()">Login</button>
-          <span class="message"
-            >Not registered? <a href="#">Create an account</a></span
-          >
-        </form>
-      </article>
-
-    </main>
-  </body>
-</html>
- -->
-
 <body>
+  <header>
+    <span>SpringNet</span>
+    <img src="../../../assets/spring-net-logo.png" alt="spring-net-logo" width="48px" height="48px">
+  </header>
   <main>
     <div class="left">
-      <!-- <span>Connect with a vibrant SpringNet community.</span>
-          <img src="../../../assets/login.png" alt="login-image" width="350px"> -->
       <swiper [config]="config">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -89,15 +35,12 @@
             />
           </div>
         </div>
-        <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
-        <!-- Add Arrows
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div> -->
       </swiper>
     </div>
     <article>
       <h1>Welcome Back</h1>
+      <span class="message">Share your life in pictures.</span>
       <form [formGroup]="userForm" class="login-form">
         <div class="group">
           <input
