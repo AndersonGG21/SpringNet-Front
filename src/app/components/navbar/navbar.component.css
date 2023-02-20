@@ -1,0 +1,165 @@
+button {
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: #606770;
+  border: 0;
+  max-width: 40px;
+}
+
+button > i {
+  font-size: 20px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  width: 100%;
+  padding: 0 20px;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-logo,
+.navbar-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.navbar-avatar {
+  margin-left: 20px;
+}
+
+.navbar-end {
+  display: flex;
+  gap: 6px;
+  flex: 0 0 178px;
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f0f2f5;
+}
+
+.navbar-center {
+  display: flex;
+  flex: 1 1 auto;
+  padding: 0 10px;
+  gap: 50px;
+  justify-content: center;
+}
+
+.navbar-center > button {
+  flex: 1 1 auto;
+  height: 72px;
+  padding-top: 4px;
+  border-bottom: 4px solid transparent;
+}
+
+.navbar-center > button.active {
+  border-bottom-color: #4caf50;
+}
+
+.navbar-center > button.active > i {
+  color: #4caf50;
+}
+
+.navbar-center > button:last-child {
+  display: none;
+}
+
+.navbar-center > button > i {
+  font-size: 24px;
+}
+
+.navbar .navbar-end:last-child > button > i {
+  color: #050505;
+}
+
+@media (width <= 600px) {
+  .navbar-end {
+    flex: 0 0 auto;
+  }
+
+  .navbar-center > button {
+    display: none;
+  }
+
+  .navbar-center > button:last-child {
+    display: block;
+    position: absolute;
+    left: 110px;
+    top: 50%;
+    translate: 0 -50%;
+  }
+
+  .navbar-center > button:last-child {
+    display: block;
+  }
+}
+
+@media (width <= 400px) {
+  .navbar .navbar-end:last-child > button:nth-child(n + 2) {
+    display: none;
+  }
+}
+/* Search Input */
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchBox:hover > .searchInput {
+  width: 200px;
+  padding: 0 6px;
+}
+
+.searchBox:hover > .icon-button {
+  display: none;
+}
+
+.searchButton {
+  color: white;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: black;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+  border: 1px solid #4caf50;
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 620px) {
+  .searchBox:hover > .searchInput {
+    width: 150px;
+    padding: 0 6px;
+  }
+}

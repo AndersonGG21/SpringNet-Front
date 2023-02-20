@@ -1,0 +1,39 @@
+<nav class="navbar">
+  <div class="navbar-end">
+    <img src="../../../assets/spring-net-logo.png" alt="" class="navbar-logo">
+
+      <div class="searchBox">
+        <input class="searchInput"type="text" name="" placeholder="Search">
+        <span>
+          <i class="pi pi-search"></i>
+        </span>
+      </div>
+
+  </div>
+  <div class="navbar-center">
+    <button [ngClass]="{'active' : home == true}">
+      <i class="pi pi-home"></i>
+    </button>
+    <button [ngClass]="{'active' : likes == true}">
+      <i class="pi pi-heart"></i>
+    </button>
+    <button [ngClass]="{'active' : reels == true}">
+      <i class="pi pi-video"></i>
+    </button>
+    <button (click)="menu.toggle($event)">
+      <i class="pi pi-bars"></i>
+    </button>
+  </div>
+  <div class="navbar-end">
+    <button class="icon-button">
+      <i class="pi pi-comment" pBadge value="2" severity="success"></i>
+    </button>
+    <!-- <img src="" alt="" class="navbar-avatar" pBadge value="10"> -->
+      <img src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/be/bef6308176089fa7f3df885a59d3e20bc48c9b32.jpg" alt="" class="navbar-avatar">
+  </div>
+</nav>
+
+<!-- <button type="button" pButton icon="pi pi-bars" label="Show" (click)="menu.toggle($event)"></button> -->
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+
