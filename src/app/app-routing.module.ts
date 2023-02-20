@@ -7,7 +7,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 const routes: Routes = [
   {path: "", component: LoginComponent},
   {path: "feed", component: FeedComponent},
-  // {path: "navbar", component: NavbarComponent}
 ];
 
 @NgModule({
