@@ -35,6 +35,10 @@ export class FeedComponent {
   show3Columns() :void{
     this.changeColumns(3);
   }
+
+  show1Column() : void {
+    this.changeColumns(1);
+  }
 }
 
 interface City {

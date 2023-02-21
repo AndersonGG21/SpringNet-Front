@@ -10,13 +10,16 @@
     class="circle"
   />
   <app-stories></app-stories>
+  <button class="circle">
+    <li class="pi pi-play"></li>
+  </button>
 </div>
 <main>
   <section>
-    <div class="grid-item">Columna 1</div>
-    <div class="grid-item">Columna 2</div>
-    <div class="grid-item">Columna 3</div>
-    <div class="grid-item">Columna 4</div>
+    <app-posts-card></app-posts-card>
+    <app-posts-card></app-posts-card>
+    <app-posts-card></app-posts-card>
+    <app-posts-card></app-posts-card>
   </section>
 </main>
 
@@ -24,7 +27,5 @@
   <span>Configuración del Grid</span>
   <button id="btn-2-col" (click)="show2Colums()">2 columnas</button>
   <button id="btn-4-col" (click)="show3Columns()">3 columnas</button>
-  <button class="circle">
-    <li class="pi pi-play"></li>
-  </button>
+  <button id="btn-1-col" (click)="show1Column()">1 columnas</button>
 </aside>

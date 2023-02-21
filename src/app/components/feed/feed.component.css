@@ -8,9 +8,9 @@ nav {
 }
 
 .story-feed{
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
-  margin-top: 75px;
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +60,7 @@ main {
   justify-content: center;
   align-items: center;
   height: 200px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   width: 90%;
   height: 100vh;
 }
@@ -72,9 +72,12 @@ h1 {
 
 /* Grid */
 section {
+  position: absolute;
+  top: 150px;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  /* grid-template-columns: repeat(2, 1fr); */
+
+  grid-gap: 20px;
   padding: 20px;
   transition: all 20s ease-in;
 }
@@ -88,7 +91,7 @@ section {
 
 @media screen and (min-width: 1200px) {
   section {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     transition: all 4s ease-in-out
   }
 }
