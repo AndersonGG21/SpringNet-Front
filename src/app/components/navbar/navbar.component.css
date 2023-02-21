@@ -27,9 +27,9 @@ button:hover > i{
   height: 72px;
   width: 100%;
   padding: 0 20px;
-  border-bottom: 1px solid #e8e8e8;
+  /* border-bottom: 1px solid #e8e8e8; */
   background: #fff;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); */
   z-index: 2;
 }
 
@@ -77,6 +77,7 @@ button:hover > i{
 
 .navbar-center > button.active > i {
   color: #4caf50;
+  transform: scale(1.2);
 }
 
 .navbar-center > button:last-child {
@@ -84,7 +85,7 @@ button:hover > i{
 }
 
 .navbar-center > button > i {
-  font-size: 24px;
+  font-size: 17px;
 }
 
 .navbar .navbar-end:last-child > button > i {
