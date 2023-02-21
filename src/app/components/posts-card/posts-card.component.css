@@ -1,10 +1,12 @@
 .card {
   min-width: 200px;
-  min-height: 400px;
+  /* min-height: 400px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 5px;
+  height: 400px;
+  margin: 20px;
 }
 
 .card-img {
@@ -39,6 +41,11 @@
   flex-direction: column;
 }
 
+.user-info > span {
+  font-size: 15px;
+  font-weight: normal;
+}
+
 .actions {
   display: flex;
   align-items: center;
@@ -61,10 +68,20 @@
 
 section {
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 40px;
   padding: 20px;
-  transition: all 20s ease-in;
+  place-content: center;
 }
+
+@media screen and (min-width < 768px) {
+  section {
+    grid-template-columns: repeat(1, 1fr);
+    transition: all 4s ease-in-out;
+    width: 400px;
+    height: 600px;
+  }
+}
+
 
 @media screen and (min-width: 768px) {
   section {

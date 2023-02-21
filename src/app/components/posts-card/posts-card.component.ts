@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./posts-card.component.css']
 })
 export class PostsCardComponent {
-  items : number[] = [1,2,3];
+  items : number[] = [1,2,3,4,5,6,7,8 ];
 
 
 }
