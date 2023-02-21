@@ -58,10 +58,12 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   /* height: 200px; */
-  width: 90%;
+  width: 80%;
   height: 100vh;
+  /* background-color: red; */
+  margin: auto;
 }
 
 h1 {
@@ -69,41 +71,14 @@ h1 {
   font-weight: bold;
 }
 
-/* Grid */
-/* section {
-  position: absolute;
-  top: 150px;
-  display: grid;
-  grid-gap: 20px;
-  padding: 20px;
-  transition: all 20s ease-in;
-}
-
-@media screen and (min-width: 768px) {
-  section {
-    grid-template-columns: repeat(2, 1fr);
-    transition: all 4s ease-in-out
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  section {
-    grid-template-columns: repeat(3, 1fr);
-    transition: all 4s ease-in-out
-  }
-}
-
-.grid-item {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  box-shadow: 0px 0px 5px #ccc;
-  transition: all 20s ease-in;
-} */
-
 .posts {
   position: absolute;
   top: 150px;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: grid;
 }
 
 /* Aside */
@@ -118,6 +93,7 @@ aside {
   right: 0;
   top: 0;
   height: 100vh;
+  /* background-color: rebeccapurple; */
 }
 
 button {
@@ -125,9 +101,9 @@ button {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #333;
-  color: #fff;
-  font-size: 16px;
+  /* background-color: #333; */
+  /* color: #fff; */
+  background-color: inherit;
   cursor: pointer;
 }
 
@@ -135,12 +111,71 @@ button:focus {
   outline: none;
 }
 
+.grid-config {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-btn {
+  opacity: 0.2;
+  transition: all 0.5s ease;
+}
+
+.grid-btn:focus {
+  opacity: 1;
+}
+
+.add-post {
+  --border-width: 2px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-size: 2.5rem; */
+  text-transform: uppercase;
+  color: white;
+  background: #fff;
+  border-radius: var(--border-width);
+}
+.add-post::after {
+  position: absolute;
+  content: "";
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  z-index: -1;
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+  background: linear-gradient(60deg, #f2cb5f, #abf25f, #5ff281, #5ff281, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  border-radius: calc(2 * var(--border-width));
+  animation: moveGradient 4s alternate infinite;
+}
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+ }
+}
+
+::ng-deep .p-tooltip .p-tooltip-text{
+  background-color: inherit;
+  color: black;
+}
+
 @media  (width < 768px) {
-  aside {
+  aside, .circle {
     display: none;
   }
 
   main{
     width: 100%;
+  }
+
+  .story-feed {
+    display: block;
+  }
+
+  .posts {
+    margin-left: 55px;
   }
 }
