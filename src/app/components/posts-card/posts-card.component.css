@@ -57,3 +57,27 @@
   margin: 5px;
   pointer-events: none;
 }
+
+
+section {
+  position: absolute;
+  top: 150px;
+  display: grid;
+  grid-gap: 20px;
+  padding: 20px;
+  transition: all 20s ease-in;
+}
+
+@media screen and (min-width: 768px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+    transition: all 4s ease-in-out
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  section {
+    grid-template-columns: repeat(3, 1fr);
+    transition: all 4s ease-in-out
+  }
+}

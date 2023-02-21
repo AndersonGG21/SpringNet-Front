@@ -1,26 +1,28 @@
-<div class="card">
-  <div class="card-img">
-    <img src="../../../assets/slide1.png" alt="" width="100%" height="100%">
-  </div>
-  <div class="card-footer">
-    <div class="user-profile">
-      <img src="../../../assets/slide1.png" alt="">
-      <div class="user-info">
-        <span>Usernanme</span>
-        <span>date</span>
+<section>
+  <div class="card" *ngFor="let item of items, index as i">
+    <div class="card-img">
+      <img src="../../../assets/slide{{i}}.png" alt="" width="100%" height="100%">
+    </div>
+    <div class="card-footer">
+      <div class="user-profile">
+        <img src="../../../assets/slide1.png" alt="">
+        <div class="user-info">
+          <span>Usernanme</span>
+          <span>date</span>
+        </div>
+      </div>
+      <div class="actions">
+        <button>
+          <span>258</span>
+          <i class="pi pi-thumbs-up"></i>
+        </button>
+        <button>
+          <i class="pi pi-comment"></i>
+        </button>
+        <button>
+          <i class="pi pi-send"></i>
+        </button>
       </div>
     </div>
-    <div class="actions">
-      <button>
-        <span>258</span>
-        <i class="pi pi-thumbs-up"></i>
-      </button>
-      <button>
-        <i class="pi pi-comment"></i>
-      </button>
-      <button>
-        <i class="pi pi-send"></i>
-      </button>
-    </div>
   </div>
-</div>
+</section>
