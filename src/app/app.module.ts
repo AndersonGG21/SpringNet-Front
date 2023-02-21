@@ -19,6 +19,7 @@ import { FeedComponent } from './components/feed/feed.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MenuModule} from 'primeng/menu';
 import { StoriesComponent } from './components/stories/stories.component';
+import { PostsCardComponent } from './components/posts-card/posts-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { StoriesComponent } from './components/stories/stories.component';
     LoginComponent,
     FeedComponent,
     NavbarComponent,
-    StoriesComponent
+    StoriesComponent,
+    PostsCardComponent
   ],
   imports: [
     BrowserModule,
