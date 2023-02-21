@@ -3,13 +3,8 @@
 	overflow-x: scroll;
 	scroll-snap-type: x mandatory;
   color: white;
-  /* background-color: oldlace; */
   display: flex;
-  /* flex-direction: row; */
-  /* align-items: center; */
-  /* justify-content: center; */
   gap: 10px;
-  /* margin-top: 10px; */
 }
 
 .container::-webkit-scrollbar {
@@ -25,6 +20,9 @@
 	justify-content: center;
 	text-align: center;
   margin-top: 20px;
+ border: 1px solid red;
+ border-radius: 50%;
+ padding: 2px;
 }
 
 .child > img {
