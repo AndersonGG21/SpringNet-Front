@@ -1,0 +1,59 @@
+.card {
+  min-width: 200px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.card-img {
+  height: 400px;
+}
+
+.user-profile {
+  margin-left: 10px;
+  gap: 10px;
+}
+
+.user-profile > img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.card-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-profile{
+  display: flex;
+  flex-direction: row;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actions > button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.actions > button > span {
+  font-size: medium;
+  margin: 5px;
+  pointer-events: none;
+}
