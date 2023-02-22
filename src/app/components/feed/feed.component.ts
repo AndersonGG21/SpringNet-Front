@@ -32,14 +32,6 @@ export class FeedComponent {
   changeColumns = (numColumns: number): void => {
     const section = document.querySelector("section") as HTMLElement;
     section.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`;
-
-    if (numColumns == 1) {
-      section.style.width = '500px';
-    }else {
-      section.style.width = 'auto';
-    }
-
-    section.style.transition = "all 20s ease-in-out 20s";
   };
 
   show2Columns() :void{
