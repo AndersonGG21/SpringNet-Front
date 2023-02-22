@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-feed',
@@ -9,6 +10,7 @@ import { Component } from '@angular/core';
 export class FeedComponent {
 
   cities: City[];
+  items: MenuItem[] = [];
 
   selectedCity: City | undefined;
 
@@ -20,6 +22,11 @@ export class FeedComponent {
           {name: 'Istanbul', code: 'IST'},
           {name: 'Paris', code: 'PRS'}
       ];
+
+      this.items = [
+        {label: 'Post', icon: 'pi pi-fw pi-hashtag'},
+        {label: 'Story', icon: 'pi pi-fw pi-history'},
+    ];
   }
 
   changeColumns = (numColumns: number): void => {

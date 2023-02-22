@@ -34,8 +34,9 @@
     </button>
   </div>
 
-  <button class="add-post">
+  <button class="add-post" (click)="menu.toggle($event)">
     <li class="pi pi-plus" style="color: #4caf50; font-size: 20px;"></li>
   </button>
 
 </aside>
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
