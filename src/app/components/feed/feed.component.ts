@@ -11,6 +11,7 @@ export class FeedComponent {
 
   cities: City[];
   items: MenuItem[] = [];
+  displayModal: boolean | undefined;
 
   selectedCity: City | undefined;
 
@@ -25,7 +26,7 @@ export class FeedComponent {
 
       this.items = [
         {label: 'Post', icon: 'pi pi-fw pi-hashtag'},
-        {label: 'Story', icon: 'pi pi-fw pi-history'},
+        {label: 'Story', icon: 'pi pi-fw pi-history'}
     ];
   }
 
@@ -48,6 +49,10 @@ export class FeedComponent {
     const section = document.querySelector("section") as HTMLElement;
     section.style.width = '500px';
     section.style.transition = "all 20s ease-in-out 20s";
+  }
+
+  showModalDialog() {
+    this.displayModal = true;
   }
 }
 
