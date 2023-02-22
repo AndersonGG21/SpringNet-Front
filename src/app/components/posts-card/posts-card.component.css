@@ -1,6 +1,5 @@
-.card {
+/* .card {
   min-width: 300px;
-  /* min-height: 400px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,5 +93,88 @@ section {
   section {
     grid-template-columns: repeat(3, 1fr);
     transition: all 4s ease-in-out
+  }
+} */
+.card {
+  min-width: 310px;
+  min-height: 200px;
+  background-color: inherit;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  color: black;
+  -webkit-box-shadow: 10px 10px 25px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 25px -10px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 25px -10px rgba(0,0,0,0.75);
+}
+
+.card button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.card-header, .user, .card-actions{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.user > img {
+  border-radius: 50%;
+}
+
+.user-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img {
+  position: relative;
+}
+
+.card-img > img{
+  /* width: 290px; */
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.card-actions i {
+  color: black;
+  font-size: 16px;
+}
+
+section {
+  display: grid;
+  grid-gap: 40px;
+  padding: 20px;
+  place-content: center;
+}
+
+@media screen and (min-width < 768px) {
+  section {
+    grid-template-columns: repeat(1, 1fr);
+    transition: all 4s ease-in-out;
+    width: 400px;
+    height: 600px;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+    transition: all 4s ease-in-out
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  section {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-columns: auto;
+    align-items: start;
   }
 }
