@@ -12,8 +12,10 @@ export class FeedComponent {
   cities: City[];
   items: MenuItem[] = [];
   displayModal: boolean | undefined;
+  uploadedFiles: any[] = [];
 
   selectedCity: City | undefined;
+font: any;
 
   constructor() {
       this.cities = [
@@ -28,6 +30,13 @@ export class FeedComponent {
         {label: 'Post', icon: 'pi pi-fw pi-hashtag'},
         {label: 'Story', icon: 'pi pi-fw pi-history'}
     ];
+  }
+
+  onUpload(event: { files: any; }) {
+    for(let file of event.files) {
+        this.uploadedFiles.push(file);
+    }
+  // ]this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});]
   }
 
   changeColumns = (numColumns: number): void => {
