@@ -18,6 +18,7 @@ export class NavbarComponent {
             {label: 'Home', icon: 'pi pi-fw pi-home'},
             {label: 'Likes', icon: 'pi pi-fw pi-heart'},
             {label: 'Reels', icon: 'pi pi-fw pi-video'},
+            {label: 'Add a new post', icon: 'pi pi-fw pi-plus'}
         ];
     }
 }
