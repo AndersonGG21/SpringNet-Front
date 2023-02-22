@@ -8,9 +8,7 @@ import {ButtonModule} from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DropdownModule} from 'primeng/dropdown';
 import {BadgeModule} from 'primeng/badge';
-
-
-
+import {DialogModule} from 'primeng/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +40,8 @@ import { PostsCardComponent } from './components/posts-card/posts-card.component
     BrowserAnimationsModule,
     DropdownModule,
     BadgeModule,
-    MenuModule
+    MenuModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
