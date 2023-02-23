@@ -42,12 +42,28 @@
 <p-menu #menu [popup]="true" [model]="items"></p-menu>
 <p-dialog header="Create a new post/story" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
     [draggable]="false" [resizable]="false">
-    <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
-            [multiple]="true" accept="image/*" [maxFileSize]="8000000">
-            <ng-template pTemplate="content">
-                <ul *ngIf="uploadedFiles.length">
-                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                </ul>
-            </ng-template>
-    </p-fileUpload>
+    <div class="wrapper">
+      <div class="file-upload">
+        <input type="file" (change)="upload($event)"/>
+        <i class="pi pi-arrow-up" style="font-size: 24px;"></i>
+      </div>
+      <label for="">Upload a file</label>
+    </div>
+
+    <form class="login-form">
+      <div class="group">
+        <input
+          type="text"
+          name="content"
+          [(ngModel)]="content"
+          required
+        />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Content</label>
+      </div>
+      <button type="submit" class="login-btn" (click)="createPost()">
+        Login
+      </button>
+    </form>
 </p-dialog>
