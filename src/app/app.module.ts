@@ -44,7 +44,6 @@ import { PostsCardComponent } from './components/posts-card/posts-card.component
     MenuModule,
     DialogModule,
     FileUploadModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
