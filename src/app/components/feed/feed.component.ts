@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
 import { Post } from 'src/app/models/login.model';
 import { MediaService } from 'src/app/services/media.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-feed',
@@ -17,9 +18,9 @@ export class FeedComponent {
   url: string = '';
   font: any;
   post !: Post;
-  content : string = '';
+  content : string = 'Siuuu';
 
-  constructor(private mediaService: MediaService) {
+  constructor(private mediaService: MediaService, private postService : PostService) {
     this.items = [
       { label: 'Post', icon: 'pi pi-fw pi-hashtag' },
       { label: 'Story', icon: 'pi pi-fw pi-history' },
@@ -65,9 +66,21 @@ export class FeedComponent {
   }
 
   createPost(){
-    this.post.content = this.content;
-    this.post.image = this.url;
-    this.post.user.id = 12;
+
+
+    this.post = {
+      content : this.content,
+      image : this.url,
+      user : {
+        id: 12
+      }
+    }
+
+    this.postService.createPost(this.post).subscribe({
+      next: (v) => console.log(v),
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
+    })
   }
 }
 
