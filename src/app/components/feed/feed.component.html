@@ -50,7 +50,7 @@
       <label for="">Upload a file</label>
     </div>
 
-    <form class="login-form">
+    <form class="login-form" (submit)="createPost()">
       <div class="group">
         <input
           type="text"
@@ -62,8 +62,8 @@
         <span class="bar"></span>
         <label>Content</label>
       </div>
-      <button type="submit" class="login-btn" (click)="createPost()">
-        Login
+      <button type="submit" class="login-btn">
+        Create
       </button>
     </form>
 </p-dialog>
