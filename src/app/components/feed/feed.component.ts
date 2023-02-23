@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
+import { Post } from 'src/app/models/login.model';
 import { MediaService } from 'src/app/services/media.service';
 
 @Component({
@@ -70,10 +71,4 @@ export class FeedComponent {
   }
 }
 
-interface Post {
-  content: string;
-  image: string;
-  user: {
-    id: number
-  }
-}
+
