@@ -4,9 +4,9 @@ export interface Login {
 }
 
 export interface Post {
-  content: string;
-  image: string;
+  content?: string;
+  image?: string;
   user: {
-    id: number
+    id?: number
   }
 }
