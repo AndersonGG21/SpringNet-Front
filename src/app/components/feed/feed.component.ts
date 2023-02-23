@@ -9,26 +9,16 @@ import { MediaService } from 'src/app/services/media.service';
   styleUrls: ['./feed.component.css'],
 })
 export class FeedComponent {
-  cities: City[];
+
   items: MenuItem[] = [];
   displayModal: boolean | undefined;
   uploadedFiles: any[] = [];
   url: string = '';
-
-  selectedCity: City | undefined;
   font: any;
   post !: Post;
   content : string = '';
 
   constructor(private mediaService: MediaService) {
-    this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' },
-    ];
-
     this.items = [
       { label: 'Post', icon: 'pi pi-fw pi-hashtag' },
       { label: 'Story', icon: 'pi pi-fw pi-history' },
@@ -78,11 +68,6 @@ export class FeedComponent {
     this.post.image = this.url;
     this.post.user.id = 12;
   }
-}
-
-interface City {
-  name: string;
-  code: string;
 }
 
 interface Post {
