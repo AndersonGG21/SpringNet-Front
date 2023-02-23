@@ -15,8 +15,8 @@ export class LoginComponent {
 
   public login! : Login;
   public userForm! : FormGroup;
-  public email : string = '';
-  public pass : string = '';
+  public email  = '';
+  public pass  = '';
 
   config: SwiperOptions = {
     pagination: {
@@ -44,7 +44,7 @@ export class LoginComponent {
       email : '',
       password : ''
     });
-  };
+  }
 
   
 

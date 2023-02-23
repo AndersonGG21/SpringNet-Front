@@ -8,9 +8,9 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  @Input() home : boolean = false;
-  @Input() likes : boolean = false;
-  @Input() reels : boolean = false;
+  @Input() home  = false;
+  @Input() likes  = false;
+  @Input() reels  = false;
   items: MenuItem[] = [];
 
     ngOnInit() {

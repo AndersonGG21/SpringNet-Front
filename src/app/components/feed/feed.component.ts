@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
 import { Post } from 'src/app/models/login.model';
 import { MediaService } from 'src/app/services/media.service';
@@ -15,10 +14,10 @@ export class FeedComponent {
   items: MenuItem[] = [];
   displayModal: boolean | undefined;
   uploadedFiles: any[] = [];
-  url: string = '';
+  url = '';
   font: any;
   post !: Post;
-  content : string = 'Siuuu';
+  content  = 'Siuuu';
 
   constructor(private mediaService: MediaService, private postService : PostService) {
     this.items = [

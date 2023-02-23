@@ -1,6 +1,5 @@
-import { HttpClient, HttpErrorResponse, HttpHandler, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
 import { Login } from '../models/login.model';
 
 
@@ -10,14 +9,14 @@ import { Login } from '../models/login.model';
 })
 export class LoginService {
 
-  private loginUrl : string = "http://localhost:8080/login";
+  private loginUrl  = "http://localhost:8080/login";
 
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json' ,
       Authorization : ''
     },),
-    observe: 'response' as 'response'
+    observe: 'response' as const
   };
 
   constructor(private http : HttpClient) { }
