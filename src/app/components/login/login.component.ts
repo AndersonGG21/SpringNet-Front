@@ -1,4 +1,3 @@
-import { HttpResponse } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Login } from 'src/app/models/login.model';
@@ -46,7 +45,7 @@ export class LoginComponent {
     });
   }
 
-  
+
 
   toggle(): void {
       const pInput = <HTMLInputElement>document.getElementById("password");
