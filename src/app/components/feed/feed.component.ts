@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { Post } from 'src/app/models/login.model';
 import { MediaService } from 'src/app/services/media.service';
 import { PostService } from 'src/app/services/post.service';
@@ -20,7 +20,7 @@ export class FeedComponent {
   content  = '';
   value = 0;
 
-  constructor(private mediaService: MediaService, private postService : PostService) {
+  constructor(private mediaService: MediaService, private postService : PostService, private messageService : MessageService) {
     this.items = [
       { label: 'Post', icon: 'pi pi-fw pi-hashtag' },
       { label: 'Story', icon: 'pi pi-fw pi-history' },
@@ -34,7 +34,7 @@ export class FeedComponent {
           this.value = 100;
           clearInterval(interval);
       }
-    }, 500);
+    }, 100);
 
     const file = event.files[0];
 
@@ -48,6 +48,7 @@ export class FeedComponent {
       });
     }
   }
+
   changeColumns = (numColumns: number): void => {
     const section = document.querySelector('section') as HTMLElement;
     section.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`;
@@ -72,9 +73,7 @@ export class FeedComponent {
     this.displayModal = true;
   }
 
-  createPost(){
-
-
+  async createPost(){
     this.post = {
       content : this.content,
       image : this.imgUrl,
@@ -83,11 +82,12 @@ export class FeedComponent {
       }
     }
 
-    this.postService.createPost(this.post).subscribe({
-      next: (v) => console.log(v),
-      error: (e) => console.error(e),
-      complete: () => console.info('complete')
-    })
+    this.postService.createPost(this.post).subscribe((resp) => {
+      if (resp.status == 200) {
+        this.messageService.add({key: 'tc',severity:'success', summary:'Service Message', detail:'Via MessageService'});
+      }
+    });;
+
   }
 }
 
