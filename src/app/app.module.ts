@@ -11,6 +11,7 @@ import {BadgeModule} from 'primeng/badge';
 import {DialogModule} from 'primeng/dialog';
 import {FileUploadModule} from 'primeng/fileupload';
 import {ProgressBarModule} from 'primeng/progressbar';
+import {ToastModule} from 'primeng/toast';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {MenuModule} from 'primeng/menu';
 import { StoriesComponent } from './components/stories/stories.component';
 import { PostsCardComponent } from './components/posts-card/posts-card.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -45,9 +47,11 @@ import { PostsCardComponent } from './components/posts-card/posts-card.component
     MenuModule,
     DialogModule,
     FileUploadModule,
-    ProgressBarModule
+    ProgressBarModule,
+    ToastModule
+
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
