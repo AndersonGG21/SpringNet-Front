@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { Post } from '../models/login.model';
 
@@ -9,17 +10,23 @@ import { Post } from '../models/login.model';
 export class PostService {
 
   baseUrl  = 'http://localhost:8080/api/posts/'
-  headers : HttpHeaders = new HttpHeaders()
-  .set('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmRlcnNvbmdhcmNlc2dhcmNpYUBnbWFpbC5jb20iLCJleHAiOjE2NzkyODYwMTIsIm5hbWUiOiJhbmRlci5fLmdnIn0.rRajQFoLIbpux5JUYNg9rLcBCe3oZs7w_ihQAuNv3t_X5CRIo24qrTLw9McOOoyuRfyNGFbvwnpo3Msliy6uEQ');
+  status = 0;
 
-  constructor(private http : HttpClient) { }
+  private options = {
+    observe: 'response' as const,
+    headers : new HttpHeaders()
+    .set('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmRlcnNvbmdhcmNlc2dhcmNpYUBnbWFpbC5jb20iLCJleHAiOjE2NzkyODYwMTIsIm5hbWUiOiJhbmRlci5fLmdnIn0.rRajQFoLIbpux5JUYNg9rLcBCe3oZs7w_ihQAuNv3t_X5CRIo24qrTLw9McOOoyuRfyNGFbvwnpo3Msliy6uEQ')
+  };
 
-  createPost(post : Post) : Observable<Post>{
-    return this.http.post<Post>(`${this.baseUrl}new-post`,post, {headers: this.headers});
+
+  constructor(private http : HttpClient, private messageService : MessageService) { }
+
+  createPost(post : Post) : Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}new-post`,post,this.options);
   }
 
   getPost(id : number) : Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}12`, {headers: this.headers});
+    return this.http.get<Post[]>(`${this.baseUrl}12`, {headers: this.options.headers});
   }
 
 }
