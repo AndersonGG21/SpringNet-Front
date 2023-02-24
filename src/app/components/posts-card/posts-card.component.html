@@ -33,7 +33,11 @@
     </div>
     <span style="font-size: 12px;">Liked by miputamadre</span>
     <div class="card-desc">
-      <p style="font-size: 12px;">Me gustan las papas</p>
+      <p style="font-size: 12px;">{{post.content}}</p>
+      <ng-container *ngIf="stringLength(post.content) > 50">
+        <button class="show-btn" (click)="toggleShow()">Show more</button>
+      </ng-container>
+
     </div>
   </div>
 </section>
