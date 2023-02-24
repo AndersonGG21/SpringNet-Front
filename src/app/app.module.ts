@@ -22,6 +22,7 @@ import {MenuModule} from 'primeng/menu';
 import { StoriesComponent } from './components/stories/stories.component';
 import { PostsCardComponent } from './components/posts-card/posts-card.component';
 import { MessageService } from 'primeng/api';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MessageService } from 'primeng/api';
     FeedComponent,
     NavbarComponent,
     StoriesComponent,
-    PostsCardComponent
+    PostsCardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
