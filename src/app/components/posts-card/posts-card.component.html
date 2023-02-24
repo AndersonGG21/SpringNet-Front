@@ -35,6 +35,9 @@
     <div class="card-desc">
       <p style="font-size: 12px;">Me gustan las papas</p>
     </div>
-
   </div>
 </section>
+
+<ng-container *ngIf="posts.length == 0">
+  <span>Lost server conecction</span>
+</ng-container>
