@@ -6,7 +6,9 @@ export interface Login {
 export interface Post {
   content?: string;
   image?: string;
+  publicationDate? : string;
   user: {
-    id?: number
+    id?: number,
+    username? : string,
   }
 }
