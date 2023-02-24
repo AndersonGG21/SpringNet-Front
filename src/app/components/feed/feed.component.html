@@ -40,30 +40,34 @@
 
 </aside>
 <p-menu #menu [popup]="true" [model]="items"></p-menu>
-<p-dialog header="Create a new post/story" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+<p-dialog header="Create a new post/story" [(visible)]="displayModal" [modal]="true" [style]="{width: '70%'}"
     [draggable]="false" [resizable]="false">
-    <div class="wrapper">
+    <!-- <div class="wrapper">
       <div class="file-upload">
         <input type="file" (change)="upload($event)"/>
         <i class="pi pi-arrow-up" style="font-size: 24px;"></i>
       </div>
       <label for="">Upload a file</label>
-    </div>
+    </div> -->
 
     <form class="login-form" (submit)="createPost()">
-      <div class="group">
-        <input
-          type="text"
-          name="content"
-          [(ngModel)]="content"
-          required
-        />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Content</label>
+      <div class="img-upload">
+        <b>Upload a image</b>
+        <p-fileUpload name="demo[]" [customUpload]="true" (uploadHandler)="upload($event)"
+            accept="image/*" [maxFileSize]="8000000">
+            <ng-template pTemplate="content">
+              <p-progressBar [value]="value" [showValue]="false"></p-progressBar>
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+          </p-fileUpload>
       </div>
-      <button type="submit" class="login-btn">
-        Create
-      </button>
+      <div class="text-container">
+        <textarea pInputTextarea placeholder="Write a description" [(ngModel)]="content" class="textarea" name="text-area"></textarea>
+        <ng-container *ngIf="value >= 100">
+          <button (click)="createPost()">Post</button>
+        </ng-container>
+      </div>
     </form>
 </p-dialog>
