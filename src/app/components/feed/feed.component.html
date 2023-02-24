@@ -39,10 +39,11 @@
   </button>
 
 </aside>
+<!-- Utils -->
 <p-menu #menu [popup]="true" [model]="items"></p-menu>
 <p-dialog header="Create a new post/story" [(visible)]="displayModal" [modal]="true" [style]="{width: '70%'}"
     [draggable]="false" [resizable]="false">
-    <form class="login-form" (submit)="createPost()">
+    <form class="login-form">
       <div class="img-upload">
         <b>Upload a image</b>
         <p-fileUpload name="demo[]" [customUpload]="true" (uploadHandler)="upload($event)"
@@ -57,9 +58,10 @@
       </div>
       <div class="text-container">
         <textarea pInputTextarea placeholder="Write a description" [(ngModel)]="content" class="textarea" name="text-area"></textarea>
-        <ng-container *ngIf="value >= 100">
-          <button (click)="createPost()">Post</button>
-        </ng-container>
+        <button (click)="createPost()">Post</button>
       </div>
     </form>
 </p-dialog>
+
+
+<p-toast position="top-center" key="tc"></p-toast>
