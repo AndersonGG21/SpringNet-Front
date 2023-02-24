@@ -28,4 +28,10 @@ export class PostsCardComponent {
     return str.length;
   }
 
+  formatDate(date : any) : string {
+    const str = new String(date);
+    return str.substring(0,10);
+
+  }
+
 }
