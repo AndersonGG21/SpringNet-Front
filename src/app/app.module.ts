@@ -10,6 +10,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {BadgeModule} from 'primeng/badge';
 import {DialogModule} from 'primeng/dialog';
 import {FileUploadModule} from 'primeng/fileupload';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,7 +44,8 @@ import { PostsCardComponent } from './components/posts-card/posts-card.component
     BadgeModule,
     MenuModule,
     DialogModule,
-    FileUploadModule
+    FileUploadModule,
+    ProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
