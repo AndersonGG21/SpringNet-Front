@@ -14,10 +14,11 @@ export class FeedComponent {
   items: MenuItem[] = [];
   displayModal: boolean | undefined;
   uploadedFiles: any[] = [];
-  url = '';
+  imgUrl = '';
   font: any;
   post !: Post;
-  content  = 'Siuuu';
+  content  = '';
+  value = 0;
 
   constructor(private mediaService: MediaService, private postService : PostService) {
     this.items = [
@@ -27,19 +28,26 @@ export class FeedComponent {
   }
 
   upload(event: any) {
-    const file = event.target.files[0];
+    let interval = setInterval(() => {
+      this.value = this.value + Math.floor(Math.random() * 10) + 1;
+      if (this.value >= 100) {
+          this.value = 100;
+          clearInterval(interval);
+      }
+    }, 500);
+
+    const file = event.files[0];
 
     if (file) {
       const formData = new FormData();
       formData.append('file', file);
 
       this.mediaService.uploadFile(formData).subscribe((res) => {
-        this.url = res.url;
-        console.log(this.url);
+        this.imgUrl = res.url;
+        console.log(this.imgUrl);
       });
     }
   }
-
   changeColumns = (numColumns: number): void => {
     const section = document.querySelector('section') as HTMLElement;
     section.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`;
@@ -69,7 +77,7 @@ export class FeedComponent {
 
     this.post = {
       content : this.content,
-      image : this.url,
+      image : this.imgUrl,
       user : {
         id: 12
       }
