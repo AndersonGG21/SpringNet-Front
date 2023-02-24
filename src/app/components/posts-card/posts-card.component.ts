@@ -18,4 +18,14 @@ export class PostsCardComponent {
     })
   };
 
+  toggleShow() : void {
+    const textContainer = document.querySelector('.card-desc') as HTMLDivElement;
+    textContainer.classList.toggle("show-more");
+  }
+
+  stringLength(string : any) : number{
+    const str = new String(string);
+    return str.length;
+  }
+
 }
