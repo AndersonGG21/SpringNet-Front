@@ -34,11 +34,10 @@
     <span style="font-size: 12px;">Liked by miputamadre</span>
     <div class="card-desc">
       <p style="font-size: 12px;">{{post.content}}</p>
-      <ng-container *ngIf="stringLength(post.content) > 50">
-        <button class="show-btn" (click)="toggleShow()">Show more</button>
-      </ng-container>
-
     </div>
+    <ng-container *ngIf="stringLength(post.content) > 50">
+      <button class="show-btn" (click)="toggleShow()">Show more</button>
+    </ng-container>
   </div>
 </section>
 
