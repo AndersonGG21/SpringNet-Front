@@ -18,4 +18,8 @@ export class PostService {
     return this.http.post<Post>(`${this.baseUrl}new-post`,post, {headers: this.headers});
   }
 
+  getPost(id : number) : Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.baseUrl}12`, {headers: this.headers});
+  }
+
 }
