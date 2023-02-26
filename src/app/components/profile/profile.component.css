@@ -25,11 +25,23 @@
 }
 
 .stats > span::after {
-  content: "Sexo";
+  content: "";
   display: block;
   position: absolute;
   top: 100%;
   left: 0;
+}
+
+.stats > span:nth-child(1):after {
+  content: "posts";
+}
+
+.stats > span:nth-child(2):after {
+  content: "followers";
+}
+
+.stats > span:nth-child(3):after {
+  content: "following";
 }
 
 .grid-aside {
