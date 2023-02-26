@@ -21,24 +21,7 @@
 
 </main>
 
-<aside>
-  <div class="grid-config">
-    <button id="btn-3-col" class="grid-btn" (click)="show3Columns()">
-      <img src="../../../assets/icons8-grid-view-24.png" alt="" srcset="" width="17px" height="17px">
-    </button>
-    <button id="btn-2-col" class="grid-btn" (click)="show2Columns()">
-      <img src="../../../assets/icons8-grid-2-24.png" alt="" srcset="" width="17px" height="17px">
-    </button>
-    <button id="btn-1-col" class="grid-btn" (click)="show1Column()">
-      <img src="../../../assets/icons8-bullet-list-30.png" alt="" srcset="" width="17px" height="17px">
-    </button>
-  </div>
-
-  <button class="add-post" (click)="showModalDialog()">
-    <li class="pi pi-plus" style="color: #4caf50; font-size: 20px;"></li>
-  </button>
-
-</aside>
+<app-grid-config></app-grid-config>
 <!-- Utils -->
 <p-menu #menu [popup]="true" [model]="items"></p-menu>
 <p-dialog header="Create a new post/story" [(visible)]="displayModal" [modal]="true" [style]="{width: '70%'}"

@@ -1,0 +1,74 @@
+aside {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 130px;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  /* background-color: rebeccapurple; */
+}
+
+button {
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  /* background-color: #333; */
+  /* color: #fff; */
+  background-color: inherit;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+.grid-config {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-btn {
+  opacity: 0.2;
+  transition: all 0.5s ease;
+}
+
+.grid-btn:focus {
+  opacity: 1;
+}
+
+.add-post {
+  --border-width: 2px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-size: 2.5rem; */
+  text-transform: uppercase;
+  color: white;
+  background: #fff;
+  border-radius: var(--border-width);
+}
+.add-post::after {
+  position: absolute;
+  content: "";
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  z-index: -1;
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+  background: linear-gradient(60deg, #f2cb5f, #abf25f, #5ff281, #5ff281, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  border-radius: calc(2 * var(--border-width));
+  animation: moveGradient 4s alternate infinite;
+}
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+ }
+}

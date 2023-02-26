@@ -23,6 +23,7 @@ import { StoriesComponent } from './components/stories/stories.component';
 import { PostsCardComponent } from './components/posts-card/posts-card.component';
 import { MessageService } from 'primeng/api';
 import { ProfileComponent } from './components/profile/profile.component';
+import { GridConfigComponent } from './components/grid-config/grid-config.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     NavbarComponent,
     StoriesComponent,
     PostsCardComponent,
-    ProfileComponent
+    ProfileComponent,
+    GridConfigComponent
   ],
   imports: [
     BrowserModule,
