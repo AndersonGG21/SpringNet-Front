@@ -20,7 +20,11 @@ export class PostsCardComponent {
 
   toggleShow() : void {
     const textContainer = document.querySelector('.card-desc') as HTMLDivElement;
+    const btn = document.querySelector('.show-btn') as HTMLButtonElement;
+
     textContainer.classList.toggle("show-more");
+
+    btn.textContent == 'Show more' ? btn.textContent = 'Show less' : btn.textContent = 'Show more';
   }
 
   stringLength(string : any) : number{
