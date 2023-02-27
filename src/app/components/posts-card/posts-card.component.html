@@ -1,46 +1,47 @@
-<section>
-  <div class="card" *ngFor="let post of posts">
-    <div class="card-header">
-      <div class="user">
-        <img src="../../../assets/1.jpg" alt="user-profile" width="40px" height="40px">
-        <div class="user-text">
-          <span style="font-size: 14px;">{{post.user.username}}</span>
-          <span style="font-size: 10px; color: #76777E;">{{formatDate(post.publicationDate)}}</span>
-        </div>
+<div class="card">
+  <div class="card-header">
+    <div class="user">
+      <img
+        src="../../../assets/1.jpg"
+        alt="user-profile"
+        width="40px"
+        height="40px"
+      />
+      <div class="user-text">
+        <span style="font-size: 14px">{{ post.user.username }}</span>
+        <span style="font-size: 10px; color: #76777e">{{
+          formatDate(post.publicationDate)
+        }}</span>
       </div>
-      <button>
-        <i class="pi pi-ellipsis-h" style="color: white;"></i>
-      </button>
     </div>
-    <div class="card-img">
-      <img src={{post.image}} alt="">
-    </div>
-    <div class="card-actions">
-      <div class="main-actions">
-        <button>
-          <i class="pi pi-thumbs-up"></i>
-        </button>
-        <button>
-          <i class="pi pi-comment"></i>
-        </button>
-        <button>
-          <i class="pi pi-send"></i>
-        </button>
-      </div>
-      <button>
-        <i class="pi pi-bookmark"></i>
-      </button>
-    </div>
-    <span style="font-size: 12px;">Liked by miputamadre</span>
-    <div class="card-desc">
-      <p style="font-size: 12px;">{{post.content}}</p>
-    </div>
-    <ng-container *ngIf="stringLength(post.content) > 50">
-      <button class="show-btn" (click)="toggleShow()">Show more</button>
-    </ng-container>
+    <button>
+      <i class="pi pi-ellipsis-h" style="color: black"></i>
+    </button>
   </div>
-</section>
-
-<ng-container *ngIf="posts.length == 0">
-  <span>Lost server conecction</span>
-</ng-container>
+  <div class="card-img">
+    <img src="{{ post.image }}" alt="" />
+  </div>
+  <div class="card-actions">
+    <div class="main-actions">
+      <button>
+        <i class="pi pi-thumbs-up"></i>
+      </button>
+      <button>
+        <i class="pi pi-comment"></i>
+      </button>
+      <button>
+        <i class="pi pi-send"></i>
+      </button>
+    </div>
+    <button>
+      <i class="pi pi-bookmark"></i>
+    </button>
+  </div>
+  <span style="font-size: 12px">Liked by miputamadre</span>
+  <div class="card-desc">
+    <p style="font-size: 12px">{{ post.content }}</p>
+  </div>
+  <ng-container *ngIf="stringLength(post.content) > 50">
+    <button class="show-btn" (click)="toggleShow()">Show more</button>
+  </ng-container>
+</div>
