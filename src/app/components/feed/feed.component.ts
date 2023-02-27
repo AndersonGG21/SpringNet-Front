@@ -53,7 +53,7 @@ export class FeedComponent {
     this.displayModal = true;
   }
 
-  async createPost(){
+  createPost(){
     this.post = {
       content : this.content,
       image : this.imgUrl,
