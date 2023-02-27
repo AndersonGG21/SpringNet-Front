@@ -19,12 +19,18 @@ export class FeedComponent {
   post !: Post;
   content  = '';
   value = 0;
+  posts : Post[] = [];
 
   constructor(private mediaService: MediaService, private postService : PostService, private messageService : MessageService) {
     this.items = [
       { label: 'Post', icon: 'pi pi-fw pi-hashtag' },
       { label: 'Story', icon: 'pi pi-fw pi-history' },
     ];
+
+    postService.getPost(12).subscribe((response) => {
+      this.posts = response;
+      console.log(this.posts);
+    })
   }
 
   upload(event: any) {

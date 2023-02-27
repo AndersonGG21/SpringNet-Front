@@ -16,12 +16,19 @@
 </div>
 
 <main>
-  <div class="posts">
-    <app-posts-card></app-posts-card>
-  </div>
+  <section>
+    <ng-container *ngFor="let post of posts">
+      <app-posts-card [post]="post"></app-posts-card>
+    </ng-container>
+  </section>
 </main>
 
-<app-grid-config></app-grid-config>
+
+
+<div class="grid-aside">
+  <app-grid-config></app-grid-config>
+</div>
+
 <!-- Utils -->
 <p-menu #menu [popup]="true" [model]="items"></p-menu>
 <p-dialog header="Create a new post/story" [(visible)]="displayModal" [modal]="true" [style]="{width: '70%'}"
