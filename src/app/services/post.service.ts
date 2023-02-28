@@ -29,4 +29,7 @@ export class PostService {
     return this.http.get<Post[]>(`${this.baseUrl}12`, {headers: this.options.headers});
   }
 
+  getPostByUser(id : number) : Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.baseUrl}user-posts/${id}`, {headers: this.options.headers});
+  }
 }
