@@ -115,6 +115,13 @@ button:focus {
   opacity: 1;
 }
 
+.follow-btn {
+  border-radius: 8px;
+  background-color: #4caf50;
+  width: 60%;
+  color: white;
+}
+
 body {
   display: flex;
   justify-content: space-between;
