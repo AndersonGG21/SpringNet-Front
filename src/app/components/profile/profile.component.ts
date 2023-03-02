@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit{
 
   userPosts : Post[] = [];
   followers : number = 0;
+  following : number = 0;
 
   constructor( private postService : PostService, private followService : FollowService){}
 
@@ -22,6 +23,10 @@ export class ProfileComponent implements OnInit{
 
     this.followService.getCountOfFollowers().subscribe((response) => {
       this.followers = response;
+    });
+
+    this.followService.getCountOfFollowing().subscribe((response) => {
+      this.following = response;
     });
   };
 
