@@ -36,7 +36,9 @@
       </div>
       <div class="text-container">
         <textarea pInputTextarea placeholder="Write a description" [(ngModel)]="content" class="textarea" name="text-area"></textarea>
-        <button (click)="createPost()">Post</button>
+        <button (click)="createPost()" class="pots-btn">
+          <span>Create Post</span>
+        </button>
       </div>
     </form>
 </p-dialog>

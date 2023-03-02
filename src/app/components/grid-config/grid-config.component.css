@@ -90,7 +90,8 @@ button:focus {
   gap: 15px;
 }
 
-.textarea, .textarea:focus {
+.textarea,
+.textarea:focus {
   width: 100%;
   height: 200px;
   border: none;
@@ -99,7 +100,7 @@ button:focus {
   margin-left: 10px;
 }
 
-::ng-deep  .p-fileupload .p-fileupload-adva {
+::ng-deep .p-fileupload .p-fileupload-adva {
   margin: 10px;
 }
 
@@ -122,24 +123,63 @@ button:focus {
   border: none;
 }
 
-::ng-deep .p-button.p-button-icon-only{
+::ng-deep .p-button.p-button-icon-only {
   background-color: #4caf50;
   border: none;
   transition: background-color 0.5s ease;
 }
 
-::ng-deep .p-button.p-button-icon-only:hover{
+::ng-deep .p-button.p-button-icon-only:hover {
   background-color: #5ff281;
 }
 
-::ng-deep .p-progressbar .p-progressbar-value{
+::ng-deep .p-progressbar .p-progressbar-value {
   background-color: #4caf50;
 }
 
 ::ng-deep .p-fileupload .p-fileupload-buttonbar .p-button {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
+.pots-btn {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #4caf50;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 17px;
+  padding: 10px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.pots-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.pots-btn span:after {
+  content: "»";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+}
+
+.pots-btn:hover span {
+  padding-right: 15px;
+}
+
+.pots-btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 
 @keyframes moveGradient {
   50% {
