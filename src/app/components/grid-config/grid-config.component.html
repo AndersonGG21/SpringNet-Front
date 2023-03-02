@@ -11,8 +11,35 @@
     </button>
   </div>
 
-  <button class="add-post">
+  <button class="add-post" (click)="showModalDialog()">
     <li class="pi pi-plus" style="color: #4caf50; font-size: 20px;"></li>
   </button>
 
 </aside>
+
+<!-- Modal -->
+
+<p-dialog header="Create a new post/story" [(visible)]="displayModal" [modal]="true" [style]="{width: '70%'}"
+    [draggable]="false" [resizable]="false">
+    <form class="login-form">
+      <div class="img-upload">
+        <b>Upload a image</b>
+        <p-fileUpload name="demo[]" [customUpload]="true" (uploadHandler)="upload($event)"
+            accept="image/*" [maxFileSize]="8000000">
+            <ng-template pTemplate="content">
+              <p-progressBar [value]="value" [showValue]="false"></p-progressBar>
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+          </p-fileUpload>
+      </div>
+      <div class="text-container">
+        <textarea pInputTextarea placeholder="Write a description" [(ngModel)]="content" class="textarea" name="text-area"></textarea>
+        <button (click)="createPost()">Post</button>
+      </div>
+    </form>
+</p-dialog>
+
+
+<p-toast position="top-center" key="tc"></p-toast>
