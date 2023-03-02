@@ -20,4 +20,8 @@ export class FollowService {
   getCountOfFollowers(): Observable<number>{
     return this.http.get<number>(`${this.baseUrl}/count-followers`, {headers : this.options.headers});
   }
+
+  getCountOfFollowing(): Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/count-following`, {headers : this.options.headers});
+  }
 }
