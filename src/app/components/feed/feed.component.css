@@ -70,12 +70,6 @@ h1 {
   font-weight: bold;
 }
 
-/* .posts {
-  position: absolute;
-  top: 150px;
-  width: inherit;
-} */
-
 ::ng-deep .p-tooltip .p-tooltip-text{
   background-color: inherit;
   color: black;
