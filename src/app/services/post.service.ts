@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
-import { Post } from '../models/login.model';
+import { Post } from '../models/types';
 
 @Injectable({
   providedIn: 'root'

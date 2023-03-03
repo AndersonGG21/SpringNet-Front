@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { Post } from 'src/app/models/login.model';
+import { Post } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
 import { PostService } from 'src/app/services/post.service';
 

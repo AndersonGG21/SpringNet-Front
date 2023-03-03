@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Post } from 'src/app/models/login.model';
+import { Post } from 'src/app/models/types';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({

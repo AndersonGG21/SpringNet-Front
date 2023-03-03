@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Login } from 'src/app/models/login.model';
+import { Login } from 'src/app/models/types';
 import { LoginService } from 'src/app/services/login.service';
 import { SwiperOptions } from 'swiper/types/swiper-options';
 
