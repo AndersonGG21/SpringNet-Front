@@ -12,3 +12,12 @@ export interface Post {
     username? : string,
   }
 }
+
+export interface User {
+  id? : number,
+  username? : string,
+  password? : string,
+  email? : string,
+  registrationDate? : string,
+  description? : string,
+}
