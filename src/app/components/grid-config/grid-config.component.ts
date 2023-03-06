@@ -42,13 +42,14 @@ export class GridConfigComponent {
   }
 
   upload(event: any) {
+    console.log(event.files[0].size)
     let interval = setInterval(() => {
       this.value = this.value + Math.floor(Math.random() * 10) + 1;
       if (this.value >= 100) {
           this.value = 100;
           clearInterval(interval);
       }
-    }, 100);
+    }, event.files[0].size);
 
     const file = event.files[0];
 
@@ -72,13 +73,13 @@ export class GridConfigComponent {
       content : this.content,
       image : this.imgUrl,
       user : {
-        id: 12
+        id: 13
       }
     }
 
     this.postService.createPost(this.post).subscribe((resp) => {
       if (resp.status == 200) {
-        this.messageService.add({key: 'tc',severity:'success', summary:'Service Message', detail:'Via MessageService'});
+        this.messageService.add({key: 'tc',severity:'success', summary:'Post created'});
       }
     });;
 
