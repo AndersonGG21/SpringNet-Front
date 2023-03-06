@@ -23,8 +23,8 @@
   </div>
   <div class="card-actions">
     <div class="main-actions">
-      <button>
-        <i class="pi pi-thumbs-up"></i>
+      <button class="heart" (click)="likePost()">
+        <i class="pi pi-thumbs-up" [ngClass]="{'active': liked}"></i>
       </button>
       <button>
         <i class="pi pi-comment"></i>

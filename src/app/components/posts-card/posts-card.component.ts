@@ -8,8 +8,9 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./posts-card.component.css']
 })
 export class PostsCardComponent {
-  items : number[] = [1,2,3,4,5,6,7,8 ];
   @Input() post !: Post;
+
+  liked : boolean = false;
 
   constructor(private postService : PostService){};
 
@@ -30,7 +31,11 @@ export class PostsCardComponent {
   formatDate(date : any) : string {
     const str = new String(date);
     return str.substring(0,10);
+  }
 
+  likePost() : void {
+    !this.liked ? this.liked = true : this.liked = false;
+    // evento.style.color = "red";
   }
 
 }
