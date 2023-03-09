@@ -29,7 +29,8 @@
               "./node_modules/primeng/resources/themes/tailwind-light/theme.css",
               "./node_modules/primeng/resources/primeng.min.css",
               "./node_modules/swiper/swiper-bundle.css",
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/filepond/dist/filepond.min.css"
             ],
             "scripts": []
           },

@@ -12,6 +12,7 @@ import {DialogModule} from 'primeng/dialog';
 import {FileUploadModule} from 'primeng/fileupload';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {ToastModule} from 'primeng/toast';
+import { FilePondModule, registerPlugin } from "ngx-filepond";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,24 @@ import { PostsCardComponent } from './components/posts-card/posts-card.component
 import { MessageService } from 'primeng/api';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GridConfigComponent } from './components/grid-config/grid-config.component';
+
+import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import * as FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import * as FilePondPluginImageCrop from 'filepond-plugin-image-crop';
+import * as FilePondPluginImageResize from 'filepond-plugin-image-resize';
+import * as FilePondPluginImageTransform from 'filepond-plugin-image-transform';
+import * as FilePondPluginImageEdit from 'filepond-plugin-image-edit';
+import * as FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
+
+registerPlugin(
+  FilePondPluginFileValidateType,
+  FilePondPluginImagePreview,
+  FilePondPluginImageCrop,
+  FilePondPluginImageResize,
+  FilePondPluginImageTransform,
+  FilePondPluginImageEdit,
+  FilePondPluginImageExifOrientation
+);
 
 @NgModule({
   declarations: [
@@ -52,7 +71,8 @@ import { GridConfigComponent } from './components/grid-config/grid-config.compon
     DialogModule,
     FileUploadModule,
     ProgressBarModule,
-    ToastModule
+    ToastModule,
+    FilePondModule
 
   ],
   providers: [MessageService],

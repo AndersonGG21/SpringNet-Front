@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import '~filepond/dist/filepond.min.css';
+@import '~filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+@import '~filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+
 body{
   margin: 0;
   font-family: "Poppins", sans-serif;

@@ -1,47 +1,91 @@
 <aside>
   <div class="grid-config">
     <button id="btn-3-col" class="grid-btn" (click)="show3Columns()">
-      <img src="../../../assets/icons8-grid-view-24.png" alt="" srcset="" width="17px" height="17px">
+      <img
+        src="../../../assets/icons8-grid-view-24.png"
+        alt=""
+        srcset=""
+        width="17px"
+        height="17px"
+      />
     </button>
     <button id="btn-2-col" class="grid-btn" (click)="show2Columns()">
-      <img src="../../../assets/icons8-grid-2-24.png" alt="" srcset="" width="17px" height="17px">
+      <img
+        src="../../../assets/icons8-grid-2-24.png"
+        alt=""
+        srcset=""
+        width="17px"
+        height="17px"
+      />
     </button>
     <button id="btn-1-col" class="grid-btn" (click)="show1Column()">
-      <img src="../../../assets/icons8-bullet-list-30.png" alt="" srcset="" width="17px" height="17px">
+      <img
+        src="../../../assets/icons8-bullet-list-30.png"
+        alt=""
+        srcset=""
+        width="17px"
+        height="17px"
+      />
     </button>
   </div>
 
   <button class="add-post" (click)="showModalDialog()">
-    <li class="pi pi-plus" style="color: #4caf50; font-size: 20px;"></li>
+    <li class="pi pi-plus" style="color: #4caf50; font-size: 20px"></li>
   </button>
-
 </aside>
 
 <!-- Modal -->
 
-<p-dialog header="Create a new post/story" [(visible)]="displayModal" [modal]="true" [style]="{width: '70%'}"
-    [draggable]="false" [resizable]="false">
-    <form class="login-form">
-      <div class="img-upload">
-        <b>Upload a image</b>
-        <p-fileUpload name="demo[]" [customUpload]="true" (uploadHandler)="upload($event)"
-            accept="image/*" [maxFileSize]="8000000">
-            <ng-template pTemplate="content">
-              <p-progressBar [value]="value" [showValue]="false"></p-progressBar>
-                <ul *ngIf="uploadedFiles.length">
-                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                </ul>
-            </ng-template>
-          </p-fileUpload>
-      </div>
-      <div class="text-container">
-        <textarea pInputTextarea placeholder="Write a description" [(ngModel)]="content" class="textarea" name="text-area"></textarea>
-        <button (click)="createPost()" class="pots-btn">
-          <span>Create Post</span>
-        </button>
-      </div>
-    </form>
-</p-dialog>
+<p-dialog
+  header="Create a new post/story"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '70%' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <form class="login-form">
+    <div class="img-upload">
+      <b>Upload a image</b>
+      <p-fileUpload
+        name="demo[]"
+        [customUpload]="true"
+        (uploadHandler)="upload($event)"
+        accept="image/*"
+        [maxFileSize]="8000000"
+      >
+        <ng-template pTemplate="content">
+          <p-progressBar [value]="value" [showValue]="false"></p-progressBar>
+          <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">
+              {{ file.name }} - {{ file.size }} bytes
+            </li>
+          </ul>
+        </ng-template>
+      </p-fileUpload>
 
+      <file-pond
+        #myPond
+        [options]="pondOptions"
+        (oninit)="pondHandleInit()"
+        (onaddfile)="pondHandleAddFile($event)"
+        (onactivatefile)="pondHandleActivateFile($event)"
+      >
+      </file-pond>
+    </div>
+    <div class="text-container">
+      <textarea
+        pInputTextarea
+        placeholder="Write a description"
+        [(ngModel)]="content"
+        class="textarea"
+        name="text-area"
+      ></textarea>
+      <button (click)="createPost()" class="pots-btn">
+        <span>Create Post</span>
+      </button>
+    </div>
+  </form>
+</p-dialog>
 
 <p-toast position="top-center" key="tc"></p-toast>

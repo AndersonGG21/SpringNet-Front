@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FilePondFile, FilePondOptions } from 'filepond';
+import { FilePondComponent } from 'ngx-filepond';
 import { MessageService } from 'primeng/api';
 import { Post } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
@@ -7,19 +9,22 @@ import { PostService } from 'src/app/services/post.service';
 @Component({
   selector: 'app-grid-config',
   templateUrl: './grid-config.component.html',
-  styleUrls: ['./grid-config.component.css']
+  styleUrls: ['./grid-config.component.css'],
 })
 export class GridConfigComponent {
-
-  value : number = 0;
-  imgUrl : string = '';
+  value: number = 0;
+  imgUrl: string = '';
   displayModal: boolean | undefined;
-  post !: Post;
-  content  = '';
+  post!: Post;
+  content = '';
   uploadedFiles: any[] = [];
+  @ViewChild('myPond') myPond: FilePondComponent | undefined;
 
-
-  constructor(private mediaService : MediaService, private postService : PostService, private messageService : MessageService){};
+  constructor(
+    private mediaService: MediaService,
+    private postService: PostService,
+    private messageService: MessageService
+  ) {}
 
   changeColumns = (numColumns: number): void => {
     const section = document.querySelector('section') as HTMLElement;
@@ -42,12 +47,12 @@ export class GridConfigComponent {
   }
 
   upload(event: any) {
-    console.log(event.files[0].size)
+    console.log(event.files[0].size);
     let interval = setInterval(() => {
       this.value = this.value + Math.floor(Math.random() * 10) + 1;
       if (this.value >= 100) {
-          this.value = 100;
-          clearInterval(interval);
+        this.value = 100;
+        clearInterval(interval);
       }
     }, event.files[0].size);
 
@@ -68,20 +73,62 @@ export class GridConfigComponent {
     this.displayModal = true;
   }
 
-  createPost(){
+  createPost() {
     this.post = {
-      content : this.content,
-      image : this.imgUrl,
-      user : {
-        id: 13
-      }
-    }
+      content: this.content,
+      image: this.imgUrl,
+      user: {
+        id: 13,
+      },
+    };
 
     this.postService.createPost(this.post).subscribe((resp) => {
       if (resp.status == 200) {
-        this.messageService.add({key: 'tc',severity:'success', summary:'Post created'});
+        this.messageService.add({
+          key: 'tc',
+          severity: 'success',
+          summary: 'Post created',
+        });
       }
-    });;
+    });
+  }
 
+  // FilePond
+  imageUrl: string = '';
+
+  onProcessFile(event: any) {
+    const file: FilePondFile = event.file;
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageUrl = e.target.result;
+    };
+    reader.readAsDataURL(file.file);
+  }
+
+  pondOptions: FilePondOptions = {
+    labelIdle: 'Drag and Drop your files or Browse',
+    acceptedFileTypes: ['image/*'],
+    allowImagePreview: true,
+    allowImageEdit: true,
+  };
+
+  pondHandleInit() {
+    console.log('FilePond has initialised', this.myPond);
+  }
+
+  pondHandleAddFile(event: any) {
+    console.log('A file was added', event.file.file);
+    const formData = new FormData();
+    const file = event.file.file;
+    formData.append('file', file);
+
+    this.mediaService.uploadFile(formData).subscribe((res) => {
+      this.imgUrl = res.url;
+      console.log(this.imgUrl);
+    });
+  }
+
+  pondHandleActivateFile(event: any) {
+    console.log('A file was activated', event.fileSize);
   }
 }
