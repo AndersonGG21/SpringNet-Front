@@ -106,10 +106,11 @@ export class GridConfigComponent {
   }
 
   pondOptions: FilePondOptions = {
-    labelIdle: 'Drag and Drop your files or Browse',
+    labelIdle: 'Drag and Drop your files or <span>Browse</span>',
     acceptedFileTypes: ['image/*'],
     allowImagePreview: true,
-    allowImageEdit: true,
+    imagePreviewHeight: 250,
+    maxFileSize: "8MB"
   };
 
   pondHandleInit() {
