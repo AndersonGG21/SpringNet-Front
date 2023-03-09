@@ -33,6 +33,9 @@ import * as FilePondPluginImageResize from 'filepond-plugin-image-resize';
 import * as FilePondPluginImageTransform from 'filepond-plugin-image-transform';
 import * as FilePondPluginImageEdit from 'filepond-plugin-image-edit';
 import * as FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
+import * as FilePondPluginFilePoster from 'filepond-plugin-file-poster';
+import * as FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+
 
 registerPlugin(
   FilePondPluginFileValidateType,
@@ -41,7 +44,9 @@ registerPlugin(
   FilePondPluginImageResize,
   FilePondPluginImageTransform,
   FilePondPluginImageEdit,
-  FilePondPluginImageExifOrientation
+  FilePondPluginImageExifOrientation,
+  FilePondPluginFilePoster,
+  FilePondPluginFileValidateSize
 );
 
 @NgModule({
