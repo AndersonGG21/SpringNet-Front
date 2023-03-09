@@ -37,7 +37,7 @@
 <!-- Modal -->
 
 <p-dialog
-  header="Create a new post/story"
+  header="Create a new Post"
   [(visible)]="displayModal"
   [modal]="true"
   [style]="{ width: '70%' }"
@@ -46,7 +46,7 @@
 >
   <form class="login-form">
     <div class="img-upload">
-      <file-pond
+        <file-pond
         #myPond
         [options]="pondOptions"
         (oninit)="pondHandleInit()"
