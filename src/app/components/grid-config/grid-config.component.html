@@ -46,24 +46,6 @@
 >
   <form class="login-form">
     <div class="img-upload">
-      <b>Upload a image</b>
-      <p-fileUpload
-        name="demo[]"
-        [customUpload]="true"
-        (uploadHandler)="upload($event)"
-        accept="image/*"
-        [maxFileSize]="8000000"
-      >
-        <ng-template pTemplate="content">
-          <p-progressBar [value]="value" [showValue]="false"></p-progressBar>
-          <ul *ngIf="uploadedFiles.length">
-            <li *ngFor="let file of uploadedFiles">
-              {{ file.name }} - {{ file.size }} bytes
-            </li>
-          </ul>
-        </ng-template>
-      </p-fileUpload>
-
       <file-pond
         #myPond
         [options]="pondOptions"
