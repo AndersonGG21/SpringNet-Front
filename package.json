@@ -19,6 +19,8 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "filepond": "^4.30.4",
+    "ngx-filepond": "^7.0.0",
     "ngx-useful-swiper": "^10.0.1",
     "primeicons": "^6.0.1",
     "primeng": "^15.2.0",
