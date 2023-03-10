@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Post } from 'src/app/models/types';
 import { FollowService } from 'src/app/services/follow.service';
 import { PostService } from 'src/app/services/post.service';
@@ -17,7 +18,7 @@ export class ProfileComponent implements OnInit{
   userDescription? : string = '';
   userName? : string = '';
 
-  constructor( private postService : PostService, private followService : FollowService, private userService : UserService){}
+  constructor( private postService : PostService, private followService : FollowService, private userService : UserService, private title : Title){}
 
   ngOnInit(): void {
     this.postService.getPostByUser(12).subscribe((response) => {
@@ -36,6 +37,8 @@ export class ProfileComponent implements OnInit{
       this.userDescription = response.description;
       this.userName = response.username;
     })
+
+    this.title.setTitle("User Profile")
   };
 
 
