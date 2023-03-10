@@ -29,6 +29,7 @@
     "filepond-plugin-image-preview": "^4.6.11",
     "filepond-plugin-image-resize": "^2.0.10",
     "filepond-plugin-image-transform": "^3.8.7",
+    "ngx-cookie-service": "^15.0.0",
     "ngx-filepond": "^7.0.0",
     "ngx-useful-swiper": "^10.0.1",
     "primeicons": "^6.0.1",
