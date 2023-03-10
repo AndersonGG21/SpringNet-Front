@@ -41,7 +41,7 @@
   <div class="card-desc">
     <p style="font-size: 12px">{{ post.content }}</p>
   </div>
-  <ng-container *ngIf="stringLength(post.content) > 50">
+  <ng-container *ngIf="stringLength(post.content) > 100">
     <button class="show-btn" (click)="toggleShow()">Show more</button>
   </ng-container>
 </div>
