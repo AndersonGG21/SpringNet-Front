@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { Post } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
+import { PostDataBehaviorSubjectService } from 'src/app/services/post-data-behavior-subject.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -15,17 +16,24 @@ export class FeedComponent {
   font: any;
   posts : Post[] = [];
 
-  constructor(private postService : PostService) {
+  constructor(private postService : PostService, private postDataB : PostDataBehaviorSubjectService) {
     this.items = [
       { label: 'Post', icon: 'pi pi-fw pi-hashtag' },
       { label: 'Story', icon: 'pi pi-fw pi-history' },
     ];
 
-    postService.getPost(12).subscribe((response) => {
-      this.posts = response;
-      console.log(this.posts);
+    // postService.getPost(12).subscribe((response) => {
+    //   this.posts = response;
+    //   console.log(this.posts);
+    // })
+
+    this.postDataB.posts.subscribe((posts) => {
+      this.posts = posts;
     })
+
+
   }
+
 }
 
 
