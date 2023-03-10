@@ -4,6 +4,7 @@ import { FilePondComponent } from 'ngx-filepond';
 import { MessageService } from 'primeng/api';
 import { Post } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
+import { PostDataBehaviorSubjectService } from 'src/app/services/post-data-behavior-subject.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class GridConfigComponent {
   constructor(
     private mediaService: MediaService,
     private postService: PostService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private postDataB : PostDataBehaviorSubjectService
   ) {}
 
   changeColumns = (numColumns: number): void => {
@@ -32,6 +34,8 @@ export class GridConfigComponent {
   };
 
   show2Columns(): void {
+    const section = document.querySelector('section') as HTMLElement;
+    section.style.width = '400px';
     this.changeColumns(2);
   }
 
@@ -59,16 +63,20 @@ export class GridConfigComponent {
       },
     };
 
-    this.postService.createPost(this.post).subscribe((resp) => {
-      if (resp.status == 200) {
-        this.messageService.add({
-          key: 'tc',
-          severity: 'success',
-          summary: 'Post created',
-        });
-      }
-    });
+    // this.postService.createPost(this.post).subscribe((resp) => {
+    //   if (resp.status == 200) {
+    //     this.messageService.add({
+    //       key: 'tc',
+    //       severity: 'success',
+    //       summary: 'Post created',
+    //     });
+    //   }
+    // });
+
+    this.postDataB.addPost(this.post);
+
   }
+
 
   // FilePond
   imageUrl: string = '';
