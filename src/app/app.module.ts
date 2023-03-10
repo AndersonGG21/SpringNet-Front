@@ -13,6 +13,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {ToastModule} from 'primeng/toast';
 import { FilePondModule, registerPlugin } from "ngx-filepond";
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -80,7 +81,7 @@ registerPlugin(
     FilePondModule
 
   ],
-  providers: [MessageService],
+  providers: [MessageService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
