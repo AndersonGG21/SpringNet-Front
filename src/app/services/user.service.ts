@@ -17,7 +17,7 @@ export class UserService {
 
   constructor(private http : HttpClient) { }
 
-  getUserProfile() : Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/12`, {headers : this.options.headers});
+  getUserProfile(id : number) : Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/${id}`, {headers : this.options.headers});
   }
 }
