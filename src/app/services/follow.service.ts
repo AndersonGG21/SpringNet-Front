@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,11 +18,11 @@ export class FollowService {
   constructor(private http : HttpClient) { }
 
 
-  getCountOfFollowers(): Observable<number>{
-    return this.http.get<number>(`${this.baseUrl}/count-followers`, {headers : this.options.headers});
+  getCountOfFollowers(id : number): Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/count-followers/${id}`, {headers : this.options.headers});
   }
 
-  getCountOfFollowing(): Observable<number>{
-    return this.http.get<number>(`${this.baseUrl}/count-following`, {headers : this.options.headers});
+  getCountOfFollowing(id : number): Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/count-following/${id}`, {headers : this.options.headers});
   }
 }
