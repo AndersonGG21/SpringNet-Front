@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/models/types';
 import { FollowService } from 'src/app/services/follow.service';
 import { PostService } from 'src/app/services/post.service';
@@ -17,28 +18,29 @@ export class ProfileComponent implements OnInit{
   following : number = 0;
   userDescription? : string = '';
   userName? : string = '';
+  userId : number = this.route.snapshot.params['id'];
 
-  constructor( private postService : PostService, private followService : FollowService, private userService : UserService, private title : Title){}
+  constructor( private postService : PostService, private followService : FollowService, private userService : UserService, private title : Title, private route : ActivatedRoute){}
 
   ngOnInit(): void {
-    this.postService.getPostByUser(12).subscribe((response) => {
+    this.postService.getPostByUser(this.userId).subscribe((response) => {
       this.userPosts = response
     })
 
-    this.followService.getCountOfFollowers().subscribe((response) => {
+    this.followService.getCountOfFollowers(this.userId).subscribe((response) => {
       this.followers = response;
     });
 
-    this.followService.getCountOfFollowing().subscribe((response) => {
+    this.followService.getCountOfFollowing(this.userId).subscribe((response) => {
       this.following = response;
     });
 
-    this.userService.getUserProfile().subscribe((response) => {
+    this.userService.getUserProfile(this.userId).subscribe((response) => {
       this.userDescription = response.description;
       this.userName = response.username;
+      this.title.setTitle(`@${this.userName} | Pics and Videos`);
     })
 
-    this.title.setTitle("User Profile")
   };
 
 
