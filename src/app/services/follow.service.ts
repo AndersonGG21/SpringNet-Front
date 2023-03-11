@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,10 +13,10 @@ export class FollowService {
   private options = {
     observe: 'response' as const,
     headers : new HttpHeaders()
-    .set('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmRlcnNvbmdhcmNlc2dhcmNpYUBnbWFpbC5jb20iLCJleHAiOjE2NzkyODYwMTIsIm5hbWUiOiJhbmRlci5fLmdnIn0.rRajQFoLIbpux5JUYNg9rLcBCe3oZs7w_ihQAuNv3t_X5CRIo24qrTLw9McOOoyuRfyNGFbvwnpo3Msliy6uEQ')
+    .set('Authorization', `Bearer ${this.cookie.get("Bearer")}`)
   };
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private cookie : CookieService) { }
 
 
   getCountOfFollowers(id : number): Observable<number>{
