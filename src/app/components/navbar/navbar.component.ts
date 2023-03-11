@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import {MenuItem} from 'primeng/api';
 
 
@@ -12,6 +13,9 @@ export class NavbarComponent {
   @Input() likes  = false;
   @Input() reels  = false;
   items: MenuItem[] = [];
+  uuid : number = 0;
+
+  constructor(private cookie : CookieService){};
 
     ngOnInit() {
         this.items = [
@@ -21,5 +25,7 @@ export class NavbarComponent {
             {label: 'Add Story', icon: 'pi pi-fw pi-history'},
             {label: 'Add Post', icon: 'pi pi-fw pi-hashtag'}
         ];
+
+        this.uuid = Number(this.cookie.get("uuid"));
     }
 }
