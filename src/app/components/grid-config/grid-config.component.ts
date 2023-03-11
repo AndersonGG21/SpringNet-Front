@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FilePondFile, FilePondOptions } from 'filepond';
+import { CookieService } from 'ngx-cookie-service';
 import { FilePondComponent } from 'ngx-filepond';
 import { MessageService } from 'primeng/api';
 import { Post } from 'src/app/models/types';
@@ -23,8 +24,7 @@ export class GridConfigComponent {
 
   constructor(
     private mediaService: MediaService,
-    private postService: PostService,
-    private messageService: MessageService,
+    private cookie : CookieService,
     private postDataB : PostDataBehaviorSubjectService
   ) {}
 
@@ -59,7 +59,7 @@ export class GridConfigComponent {
       content: this.content,
       image: this.imgUrl,
       user: {
-        id: 13,
+        id: Number(this.cookie.get("uuid")),
       },
     };
 
