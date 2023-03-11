@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { MenuItem, MessageService } from 'primeng/api';
 import { Post } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
@@ -16,20 +17,17 @@ export class FeedComponent {
   font: any;
   posts : Post[] = [];
 
-  constructor(private postService : PostService, private postDataB : PostDataBehaviorSubjectService) {
+  constructor(private postService : PostService, private postDataB : PostDataBehaviorSubjectService, private title : Title) {
     this.items = [
       { label: 'Post', icon: 'pi pi-fw pi-hashtag' },
       { label: 'Story', icon: 'pi pi-fw pi-history' },
     ];
 
-    // postService.getPost(12).subscribe((response) => {
-    //   this.posts = response;
-    //   console.log(this.posts);
-    // })
-
     this.postDataB.posts.subscribe((posts) => {
       this.posts = posts;
     })
+
+    this.title.setTitle("Feed")
 
 
   }
