@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Post } from 'src/app/models/types';
+import { Component, Input, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { Like, Post } from 'src/app/models/types';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -7,12 +8,30 @@ import { PostService } from 'src/app/services/post.service';
   templateUrl: './posts-card.component.html',
   styleUrls: ['./posts-card.component.css']
 })
-export class PostsCardComponent {
+export class PostsCardComponent implements OnInit {
   @Input() post !: Post;
-
   liked : boolean = false;
 
-  constructor(private postService : PostService){};
+  constructor(private postService : PostService, private cookie : CookieService){}
+
+  ngOnInit(): void {
+
+    const like : Like = {
+      user: {
+        id: Number(this.cookie.get("uuid"))
+      },
+      post: {
+        id: this.post.id
+      }
+    }
+
+    this.postService.checkLike(like).subscribe((response) => {
+      if(response >= 1){
+        this.liked = true;
+      }
+    })
+
+  };
 
   toggleShow() : void {
     const textContainer = document.querySelector('.card-desc') as HTMLDivElement;
@@ -34,8 +53,16 @@ export class PostsCardComponent {
   }
 
   likePost() : void {
-    !this.liked ? this.liked = true : this.liked = false;
-    // evento.style.color = "red";
+
+    const like : Like = {
+      user: {
+        id: Number(this.cookie.get("uuid"))
+      },
+      post: {
+        id: this.post.id
+      }
+    }
+    this.postService.likePost(like).subscribe();
   }
 
 }
