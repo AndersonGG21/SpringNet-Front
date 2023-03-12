@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from 'primeng/api';
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/types';
@@ -12,7 +13,8 @@ export class PostDataBehaviorSubjectService {
 
   constructor(
     private postService: PostService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private cookie : CookieService
   ) {
     this.loadPosts();
   }
@@ -22,7 +24,7 @@ export class PostDataBehaviorSubjectService {
   }
 
   loadPosts() {
-    this.postService.getPost(12).subscribe((posts) => {
+    this.postService.getPost(Number(this.cookie.get("uuid"))).subscribe((posts) => {
       this._posts.next(posts);
     });
   }
