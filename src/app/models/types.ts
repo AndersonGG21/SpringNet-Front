@@ -4,6 +4,7 @@ export interface Login {
 }
 
 export interface Post {
+  id? : number
   content?: string;
   image?: string;
   publicationDate? : string;
@@ -20,4 +21,13 @@ export interface User {
   email? : string,
   registrationDate? : string,
   description? : string,
+}
+
+export interface Like {
+  user : {
+    id?: number
+  }
+  post : {
+    id?: number
+  }
 }
