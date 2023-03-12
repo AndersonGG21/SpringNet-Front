@@ -17,7 +17,7 @@ export class FeedComponent {
   font: any;
   posts : Post[] = [];
 
-  constructor(private postService : PostService, private postDataB : PostDataBehaviorSubjectService, private title : Title) {
+  constructor(private postDataB : PostDataBehaviorSubjectService, private title : Title) {
     this.items = [
       { label: 'Post', icon: 'pi pi-fw pi-hashtag' },
       { label: 'Story', icon: 'pi pi-fw pi-history' },
@@ -28,6 +28,8 @@ export class FeedComponent {
     })
 
     this.title.setTitle("Feed")
+
+    console.log(this.posts)
 
 
   }
