@@ -10,7 +10,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostsCardComponent implements OnInit {
   @Input() post !: Post;
-  liked : boolean = false;
+  liked  = false;
 
   constructor(private postService : PostService, private cookie : CookieService){}
 
@@ -31,7 +31,7 @@ export class PostsCardComponent implements OnInit {
       }
     })
 
-  };
+  }
 
   toggleShow() : void {
     const textContainer = document.querySelector('.card-desc') as HTMLDivElement;

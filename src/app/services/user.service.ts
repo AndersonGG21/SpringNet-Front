@@ -8,7 +8,7 @@ import { User } from '../models/types';
 })
 export class UserService {
 
-  private baseUrl : string = 'http://localhost:8080/api/users';
+  private baseUrl  = 'http://localhost:8080/api/users';
   private options = {
     observe: 'response' as const,
     headers : new HttpHeaders()

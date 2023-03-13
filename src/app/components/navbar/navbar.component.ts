@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import {MenuItem} from 'primeng/api';
 
@@ -8,14 +8,14 @@ import {MenuItem} from 'primeng/api';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
   @Input() home  = false;
   @Input() likes  = false;
   @Input() reels  = false;
   items: MenuItem[] = [];
-  uuid : number = 0;
+  uuid  = 0;
 
-  constructor(private cookie : CookieService){};
+  constructor(private cookie : CookieService){}
 
     ngOnInit() {
         this.items = [

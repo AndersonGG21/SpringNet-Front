@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
@@ -9,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class FollowService {
 
-  private baseUrl : string = 'http://localhost:8080/api/follows';
+  private baseUrl  = 'http://localhost:8080/api/follows';
   private options = {
     observe: 'response' as const,
     headers : new HttpHeaders()

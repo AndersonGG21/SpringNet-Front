@@ -14,8 +14,8 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileComponent implements OnInit{
 
   userPosts : Post[] = [];
-  followers : number = 0;
-  following : number = 0;
+  followers  = 0;
+  following  = 0;
   userDescription? : string = '';
   userName? : string = '';
   userId : number = this.route.snapshot.params['id'];
@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit{
       this.title.setTitle(`@${this.userName} | Pics and Videos`);
     })
 
-  };
+  }
 
 
 

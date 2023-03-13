@@ -2,11 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { FilePondFile, FilePondOptions } from 'filepond';
 import { CookieService } from 'ngx-cookie-service';
 import { FilePondComponent } from 'ngx-filepond';
-import { MessageService } from 'primeng/api';
 import { Post } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
 import { PostDataBehaviorSubjectService } from 'src/app/services/post-data-behavior-subject.service';
-import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-grid-config',
@@ -14,8 +12,8 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./grid-config.component.css'],
 })
 export class GridConfigComponent {
-  value: number = 0;
-  imgUrl: string = '';
+  value = 0;
+  imgUrl = '';
   displayModal: boolean | undefined;
   post!: Post;
   content = '';
@@ -63,23 +61,12 @@ export class GridConfigComponent {
       },
     };
 
-    // this.postService.createPost(this.post).subscribe((resp) => {
-    //   if (resp.status == 200) {
-    //     this.messageService.add({
-    //       key: 'tc',
-    //       severity: 'success',
-    //       summary: 'Post created',
-    //     });
-    //   }
-    // });
-
     this.postDataB.addPost(this.post);
-
   }
 
 
   // FilePond
-  imageUrl: string = '';
+  imageUrl = '';
 
   onProcessFile(event: any) {
     const file: FilePondFile = event.file;

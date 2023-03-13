@@ -35,12 +35,21 @@
     },
     {
       "files": [
-        "*.html"
+        "*.html",
+        "*.ts",
+        "*.css"
       ],
       "extends": [
         "plugin:@angular-eslint/template/recommended"
       ],
-      "rules": {}
+      "rules": {},
+      "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".ts"]
+          }
+        }
+      }
     }
   ]
 }
