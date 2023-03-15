@@ -11,6 +11,7 @@ import { PostService } from 'src/app/services/post.service';
 export class PostsCardComponent implements OnInit {
   @Input() post !: Post;
   liked  = false;
+  displayModal = false;
 
   constructor(private postService : PostService, private cookie : CookieService){}
 
@@ -33,6 +34,10 @@ export class PostsCardComponent implements OnInit {
 
   }
 
+  modalShow() : void {
+    this.displayModal = true;
+  }
+
   toggleShow() : void {
     const textContainer = document.querySelector('.card-desc') as HTMLDivElement;
     const btn = document.querySelector('.show-btn') as HTMLButtonElement;
@@ -53,7 +58,7 @@ export class PostsCardComponent implements OnInit {
   }
 
   likePost() : void {
-
+    !this.liked ? this.liked = true : this.liked = false;
     const like : Like = {
       user: {
         id: Number(this.cookie.get("uuid"))
