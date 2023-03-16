@@ -57,14 +57,22 @@
   [style]="{ width: '70%' }"
   [draggable]="false"
   [resizable]="false"
+  [showHeader]="false"
+  [dismissableMask]="true"
 >
   <div class="modal-body" style="height: 100%">
-    <div class="modal-post" style="width: 750px">
+    <div class="modal-post" style="width: 700px">
       <img src="{{ post.image }}" alt="" />
     </div>
     <div class="detailBox">
       <div class="titleBox">
-        <label>@{{ post.user.username }}</label>
+        <div class="commenterImage">
+          <img src="http://placekitten.com/50/50" />
+        </div>
+        <p style="font-size: small;">@{{ post.user.username }}</p>
+      </div>
+      <div class="modal-desc">
+        <p>{{post.content}}</p>
       </div>
       <div class="actionBox">
         <ul class="commentList">
