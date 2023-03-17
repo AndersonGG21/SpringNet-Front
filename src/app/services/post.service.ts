@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
-import { Like, Post } from '../models/types';
+import { Comment, Like, Post } from '../models/types';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +39,13 @@ export class PostService {
 
   checkLike(like : Like) : Observable<number> {
     return this.http.post<number>(`${this.baseUrl}liked`, like ,{headers : this.options.headers});
+  }
+
+  getComments(post : number) : Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.baseUrl}${post}/comments`, {headers : this.options.headers});
+  }
+
+  commentPost(comment : Comment) : Observable<string> {
+    return this.http.post<any>(`${this.baseUrl}comment`, comment, {headers: this.options.headers})
   }
 }
