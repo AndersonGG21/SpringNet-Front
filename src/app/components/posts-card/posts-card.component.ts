@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { Like, Post } from 'src/app/models/types';
+import { Comment, Like, Post } from 'src/app/models/types';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -10,10 +10,12 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostsCardComponent implements OnInit {
   @Input() post !: Post;
+  @ViewChild('comment') commentInput: ElementRef | undefined;
   liked  = false;
   displayModal = false;
+  comments : Comment[] = [];
 
-  constructor(private postService : PostService, private cookie : CookieService){}
+  constructor(private postService : PostService, private cookie : CookieService, private cdr: ChangeDetectorRef){}
 
   ngOnInit(): void {
 
@@ -34,8 +36,11 @@ export class PostsCardComponent implements OnInit {
 
   }
 
-  modalShow() : void {
+  modalShow(post  : number = 0) : void {
     this.displayModal = true;
+    this.postService.getComments(post).subscribe((response) => {
+      this.comments = response;
+    })
   }
 
   toggleShow() : void {
@@ -70,4 +75,22 @@ export class PostsCardComponent implements OnInit {
     this.postService.likePost(like).subscribe();
   }
 
+  commentPost() : void {
+
+    const comment : Comment = {
+      comment: this.commentInput?.nativeElement.value,
+      post: {
+        id: this.post.id
+      },
+      user : {
+        id: Number(this.cookie.get("uuid"))
+      },
+    }
+
+    this.postService.commentPost(comment).subscribe(response => {
+      this.comments.push(comment); // Agrega el nuevo comentario al principio del array
+      this.cdr.detectChanges();
+    })
+
+  }
 }
