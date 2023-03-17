@@ -2,7 +2,7 @@
   <div class="card-header">
     <div
       class="user"
-      [routerLink]="['/profile', post.user.id]"
+      [routerLink]="['/profile', post.user?.id]"
       style="cursor: pointer"
     >
       <img
@@ -12,7 +12,7 @@
         height="40px"
       />
       <div class="user-text">
-        <span style="font-size: 14px">{{ post.user.username }}</span>
+        <span style="font-size: 14px">{{ post.user?.username }}</span>
         <span style="font-size: 10px; color: #76777e">{{
           formatDate(post.publicationDate)
         }}</span>
@@ -30,7 +30,7 @@
       <button class="heart" (click)="likePost()">
         <i class="pi pi-thumbs-up" [ngClass]="{ active: liked }"></i>
       </button>
-      <button (click)="modalShow()">
+      <button (click)="modalShow(post.id)">
         <i class="pi pi-comment"></i>
       </button>
       <button>
@@ -69,67 +69,30 @@
         <div class="commenterImage">
           <img src="http://placekitten.com/50/50" />
         </div>
-        <p style="font-size: small;">@{{ post.user.username }}</p>
+        <p style="font-size: small;">@{{ post.user?.username }}</p>
       </div>
       <div class="modal-desc">
         <p>{{post.content}}</p>
       </div>
       <div class="actionBox">
         <ul class="commentList">
-          <li>
-            <div class="commenterImage">
-              <img src="http://placekitten.com/50/50" />
-            </div>
-            <div class="commentText">
-              <p class="">Hello this is a test comment.</p>
-              <span class="date sub-text">on March 5th, 2014</span>
-            </div>
-          </li>
-          <li>
-            <div class="commenterImage">
-              <img src="http://placekitten.com/45/45" />
-            </div>
-            <div class="commentText">
-              <p class="">
-                Hello this is a test comment and this comment is particularly
-                very long and it goes on and on and on.
-              </p>
-              <span class="date sub-text">on March 5th, 2014</span>
-            </div>
-          </li>
-          <li>
-            <div class="commenterImage">
-              <img src="http://placekitten.com/40/40" />
-            </div>
-            <div class="commentText">
-              <p class="">Hello this is a test comment.</p>
-              <span class="date sub-text">on March 5th, 2014</span>
-            </div>
-          </li>
-          <li>
-            <div class="commenterImage">
-              <img src="http://placekitten.com/40/40" />
-            </div>
-            <div class="commentText">
-              <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere possimus incidunt dolor aperiam beatae esse corporis ea eaque omnis! Aliquam quis quos officia, accusantium tenetur sapiente nisi saepe accusamus officiis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit consequatur eaque aliquam inventore quod commodi nihil, beatae voluptates animi corrupti perferendis iure porro minima laboriosam facilis quia velit dicta consequuntur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum vel, eligendi reiciendis, deleniti libero iure magnam ratione in eius quibusdam ad ducimus inventore aut, nemo iusto! Atque, eaque. Iusto, facere?</p>
-              <span class="date sub-text">on March 5th, 2014</span>
-            </div>
-          </li>
-          <li>
-            <div class="commenterImage">
-              <img src="http://placekitten.com/40/40" />
-            </div>
-            <div class="commentText">
-              <p class="">Hello this is a test comment.</p>
-              <span class="date sub-text">on March 5th, 2014</span>
-            </div>
-          </li>
+          <ng-container *ngFor="let comment of comments">
+            <li>
+              <div class="commenterImage">
+                <img src="http://placekitten.com/50/50" />
+              </div>
+              <div class="commentText">
+                <p class="">{{comment.comment}}</p>
+                <span class="date sub-text">{{comment.date}}</span>
+              </div>
+            </li>
+          </ng-container>
         </ul>
         <form class="form-inline" role="form">
           <div class="form-group">
-            <input type="text" name="text" class="comment-input" placeholder="Write a message">
+            <input type="text" name="text" class="comment-input" placeholder="Write a message" #comment>
           </div>
-          <button class="btn-comment">
+          <button class="btn-comment" (click)="commentPost()">
             <p>Comment</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
               <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
