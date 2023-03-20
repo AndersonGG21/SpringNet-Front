@@ -1,4 +1,4 @@
-.container {
+/* .container {
 	width: 500px;
 	overflow-x: scroll;
 	scroll-snap-type: x mandatory;
@@ -14,7 +14,6 @@
 .child {
 	height: 90%;
 	scroll-snap-align: start;
-	/* padding: 1rem; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -27,4 +26,71 @@
 
 .child > img {
   border-radius: 50%;
+} */
+
+.stories {
+  /* position: absolute;
+  top: 20px; */
+  height: 12rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: .5rem;
+  overflow-x: scroll;
+	scroll-snap-type: x mandatory;
+  max-width: 800px;
+}
+
+.stories::-webkit-scrollbar {
+  display: none;
+}
+
+.story {
+  min-width: 100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 8px;
+  color: black;
+  overflow: hidden;
+  align-items: left;
+  font-size: .7rem;
+  border: 1px solid #22c55e;
+  height: 80%;
+}
+
+.story::before {
+  content: '';
+  height: 3rem;
+  width: 100%;
+  display: block;
+  background:linear-gradient(transparent, lightgreen);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.story p {
+  z-index: 1;
+}
+
+.story .profile-phots {
+  height: 2rem;
+  width: 2rem;
+  align-self: start;
+  border: 2px dotted lightgreen;
+  border-radius: 50%;
+}
+
+.profile-phots img {
+  width: 100%;
+  height: 100%;
+}
+
+.story:nth-child(1) {
+  background-image: url("http://localhost:8080/media/slide1.png");
+  background-position: center;
+  background-size: cover;
 }
