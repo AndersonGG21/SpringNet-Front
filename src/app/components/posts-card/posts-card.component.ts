@@ -14,6 +14,7 @@ export class PostsCardComponent implements OnInit {
   liked  = false;
   displayModal = false;
   comments : Comment[] = [];
+  likes = 0;
 
   constructor(private postService : PostService, private cookie : CookieService, private cdr: ChangeDetectorRef){}
 
@@ -33,6 +34,8 @@ export class PostsCardComponent implements OnInit {
         this.liked = true;
       }
     })
+
+    this.getLikes();
 
   }
 
@@ -73,6 +76,8 @@ export class PostsCardComponent implements OnInit {
       }
     }
     this.postService.likePost(like).subscribe();
+
+    this.liked ? this.likes++ : this.likes--;
   }
 
   commentPost() : void {
@@ -88,9 +93,17 @@ export class PostsCardComponent implements OnInit {
     }
 
     this.postService.commentPost(comment).subscribe(response => {
-      this.comments.push(comment); // Agrega el nuevo comentario al principio del array
+      this.comments.push(comment);
       this.cdr.detectChanges();
     })
 
+  }
+
+  getLikes() : void {
+    if (this.post.id != null) {
+      this.postService.getPostLikes(this.post.id).subscribe((response) => {
+        this.likes = response;
+      })
+    }
   }
 }

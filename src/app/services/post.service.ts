@@ -48,4 +48,8 @@ export class PostService {
   commentPost(comment : Comment) : Observable<string> {
     return this.http.post<any>(`${this.baseUrl}comment`, comment, {headers: this.options.headers})
   }
+
+  getPostLikes(post : number) : Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}${post}/likes`, {headers: this.options.headers});
+  }
 }
