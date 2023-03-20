@@ -105,47 +105,6 @@ button:focus {
   text-align: center;
 }
 
-::ng-deep .p-fileupload .p-fileupload-adva {
-  margin: 10px;
-}
-
-::ng-deep .p-fileupload .p-fileupload-advanced .p-component .ng-star-inserted {
-  margin: 10px;
-}
-
-::ng-deep .p-progressbar .p-component .p-progressbar-determinate {
-  display: none;
-}
-
-::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
-  font-size: large;
-}
-
-::ng-deep .p-fileupload .p-fileupload-buttonbar .p-button {
-  width: 100px;
-  font-size: small;
-  background-color: #4caf50;
-  border: none;
-}
-
-::ng-deep .p-button.p-button-icon-only {
-  background-color: #4caf50;
-  border: none;
-  transition: background-color 0.5s ease;
-}
-
-::ng-deep .p-button.p-button-icon-only:hover {
-  background-color: #5ff281;
-}
-
-::ng-deep .p-progressbar .p-progressbar-value {
-  background-color: #4caf50;
-}
-
-::ng-deep .p-fileupload .p-fileupload-buttonbar .p-button {
-  margin-bottom: 10px;
-}
-
 .pots-btn {
   display: inline-block;
   border-radius: 4px;
