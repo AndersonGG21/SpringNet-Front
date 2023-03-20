@@ -23,7 +23,7 @@
     </button>
   </div>
   <div class="card-img">
-    <img src="{{ post.image }}" alt="" />
+    <img src="{{ post.image }}" alt="" id="post-img"/>
   </div>
   <div class="card-actions">
     <div class="main-actions">
@@ -33,13 +33,10 @@
       <button (click)="modalShow(post.id)">
         <i class="pi pi-comment"></i>
       </button>
-      <button>
+      <button (click)="sharePost()">
         <i class="pi pi-send"></i>
       </button>
     </div>
-    <button>
-      <i class="pi pi-bookmark"></i>
-    </button>
   </div>
   <span style="font-size: 13px"><strong>{{ likes }}</strong> likes</span>
   <div class="card-desc">
