@@ -29,8 +29,9 @@ export class FeedComponent {
       const skeleton = document.getElementById("skeleton-loader") as HTMLDivElement;
       setTimeout(() => {
         this.posts = posts.value;
+        this.posts.sort((a,b) => a.id! - b.id!);
         skeleton.style.display = 'none';
-      }, this.time * 50);
+      }, this.time * 10);
     })
 
     this.title.setTitle("Feed")
