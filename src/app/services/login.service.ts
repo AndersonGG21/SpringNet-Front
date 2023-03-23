@@ -12,7 +12,6 @@ export class LoginService {
   private loginUrl  = "http://localhost:8080/login";
   private usersUrl = "http://localhost:8080/api/users"
 
-
   private options = {
     observe: 'response' as const,
     headers : new HttpHeaders()

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { Comment, Like, Post } from '../models/types';
@@ -15,11 +16,13 @@ export class PostService {
   private options = {
     observe: 'response' as const,
     headers : new HttpHeaders()
-    .set('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmRlcnNvbmdhcmNlc2dhcmNpYUBnbWFpbC5jb20iLCJleHAiOjE2NzkyODYwMTIsIm5hbWUiOiJhbmRlci5fLmdnIn0.rRajQFoLIbpux5JUYNg9rLcBCe3oZs7w_ihQAuNv3t_X5CRIo24qrTLw9McOOoyuRfyNGFbvwnpo3Msliy6uEQ')
+    .set('Authorization', `Bearer ${this.cookie.get("Bearer")}`)
+    .set('Access-Control-Allow-Origin', '*')
+    .set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   };
 
 
-  constructor(private http : HttpClient, private messageService : MessageService) { }
+  constructor(private http : HttpClient, private messageService : MessageService, private cookie : CookieService) { }
 
   createPost(post : Post) : Observable<any>{
     return this.http.post<any>(`${this.baseUrl}new-post`,post,this.options);
