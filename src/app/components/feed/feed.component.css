@@ -78,6 +78,20 @@ h1 {
   color: black;
 }
 
+.skeleton-loader {
+  display: flex;
+  gap: 15px;
+  margin-left: 150px;
+  margin-top: 0;
+}
+
+.skeleton-header,
+.skeleton-icons {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 10px
+}
 
 @media  (width < 768px) {
   .grid-aside, .circle {
