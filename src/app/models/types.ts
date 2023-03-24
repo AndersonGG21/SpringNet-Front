@@ -21,6 +21,7 @@ export interface User {
   email? : string,
   registrationDate? : string,
   description? : string,
+  profileImage? : string
 }
 
 export interface Like {
