@@ -8,10 +8,7 @@ export interface Post {
   content?: string;
   image?: string;
   publicationDate? : string;
-  user?: {
-    id?: number,
-    username? : string,
-  }
+  user? : User
 }
 
 export interface User {
@@ -21,7 +18,7 @@ export interface User {
   email? : string,
   registrationDate? : string,
   description? : string,
-  profileImage? : string
+  profileImg? : string
 }
 
 export interface Like {
@@ -37,5 +34,5 @@ export interface Comment {
   comment?: string,
   date?: string,
   post: Post,
-  user : User,
+  user? : User,
 }
