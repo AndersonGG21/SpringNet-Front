@@ -85,10 +85,6 @@ export class GridConfigComponent {
     maxFileSize: "8MB"
   };
 
-  pondHandleInit() {
-    console.log('FilePond has initialised', this.myPond);
-  }
-
   pondHandleAddFile(event: any) {
     console.log('A file was added', event.file.file);
     const formData = new FormData();
@@ -101,7 +97,4 @@ export class GridConfigComponent {
     });
   }
 
-  pondHandleActivateFile(event: any) {
-    console.log('A file was activated', event.fileSize);
-  }
 }
