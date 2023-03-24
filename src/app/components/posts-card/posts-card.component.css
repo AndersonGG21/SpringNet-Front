@@ -49,6 +49,10 @@
   border-radius: 15px;
 }
 
+.card-header > img {
+  object-fit: fill;
+}
+
 .modal-body {
   display: flex;
   gap: 20px;
@@ -102,7 +106,7 @@ section {
 }
 
 .show-more {
-  min-height: 100px;
+  min-height: 140px;
   overflow-wrap: break-word;
   transition: all 0.5s steps();
 }
@@ -276,7 +280,8 @@ section {
 }
 
 .commenterImage img {
-  width: 100%;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
 

@@ -6,8 +6,8 @@
       style="cursor: pointer"
     >
       <img
-        src="../../../assets/1.jpg"
-        alt="user-profile"
+        src="{{ post.user?.profileImg }}"
+        alt=""
         width="40px"
         height="40px"
       />
@@ -64,7 +64,7 @@
     <div class="detailBox">
       <div class="titleBox">
         <div class="commenterImage">
-          <img src="http://placekitten.com/50/50" />
+          <img src="{{post.user?.profileImg}}" />
         </div>
         <p style="font-size: small;">@{{ post.user?.username }}</p>
       </div>
@@ -76,7 +76,7 @@
           <ng-container *ngFor="let comment of comments">
             <li>
               <div class="commenterImage">
-                <img src="http://placekitten.com/50/50" />
+                <img src="{{comment.user?.profileImg}}" />
               </div>
               <div class="commentText">
                 <p class="">{{comment.comment}}</p>
