@@ -26,17 +26,15 @@ export class FeedComponent {
     this.postDataB.posts.pipe(timeInterval()).subscribe((posts) => {
       this.time = posts.interval;
 
-      const skeleton = document.getElementById("skeleton-loader") as HTMLDivElement;
+      const skeleton = document.getElementById("skeleton-loader") as HTMLElement;
       setTimeout(() => {
         this.posts = posts.value;
         this.posts.sort((a,b) => a.id! - b.id!);
-        skeleton.style.display = 'none';
+        skeleton.style.display = 'none'
       }, this.time * 10);
     })
 
     this.title.setTitle("Feed")
-
-    console.log(this.posts)
 
   }
 
