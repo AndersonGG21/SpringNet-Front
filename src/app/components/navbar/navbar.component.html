@@ -1,14 +1,37 @@
 <nav class="navbar">
   <div class="navbar-end">
-    <img src="../../../assets/spring-net-logo.png" alt="" class="navbar-logo"/>
+    <img src="../../../assets/spring-net-logo.png" alt="" class="navbar-logo" />
   </div>
   <div class="navbar-center">
     <button [ngClass]="{ active: home === true }" routerLink="/feed">
       <i class="pi pi-home"></i>
     </button>
-    <button [ngClass]="{ active: reels === true }">
-      <i class="pi pi-search"></i>
-    </button>
+    <div class="search">
+      <button [ngClass]="{ active: reels === true }" (click)="handleSearch()">
+        <i class="pi pi-search"></i>
+      </button>
+      <p-autoComplete
+        [(ngModel)]="selectedUser"
+        [suggestions]="filteredUsers"
+        field="username"
+        [dropdown]="false"
+        (completeMethod)="filterUsers($event)"
+        (onSelect)="showSelectedUser()"
+        ngClass="autocomplete"
+        [ngStyle]="{'display': openSearchInput ? 'block' : 'none'}"
+      >
+        <ng-template let-user pTemplate="item">
+          <div class="user-item">
+            <img
+              src="{{ user.profileImg }}"
+              width="30px"
+              height="30px"
+            />
+            <div>{{ user.username }}</div>
+          </div>
+        </ng-template>
+      </p-autoComplete>
+    </div>
     <button [ngClass]="{ active: likes === true }">
       <i class="pi pi-heart"></i>
     </button>
@@ -23,11 +46,11 @@
     <button class="icon-button">
       <i class="pi pi-comment" pBadge value="2" severity="success"></i>
     </button>
-      <img
+    <img
       src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/be/bef6308176089fa7f3df885a59d3e20bc48c9b32.jpg"
       alt=""
       class="navbar-avatar"
-      [routerLink]="['/profile/',uuid]"
+      [routerLink]="['/profile/', uuid]"
     />
   </div>
 </nav>

@@ -29,7 +29,7 @@ button:hover > i{
   padding: 0 20px;
   /* border-bottom: 1px solid #e8e8e8; */
   background: #fff;
-  /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); */
+  transition: all 1s ease;
   z-index: 2;
 }
 
@@ -163,6 +163,49 @@ button:hover > i{
   width: 0px;
   border: 1px solid #4caf50;
   border-radius: 8px;
+}
+
+::ng-deep .user-item {
+  display: flex;
+  place-items: center;
+  gap: 5px;
+}
+
+::ng-deep .p-inputtext:enabled:focus{
+  border-color: #4caf50;
+  box-shadow: 0 0 1px #4caf50;
+}
+
+::ng-deep .p-inputtext {
+  height: 30px;
+}
+
+::ng-deep .autocomplete {
+  display: flex;
+  place-items: center;
+  align-self: center;
+  display: none;
+  animation: animate-slide 1s ease;
+}
+
+::ng-deep .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item.p-highlight {
+  color: #4caf50;
+}
+
+.search {
+  display: flex;
+  gap: 5px;
+}
+
+@keyframes animate-slide {
+  0% {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 }
 
 @media screen and (max-width: 620px) {
