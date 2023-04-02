@@ -21,4 +21,8 @@ export class UserService {
   getUserProfile(id : number) : Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/${id}`, {headers : this.options.headers});
   }
+
+  getAllUsers() : Observable<User[]> {
+    return this.http.get<User[]>(this.baseUrl, {headers : this.options.headers})
+  }
 }
