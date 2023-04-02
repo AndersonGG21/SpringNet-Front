@@ -15,6 +15,7 @@ import {ToastModule} from 'primeng/toast';
 import { FilePondModule, registerPlugin } from "ngx-filepond";
 import { CookieService } from 'ngx-cookie-service';
 import { SkeletonModule } from 'primeng/skeleton';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -80,7 +81,8 @@ registerPlugin(
     ProgressBarModule,
     ToastModule,
     FilePondModule,
-    SkeletonModule
+    SkeletonModule,
+    AutoCompleteModule
   ],
   providers: [MessageService, CookieService],
   bootstrap: [AppComponent]
