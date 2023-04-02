@@ -4,7 +4,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { MenuItem } from 'primeng/api';
 import { timeInterval } from 'rxjs';
 import { Post } from 'src/app/models/types';
-import { PostDataBehaviorSubjectService } from 'src/app/services/post-data-behavior-subject.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -33,7 +32,7 @@ export class FeedComponent {
         this.posts = posts.value;
         this.posts.sort((a,b) => a.id! - b.id!);
         skeleton.style.display = 'none'
-      }, this.time * 10);
+      }, this.time * 5);
     })
 
     this.title.setTitle("Feed")
