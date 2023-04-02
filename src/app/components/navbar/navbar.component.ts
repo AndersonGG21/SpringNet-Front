@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import {MenuItem} from 'primeng/api';
+import { User } from 'src/app/models/types';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -13,9 +16,13 @@ export class NavbarComponent implements OnInit{
   @Input() likes  = false;
   @Input() reels  = false;
   items: MenuItem[] = [];
+  users: User[] = [];
+  selectedUser : User | undefined;
+  filteredUsers : User[] = [];
   uuid  = 0;
+  openSearchInput = false;
 
-  constructor(private cookie : CookieService){}
+  constructor(private cookie : CookieService, private userService : UserService, private router : Router){}
 
     ngOnInit() {
         this.items = [
@@ -27,5 +34,32 @@ export class NavbarComponent implements OnInit{
         ];
 
         this.uuid = Number(this.cookie.get("uuid"));
+
+        this.userService.getAllUsers().subscribe((response) => {
+          this.users = response;
+        })
+    }
+
+    filterUsers(event : any) {
+      let filtered : any[] = [];
+      let query = event.query;
+
+      for(let i = 0; i < this.users.length; i++) {
+          let user = this.users[i];
+          if (user.username?.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+              filtered.push(user);
+          }
+      }
+
+      this.filteredUsers = filtered;
+    }
+
+    showSelectedUser() : void {
+      const userId = this.selectedUser?.id
+      this.router.navigate([`/profile/${userId}`])
+    }
+
+    handleSearch() : void {
+      this.openSearchInput = !this.openSearchInput;
     }
 }
