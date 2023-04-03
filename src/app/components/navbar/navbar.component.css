@@ -192,6 +192,10 @@ button:hover > i{
   color: #4caf50;
 }
 
+.user-item > img {
+  border-radius: 50%;
+}
+
 .search {
   display: flex;
   gap: 5px;
