@@ -16,7 +16,7 @@ section {
   width: 150px;
   margin-top: 100px;
   height: 100vh;
-  padding-right: 10px;
+  padding: 10px;
 }
 
 .user-info {
@@ -24,6 +24,10 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+}
+
+.user-info > img {
+  border-radius: 50%;
 }
 
 .stats {
@@ -47,30 +51,6 @@ section {
   gap: 50px;
 }
 
-.stats > span {
-  position: relative;
-}
-
-.stats > span::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  font-size: small;
-}
-
-.stats > span:nth-child(1):after {
-  content: "posts";
-}
-
-.stats > span:nth-child(2):after {
-  content: "followers";
-}
-
-.stats > span:nth-child(3):after {
-  content: "following";
-}
 
 .grid-aside {
   position: absolute;

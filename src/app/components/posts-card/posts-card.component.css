@@ -66,6 +66,7 @@
 .modal-post > img {
   width: 100%;
   aspect-ratio: 4 / 5;
+  border-radius: 8px;
 }
 
 .modal-comments {
@@ -368,4 +369,8 @@ section {
 
 .btn-comment:hover {
   background-color: #4caf50;
+}
+
+::ng-deep .p-dialog .p-dialog-content{
+  border-radius: 8px;
 }
