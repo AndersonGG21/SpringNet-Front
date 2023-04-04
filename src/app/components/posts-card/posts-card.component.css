@@ -218,20 +218,22 @@ section {
 }
 
 .modal-desc {
-  border-bottom: 1px dotted black;
+  border-bottom: 1px solid #3C3E40;
+}
+
+.modal-desc > p {
+  font-size: medium;
 }
 
 .titleBox {
   display: flex;
   align-items: center;
   background-color: #fdfdfd;
-  /* padding: 10px; */
+  gap: 10px;
 }
 
-.titleBox label {
-  color: #444;
-  margin: 0;
-  display: inline-block;
+.titleBox p {
+  font-weight: bold;
 }
 
 .commentBox {
@@ -265,12 +267,9 @@ section {
 }
 
 .commentList li {
-  margin: 0;
-  margin-top: 10px;
-}
-
-.commentList li > div {
-  display: table-cell;
+  display: flex;
+  gap: 10px;
+  place-items: center;
 }
 
 .commenterImage {
@@ -278,11 +277,13 @@ section {
   margin-right: 5px;
   height: 100%;
   float: left;
+  display: flex;
+  align-items: center;
 }
 
 .commenterImage img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
