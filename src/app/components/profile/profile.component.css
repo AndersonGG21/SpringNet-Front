@@ -13,7 +13,7 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  width: 150px;
+  width: 200px;
   margin-top: 100px;
   height: 100vh;
   padding: 10px;
@@ -30,9 +30,20 @@ section {
   border-radius: 50%;
 }
 
-.stats {
+.stats,
+.stat {
   display: flex;
   flex-direction: column;
+  place-items: center;
+}
+
+.stat > span:nth-child(1){
+  font-weight: bold;
+}
+
+.stat > span:nth-child(2){
+  font-size: 12px;
+  color: #76777E;
 }
 
 .text {
@@ -46,11 +57,13 @@ section {
   font-size: small;
 }
 
-.stats {
-  display: flex;
-  gap: 50px;
+.text p {
+  color: #76777E
 }
 
+.stats {
+  gap: 30px;
+}
 
 .grid-aside {
   position: absolute;

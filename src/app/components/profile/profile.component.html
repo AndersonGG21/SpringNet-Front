@@ -11,9 +11,18 @@
         height="70px"
       />
       <div class="stats">
-        <span>{{ userPosts.length }} Posts</span>
-        <span>{{ followers }} Followers</span>
-        <span>{{ following }} Following</span>
+        <div class="stat">
+          <span>{{ userPosts.length }}</span>
+          <span>Posts</span>
+        </div>
+        <div class="stat">
+          <span>{{ followers }}</span>
+          <span>Followers</span>
+        </div>
+        <div class="stat">
+          <span>{{ following }}</span>
+          <span> Following</span>
+        </div>
       </div>
       <button (click)="setFollow()" *ngIf="flag" [ngClass]="checkFollow ? 'prueba' : ''" class="follow-btn" (mouseover)="deleteText()" (mouseout)="addText()">{{ checkFollow ? 'Following' : 'Follow'}}</button>
       <!-- TODO: Change the class name of prueba -->
