@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="navbar-end">
-    <img src="../../../assets/spring-net-logo.png" alt="" class="navbar-logo" />
+    <img src="../../../assets/spring-net-logo.png" alt="SpringNet Logo" class="navbar-logo" />
   </div>
   <div class="navbar-center">
     <button [ngClass]="{ active: home === true }" routerLink="/feed">
@@ -47,10 +47,10 @@
       <i class="pi pi-comment" pBadge value="2" severity="success"></i>
     </button>
     <img
-      src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/be/bef6308176089fa7f3df885a59d3e20bc48c9b32.jpg"
-      alt=""
+      src="{{user ? user.profileImg : ''}}"
+      alt="User Profile image"
       class="navbar-avatar"
-      [routerLink]="['/profile/', uuid]"
+      (click)="redirect()"
     />
   </div>
 </nav>
