@@ -116,6 +116,14 @@ body {
   display: grid;
 }
 
+.prueba:hover {
+  background-color: #3d813f;
+}
+
+.prueba:hover::after {
+  content: "Unfollow";
+}
+
 @media screen and (min-width < 768px) {
   section {
     grid-template-columns: repeat(1, 1fr);
