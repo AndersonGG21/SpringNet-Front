@@ -12,7 +12,7 @@ section {
   grid-gap: 40px;
   padding: 20px;
   place-content: center;
-  max-width: 80%;
+  /* max-width: 80%; */
 }
 
 main {
