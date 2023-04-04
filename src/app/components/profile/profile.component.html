@@ -15,7 +15,8 @@
         <span>{{ followers }} Followers</span>
         <span>{{ following }} Following</span>
       </div>
-      <button *ngIf="flag" class="follow-btn">Follow</button>
+      <button (click)="setFollow()" *ngIf="flag" [ngClass]="checkFollow ? 'prueba' : ''" class="follow-btn" (mouseover)="deleteText()" (mouseout)="addText()">{{ checkFollow ? 'Following' : 'Follow'}}</button>
+      <!-- TODO: Change the class name of prueba -->
       <div class="text">
         <strong>@{{user.username}}</strong>
         <p>
