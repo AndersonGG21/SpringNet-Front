@@ -19,13 +19,14 @@ export class ProfileComponent implements OnInit{
   following  = 0;
   userId = 0;
   user !: User;
+  flag = false;
 
-  constructor( private postService : PostService, private followService : FollowService, private userService : UserService, private title : Title, private route : ActivatedRoute){}
+  constructor( private postService : PostService, private followService : FollowService, private userService : UserService, private title : Title, private route : ActivatedRoute, private cookie : CookieService){}
 
   ngOnInit(): void {
-
     this.route.paramMap.subscribe((params : ParamMap) => {
       this.userId = Number(params.get('id'));
+      Number(this.cookie.get('uuid')) == this.userId ? this.flag = false : this.flag = true;
 
       this.userService.getUserProfile(this.userId).subscribe((response) => {
         this.user = response;

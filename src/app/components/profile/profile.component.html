@@ -15,7 +15,7 @@
         <span>{{ followers }} Followers</span>
         <span>{{ following }} Following</span>
       </div>
-      <button class="follow-btn">Follow</button>
+      <button *ngIf="flag" class="follow-btn">Follow</button>
       <div class="text">
         <strong>@{{user.username}}</strong>
         <p>
