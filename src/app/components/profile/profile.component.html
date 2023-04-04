@@ -5,21 +5,21 @@
   <aside class="profile-aside">
     <div class="user-info">
       <img
-        src="../../../assets/spring-net-logo.png"
-        alt=""
-        width="50px"
-        height="50px"
+        src="{{ user.profileImg }}"
+        alt="User profile image"
+        width="70px"
+        height="70px"
       />
       <div class="stats">
-        <span id="post">518</span>
-        <span id="followers">{{ followers }}</span>
-        <span id="following">{{ following }}</span>
+        <span>{{ userPosts.length }} Posts</span>
+        <span>{{ followers }} Followers</span>
+        <span>{{ following }} Following</span>
       </div>
       <button class="follow-btn">Follow</button>
       <div class="text">
-        <strong>@{{userName}}</strong>
+        <strong>@{{user.username}}</strong>
         <p>
-          {{userDescription}}
+          {{user.description}}
         </p>
       </div>
     </div>
