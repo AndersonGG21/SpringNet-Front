@@ -129,11 +129,11 @@ body {
   display: grid;
 }
 
-.prueba:hover {
+.unfollow-hover:hover {
   background-color: #3d813f;
 }
 
-.prueba:hover::after {
+.unfollow-hover:hover::after {
   content: "Unfollow";
 }
 
