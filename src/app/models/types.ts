@@ -36,3 +36,12 @@ export interface Comment {
   post: Post,
   user? : User,
 }
+
+export interface Follow {
+  follower : {
+    id : number
+  },
+  following : {
+    id : number
+  }
+}
