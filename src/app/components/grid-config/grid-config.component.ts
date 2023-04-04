@@ -34,17 +34,18 @@ export class GridConfigComponent {
   show1Column(): void {
     this.changeColumns(1);
     const section = document.querySelector('section') as HTMLElement;
-    section.style.width = '500px';
-    section.style.transition = 'all 20s ease-in-out 20s';
+    section.style.width = '450px';
   }
 
   show2Columns(): void {
     const section = document.querySelector('section') as HTMLElement;
-    section.style.width = '400px';
+    section.style.width = '80%';
     this.changeColumns(2);
   }
 
   show3Columns(): void {
+    const section = document.querySelector('section') as HTMLElement;
+    section.style.width = '80%';
     this.changeColumns(3);
   }
 
