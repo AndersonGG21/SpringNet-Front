@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit{
   filteredUsers : User[] = [];
   uuid  = 0;
   openSearchInput = false;
+  user !: User;
 
   constructor(private cookie : CookieService, private userService : UserService, private router : Router){}
 
@@ -37,6 +38,10 @@ export class NavbarComponent implements OnInit{
 
         this.userService.getAllUsers().subscribe((response) => {
           this.users = response;
+        })
+
+        this.userService.getUserProfile(this.uuid).subscribe((response) => {
+          this.user = response;
         })
     }
 
@@ -62,4 +67,9 @@ export class NavbarComponent implements OnInit{
     handleSearch() : void {
       this.openSearchInput = !this.openSearchInput;
     }
+
+    redirect() : void {
+      this.router.navigate([`/profile/${Number(this.cookie.get("uuid"))}`])
+    }
+
 }
