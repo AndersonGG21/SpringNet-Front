@@ -25,7 +25,6 @@
         </div>
       </div>
       <button (click)="setFollow()" *ngIf="flag" [ngClass]="checkFollow ? 'unfollow-hover' : ''" class="follow-btn" (mouseover)="deleteText()" (mouseout)="addText()">{{ checkFollow ? 'Following' : 'Follow'}}</button>
-      <!-- TODO: Change the class name of prueba -->
       <div class="text">
         <strong>@{{user.username}}</strong>
         <p>
