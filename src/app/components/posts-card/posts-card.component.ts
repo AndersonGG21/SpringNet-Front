@@ -39,6 +39,18 @@ export class PostsCardComponent implements OnInit {
       }
     });
 
+    const post = {
+      user: {
+        id : Number(this.cookie.get('uuid'))
+      },
+      post : {
+        id : this.post.id
+      }
+    }
+    this.postService.checkIfSaved(post).subscribe((response) => {
+      this.saved = response;
+    })
+
     this.getLikes();
   }
 
@@ -118,5 +130,16 @@ export class PostsCardComponent implements OnInit {
 
   savePost() : void {
     this.saved = !this.saved;
+
+    const post = {
+      user: {
+        id : Number(this.cookie.get('uuid'))
+      },
+      post : {
+        id : this.post.id
+      }
+    }
+
+    this.postService.savePost(post).subscribe();
   }
 }
