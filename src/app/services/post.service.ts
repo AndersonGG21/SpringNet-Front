@@ -49,10 +49,22 @@ export class PostService {
   }
 
   commentPost(comment : Comment) : Observable<string> {
-    return this.http.post<any>(`${this.baseUrl}comment`, comment, {headers: this.options.headers})
+    return this.http.post<any>(`${this.baseUrl}comment`, comment, {headers: this.options.headers});
   }
 
   getPostLikes(post : number) : Observable<number> {
     return this.http.get<number>(`${this.baseUrl}${post}/likes`, {headers: this.options.headers});
+  }
+
+  savePost(post : Post) : Observable<any> {
+    return this.http.post<any>(`http://localhost:8080/api/saved-posts/save-post`, post, {headers: this.options.headers});
+  }
+
+  getSavedPosts(userId : number) : Observable<any> {
+    return this.http.get<any>(`http://localhost:8080/api/saved-posts/${userId}`, {headers: this.options.headers});
+  }
+
+  checkIfSaved(post : any) : Observable<any> {
+    return this.http.post<any>(`http://localhost:8080/api/saved-posts/check`, post, {headers: this.options.headers});
   }
 }
