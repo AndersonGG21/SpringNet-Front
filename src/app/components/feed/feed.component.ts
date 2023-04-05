@@ -19,10 +19,6 @@ export class FeedComponent {
   time = 0;
 
   constructor(private postDataB : PostService, private title : Title, private cookie : CookieService) {
-    this.items = [
-      { label: 'Post', icon: 'pi pi-fw pi-hashtag' },
-      { label: 'Story', icon: 'pi pi-fw pi-history' },
-    ];
 
     this.postDataB.getPost(Number(cookie.get("uuid"))).pipe(timeInterval()).subscribe((posts) => {
       this.time = posts.interval;
