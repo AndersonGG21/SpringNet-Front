@@ -18,8 +18,8 @@
         }}</span>
       </div>
     </div>
-    <button>
-      <i class="pi pi-ellipsis-h" style="color: black"></i>
+    <button (click)="savePost()">
+      <i class="pi pi-bookmark-fill" [ngStyle]="{'opacity' : saved ? '1' : '0.5'}"></i>
     </button>
   </div>
   <div class="card-img">

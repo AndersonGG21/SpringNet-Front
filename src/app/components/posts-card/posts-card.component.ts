@@ -15,6 +15,7 @@ export class PostsCardComponent implements OnInit {
   displayModal = false;
   comments: Comment[] = [];
   likes = 0;
+  saved = false;
 
   constructor(
     private postService: PostService,
@@ -112,6 +113,10 @@ export class PostsCardComponent implements OnInit {
   }
 
   sharePost() : void {
-    alert(this.post.id)
+    alert(this.post.id);
+  }
+
+  savePost() : void {
+    this.saved = !this.saved;
   }
 }
