@@ -1,4 +1,4 @@
-<body>
+<div class="main">
   <header>
     <app-navbar></app-navbar>
   </header>
@@ -24,11 +24,20 @@
           <span> Following</span>
         </div>
       </div>
-      <button (click)="setFollow()" *ngIf="flag" [ngClass]="checkFollow ? 'unfollow-hover' : ''" class="follow-btn" (mouseover)="deleteText()" (mouseout)="addText()">{{ checkFollow ? 'Following' : 'Follow'}}</button>
+      <button
+        (click)="setFollow()"
+        *ngIf="flag"
+        [ngClass]="checkFollow ? 'unfollow-hover' : ''"
+        class="follow-btn"
+        (mouseover)="deleteText()"
+        (mouseout)="addText()"
+      >
+        {{ checkFollow ? "Following" : "Follow" }}
+      </button>
       <div class="text">
-        <strong>@{{user.username}}</strong>
+        <strong>@{{ user.username }}</strong>
         <p>
-          {{user.description}}
+          {{ user.description }}
         </p>
       </div>
     </div>
@@ -39,4 +48,5 @@
     </ng-container>
   </section>
   <app-grid-config></app-grid-config>
-</body>
+
+</div>

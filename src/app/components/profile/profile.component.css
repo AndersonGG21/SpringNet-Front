@@ -116,7 +116,7 @@ button:focus {
   font-weight: bold;
 }
 
-body {
+.main {
   display: flex;
   justify-content: space-between;
 }
