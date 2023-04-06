@@ -42,10 +42,9 @@
 }
 
 .card-img > img {
-  /* height: 440px; */
   width: 100%;
   max-height: 290px;
-  object-fit: contain;
+  object-fit: fill;
   border-radius: 15px;
 }
 
