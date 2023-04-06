@@ -32,7 +32,7 @@
         </ng-template>
       </p-autoComplete>
     </div>
-    <button [ngClass]="{ active: likes === true }">
+    <button [ngClass]="{ active: likes === true }" (click)="redirectToSaved()">
       <i class="pi pi-bookmark"></i>
     </button>
     <button [ngClass]="{ active: reels === true }">

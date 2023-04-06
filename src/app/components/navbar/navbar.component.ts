@@ -72,4 +72,8 @@ export class NavbarComponent implements OnInit{
       this.router.navigate([`/profile/${Number(this.cookie.get("uuid"))}`])
     }
 
+    redirectToSaved() : void {
+      this.router.navigate([`/profile/saved/${Number(this.cookie.get("uuid"))}`])
+    }
+
 }
