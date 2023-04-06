@@ -1,0 +1,17 @@
+section {
+  position: relative;
+  display: grid;
+  grid-gap: 40px;
+  padding: 20px;
+  place-content: center;
+  max-width: 80%;
+  margin-top: 100px;
+  margin-left: 100px;
+}
+
+@media screen and (min-width: 1200px) {
+  section {
+    grid-template-columns: repeat(3, 300px);
+    align-items: start;
+  }
+}

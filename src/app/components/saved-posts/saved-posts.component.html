@@ -1,0 +1,11 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+<main>
+  <section>
+    <ng-container *ngFor="let post of posts">
+      <app-posts-card [post]="post"></app-posts-card>
+    </ng-container>
+  </section>
+</main>
+<app-grid-config></app-grid-config>

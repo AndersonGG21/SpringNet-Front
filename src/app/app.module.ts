@@ -38,6 +38,7 @@ import * as FilePondPluginImageEdit from 'filepond-plugin-image-edit';
 import * as FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import * as FilePondPluginFilePoster from 'filepond-plugin-file-poster';
 import * as FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import { SavedPostsComponent } from './components/saved-posts/saved-posts.component';
 
 
 registerPlugin(
@@ -61,7 +62,8 @@ registerPlugin(
     StoriesComponent,
     PostsCardComponent,
     ProfileComponent,
-    GridConfigComponent
+    GridConfigComponent,
+    SavedPostsComponent
   ],
   imports: [
     BrowserModule,
