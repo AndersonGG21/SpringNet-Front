@@ -2,51 +2,52 @@
   <header>
     <app-navbar></app-navbar>
   </header>
-  <aside class="profile-aside">
-    <div class="user-info">
-      <img
-        src="{{ user.profileImg }}"
-        alt="User profile image"
-        width="70px"
-        height="70px"
-      />
-      <div class="stats">
-        <div class="stat">
-          <span>{{ userPosts.length }}</span>
-          <span>Posts</span>
+  <ng-container *ngIf="user">
+    <aside class="profile-aside">
+      <div class="user-info">
+        <img
+          src="{{ user.profileImg }}"
+          alt="User profile image"
+          width="70px"
+          height="70px"
+        />
+        <div class="stats">
+          <div class="stat">
+            <span>{{ userPosts.length }}</span>
+            <span>Posts</span>
+          </div>
+          <div class="stat">
+            <span>{{ followers }}</span>
+            <span>Followers</span>
+          </div>
+          <div class="stat">
+            <span>{{ following }}</span>
+            <span> Following</span>
+          </div>
         </div>
-        <div class="stat">
-          <span>{{ followers }}</span>
-          <span>Followers</span>
-        </div>
-        <div class="stat">
-          <span>{{ following }}</span>
-          <span> Following</span>
+        <button
+          (click)="setFollow()"
+          *ngIf="flag"
+          [ngClass]="checkFollow ? 'unfollow-hover' : ''"
+          class="follow-btn"
+          (mouseover)="deleteText()"
+          (mouseout)="addText()"
+        >
+          {{ checkFollow ? "Following" : "Follow" }}
+        </button>
+        <div class="text">
+          <strong>@{{ user.username }}</strong>
+          <p>
+            {{ user.description }}
+          </p>
         </div>
       </div>
-      <button
-        (click)="setFollow()"
-        *ngIf="flag"
-        [ngClass]="checkFollow ? 'unfollow-hover' : ''"
-        class="follow-btn"
-        (mouseover)="deleteText()"
-        (mouseout)="addText()"
-      >
-        {{ checkFollow ? "Following" : "Follow" }}
-      </button>
-      <div class="text">
-        <strong>@{{ user.username }}</strong>
-        <p>
-          {{ user.description }}
-        </p>
-      </div>
-    </div>
-  </aside>
+    </aside>
+  </ng-container>
   <section>
     <ng-container *ngFor="let post of userPosts">
       <app-posts-card [post]="post"></app-posts-card>
     </ng-container>
   </section>
   <app-grid-config></app-grid-config>
-
 </div>
