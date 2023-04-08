@@ -1,98 +1,10 @@
 <div class="stories">
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
+  <ng-container *ngFor="let story of stories">
+    <div class="story" [ngStyle]="{'background-image': 'url(&quot;' + story.media + '&quot;)'}">
+      <div class="profile-phots">
+        <img src="{{story.user.profileImg}}" alt="">
+      </div>
+      <p>{{story.user.username}}</p>
     </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
-  <div class="story">
-    <div class="profile-phots">
-      <img src="https://randomuser.me/img/creator_arron.png" alt="">
-    </div>
-    <p>Mondongo</p>
-  </div>
+  </ng-container>
 </div>
