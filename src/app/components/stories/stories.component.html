@@ -1,6 +1,6 @@
 <div class="stories">
-  <ng-container *ngFor="let story of stories">
-    <div class="story" [ngStyle]="{'background-image': 'url(&quot;' + story.media + '&quot;)'}">
+  <ng-container *ngFor="let story of stories, index as i">
+    <div class="story" [ngStyle]="{'background-image': 'url(&quot;' + story.media + '&quot;)'}" (click)="slideTo(i)">
       <div class="profile-phots">
         <img src="{{story.user.profileImg}}" alt="">
       </div>
@@ -8,3 +8,22 @@
     </div>
   </ng-container>
 </div>
+<!-- Slider -->
+
+<p-dialog header="Stories"  [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <ng-container>
+        <div class="swiper-slide" *ngFor="let story of stories">
+          <div class="picture">
+            <img src="{{ story.media }}" alt="" height="500px" />
+          </div>
+          <div class="detail">
+            <h3>Marie Edwards</h3>
+            <span>Web Designer</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</p-dialog>

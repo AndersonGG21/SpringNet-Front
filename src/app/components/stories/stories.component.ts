@@ -1,6 +1,8 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, Inject, OnInit, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StoryService } from 'src/app/services/story.service';
+import Swiper, { SwiperOptions } from 'swiper';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-stories',
@@ -9,15 +11,49 @@ import { StoryService } from 'src/app/services/story.service';
 })
 
 export class StoriesComponent implements OnInit {
+
   stories : any;
   private storieService = inject(StoryService)
+  visible = false;
+  swiper : any;
 
 
   ngOnInit(): void {
     this.storieService.getStories().subscribe(response => {
       this.stories = response;
-      console.log(this.stories);
     })
   }
 
+
+  showDialog() : void {
+    this.visible = true;
+    setTimeout(() => {
+      this.swiper = new Swiper(".swiper-container",{
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 20,
+          stretch: 0,
+          depth: 350,
+          modifier: 1,
+          slideShadows: true
+        },
+        autoplay: {
+          delay: 30000
+        },
+        pagination: {
+          el: ".swiper-pagination"
+        },
+      })
+    }, 200);
+  }
+  slideTo(i : number) : void{
+    this.showDialog();
+    setTimeout(() => {
+      this.swiper.slideTo(i, 100, false);
+    }, 200);
+
+  }
 }
