@@ -10,18 +10,23 @@
 </div>
 <!-- Slider -->
 
-<p-dialog header="Stories"  [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+<p-dialog header="Stories"  [(visible)]="visible" [modal]="true" [style]="{ width: '100vw'}" [draggable]="false" [resizable]="false" ngClass="modal">
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <ng-container>
         <div class="swiper-slide" *ngFor="let story of stories">
           <div class="picture">
-            <img src="{{ story.media }}" alt="" height="500px" />
+            <img src="{{ story.media }}" alt="" />
+            <div class="texto-encima">
+              <div class="profile-phots">
+                <img src="{{story.user.profileImg}}" alt="">
+              </div>
+              <p>{{story.user.username}}</p>
+            </div>
           </div>
-          <div class="detail">
-            <h3>Marie Edwards</h3>
-            <span>Web Designer</span>
-          </div>
+          <!-- <div class="detail">
+            <h6>{{story.user.username}}</h6>
+          </div> -->
         </div>
       </ng-container>
     </div>
