@@ -1,93 +1,46 @@
-<body>
-  <header>
-    <span>SpringNet</span>
-    <img src="../../../assets/spring-net-logo.png" alt="spring-net-logo" width="48px" height="48px">
-  </header>
-  <main>
-    <div class="left">
-      <swiper [config]="config">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <span>Capture unforgettable moments and share them with the world.</span>
-            <img
-              src="../../../assets/slide1.png"
-              alt="img 1"
-              width="100%"
-              height="100%"
-            />
-          </div>
-          <div class="swiper-slide">
-            <span>There is always something beautiful to capture, discover the world through images!</span>
-            <img
-              src="../../../assets/slide2.png"
-              alt="img 2"
-              width="100%"
-              height="100%"
-            />
-          </div>
-          <div class="swiper-slide">
-            <span>A picture is worth a thousand words, share your story through your photos!</span>
-            <img
-              src="../../../assets/slide3.png"
-              alt="img 3"
-              width="100%"
-              height="100%"
-            />
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </swiper>
-    </div>
-    <article>
-      <h1>Welcome Back</h1>
-      <span class="message">Share your life in pictures.</span>
-      <form [formGroup]="userForm" class="login-form">
-        <div class="group">
-          <input
-            type="text"
-            id="email"
-            name="email"
-            formControlName="email"
-            required
-          />
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Email</label>
-        </div>
-        <div class="group">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            formControlName="password"
-            required
-          />
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Password:</label>
-          <button
-            type="button"
-            id="btnToggle"
-            class="toggle active"
-            (click)="toggle()"
-          >
-            <i class="bx bx-hide bx-xs"></i>
-          </button>
-        </div>
-        <button type="submit" class="login-btn" (click)="submitForm()">
-          Login
-        </button>
-        <span class="message"
-          >Not registered? <a href="#">Create an account</a></span
+<div id="container">
+  <div class="right">
+    <form [formGroup]="userForm" class="login-form">
+      <h1>Log In</h1>
+      <h5>"Connect with the world and live unforgettable experiences"</h5>
+      <div class="group">
+        <input
+          type="text"
+          id="email"
+          name="email"
+          formControlName="email"
+          required
+        />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Email</label>
+      </div>
+      <div class="group">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          required
+        />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Password:</label>
+        <button
+          type="button"
+          id="btnToggle"
+          class="toggle active"
+          (click)="toggle()"
         >
-      </form>
-    </article>
-  </main>
-  <style>
-    .swiper-active {
-      font-size: 100px;
-      opacity: 1;
-      background-color: red;
-    }
-  </style>
-</body>
+          <i class="bx bx-hide bx-xs"></i>
+        </button>
+      </div>
+      <button type="submit" class="login-btn" (click)="submitForm()">
+        Login
+      </button>
+      <span class="message"
+        >Not registered? <a href="#">Create an account</a></span
+      >
+    </form>
+  </div>
+</div>

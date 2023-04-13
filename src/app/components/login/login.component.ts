@@ -1,8 +1,10 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Login } from 'src/app/models/types';
 import { LoginService } from 'src/app/services/login.service';
 import { SwiperOptions } from 'swiper/types/swiper-options';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { SwiperOptions } from 'swiper/types/swiper-options';
   styleUrls: ['./login.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   public login! : Login;
   public userForm! : FormGroup;
@@ -18,15 +20,6 @@ export class LoginComponent {
   public pass  = '';
 
   config: SwiperOptions = {
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
     spaceBetween: 0,
     autoplay: {
       delay: 3000,
@@ -43,6 +36,10 @@ export class LoginComponent {
       email : '',
       password : ''
     });
+  }
+
+  ngOnInit(): void {
+    this.initScene();
   }
 
 
@@ -73,7 +70,69 @@ export class LoginComponent {
 
     this.loginService.login(this.login);
   }
+
+
+  private initScene() {
+    // Select the container for the scene
+    const container = document.getElementById('container')!;
+
+    // Create the scene, camera, and renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
+
+    // Load the panoramic image and create a texture
+    const loader = new THREE.TextureLoader();
+    const texture = loader.load('../../../assets/pana.jpg');
+
+    // Create a spherical geometry and map the texture to it
+    const geometry = new THREE.SphereGeometry(500, 60, 40);
+
+    // Flip the geometry inside out
+    geometry.scale(-1, 1, 1);
+
+    const material = new THREE.MeshBasicMaterial({
+        map: texture
+    });
+
+    const sphere = new THREE.Mesh(geometry, material);
+    scene.add(sphere);
+
+    // Set up the camera and controls
+    camera.position.set(0, 0, 0.1);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableZoom = false;
+    controls.enablePan = false;
+
+    controls.rotateSpeed = 0.3;
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    window.addEventListener('resize', onWindowResize, false);
+
+    // Animation loop
+    let lastTime = 0;
+    const rotationSpeed = 0.00005;
+
+    function animate(time : any) {
+        const delta = time - lastTime;
+        lastTime = time;
+        requestAnimationFrame(animate);
+
+        sphere.rotation.y += rotationSpeed * delta;
+
+        controls.update();
+        renderer.render(scene, camera);
+    }
+
+    animate(0);
+  }
 }
-
-
-

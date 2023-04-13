@@ -41,11 +41,8 @@ export class StoriesComponent implements OnInit {
           slideShadows: true
         },
         autoplay: {
-          delay: 30000
-        },
-        pagination: {
-          el: ".swiper-pagination"
-        },
+          delay: 10000
+        }
       })
     }, 200);
   }
