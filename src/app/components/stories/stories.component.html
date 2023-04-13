@@ -17,16 +17,13 @@
         <div class="swiper-slide" *ngFor="let story of stories">
           <div class="picture">
             <img src="{{ story.media }}" alt="" />
-            <div class="texto-encima">
+            <div class="story-owner">
               <div class="profile-phots">
                 <img src="{{story.user.profileImg}}" alt="">
               </div>
               <p>{{story.user.username}}</p>
             </div>
           </div>
-          <!-- <div class="detail">
-            <h6>{{story.user.username}}</h6>
-          </div> -->
         </div>
       </ng-container>
     </div>
