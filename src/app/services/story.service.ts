@@ -23,4 +23,7 @@ export class StoryService {
     return this.http.get<any>(`${this.baseUrl}/${Number(this.cookie.get('uuid'))}`, {headers: this.options.headers})
   }
 
+  createStory(story : any) : Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}`, story, {headers: this.options.headers})
+  }
 }
