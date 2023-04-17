@@ -1,5 +1,5 @@
 <div class="stories">
-  <div class="story create-story">
+  <div class="story create-story" (click)="showStoryModal()">
     <div class="actions">
       <i class="pi pi-plus-circle" style="font-size: 1.5rem; color : forestgreen"></i>
       <strong>Create a Story</strong>
@@ -8,7 +8,7 @@
   <div class="action"></div>
   <ng-container *ngFor="let story of stories, index as i">
     <div class="story" [ngStyle]="{'background-image': 'url(&quot;' + story.media + '&quot;)'}" (click)="slideTo(i)">
-      <div class="profile-phots">
+      <div class="profile-photos">
         <img src="{{story.user.profileImg}}" alt="">
       </div>
       <p>{{story.user.username}}</p>
@@ -25,7 +25,7 @@
           <div class="picture">
             <img src="{{ story.media }}" alt="" />
             <div class="story-owner">
-              <div class="profile-phots">
+              <div class="profile-photos">
                 <img src="{{story.user.profileImg}}" alt="">
               </div>
               <p>{{story.user.username}}</p>
@@ -35,4 +35,28 @@
       </ng-container>
     </div>
   </div>
+</p-dialog>
+
+<!-- Stroy Modal -->
+<p-dialog
+  header="Create a new Post"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '70%' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <form class="login-form">
+    <div class="img-upload">
+      <file-pond
+        #myPond
+        [options]="pondOptions"
+        (onaddfile)="pondHandleAddFile($event)"
+      >
+      </file-pond>
+    </div>
+    <button (click)="createStory()" class="pots-btn">
+      <span>Create Post</span>
+    </button>
+  </form>
 </p-dialog>
