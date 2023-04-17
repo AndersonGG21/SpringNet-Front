@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StoryService } from 'src/app/services/story.service';
 import Swiper, { SwiperOptions } from 'swiper';
 import { delay } from 'rxjs';
+import {FilePondFile, FilePondOptions} from "filepond";
+import {MediaService} from "../../services/media.service";
 
 @Component({
   selector: 'app-stories',
@@ -13,9 +15,11 @@ import { delay } from 'rxjs';
 export class StoriesComponent implements OnInit {
 
   stories : any;
-  private storieService = inject(StoryService)
+  private storieService = inject(StoryService);
+  private mediaService = inject(MediaService);
   visible = false;
   swiper : any;
+  displayModal: boolean | undefined;
 
 
   ngOnInit(): void {
@@ -52,5 +56,48 @@ export class StoriesComponent implements OnInit {
       this.swiper.slideTo(i, 100, false);
     }, 200);
 
+  }
+
+  //FilePond
+
+  imageUrl = '';
+
+  onProcessFile(event: any) {
+    const file: FilePondFile = event.file;
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageUrl = e.target.result;
+    };
+    reader.readAsDataURL(file.file);
+  }
+
+  pondOptions: FilePondOptions = {
+    labelIdle: 'Drag and Drop your files or <span>Browse</span>',
+    acceptedFileTypes: ['image/*'],
+    allowImagePreview: true,
+    imagePreviewHeight: 250,
+    maxFileSize: "8MB"
+  };
+
+  pondHandleAddFile(event: any) {
+    console.log('A file was added', event.file.file);
+    const formData = new FormData();
+    const file = event.file.file;
+    formData.append('file', file);
+
+    this.mediaService.uploadFile(formData).subscribe((res) => {
+      this.imageUrl = res.url;
+      console.log(this.imageUrl);
+    });
+  }
+
+  showStoryModal() {
+    this.displayModal = true;
+  }
+
+  createStory() {
+    this.storieService.createStory(this.imageUrl).subscribe(response => {
+      this.stories = response;
+    })
   }
 }
