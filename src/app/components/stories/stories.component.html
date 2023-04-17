@@ -1,4 +1,11 @@
 <div class="stories">
+  <div class="story create-story">
+    <div class="actions">
+      <i class="pi pi-plus-circle" style="font-size: 1.5rem; color : forestgreen"></i>
+      <strong>Create a Story</strong>
+    </div>
+  </div>
+  <div class="action"></div>
   <ng-container *ngFor="let story of stories, index as i">
     <div class="story" [ngStyle]="{'background-image': 'url(&quot;' + story.media + '&quot;)'}" (click)="slideTo(i)">
       <div class="profile-phots">
@@ -10,7 +17,7 @@
 </div>
 <!-- Slider -->
 
-<p-dialog header="Stories"  [(visible)]="visible" [modal]="true" [style]="{ width: '100vw'}" [draggable]="false" [resizable]="false" ngClass="modal">
+<p-dialog header="Stories"  [(visible)]="visible" [modal]="true" [style]="{ width: '100vw'}" [draggable]="false" [resizable]="false">
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <ng-container>

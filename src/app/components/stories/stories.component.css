@@ -23,7 +23,7 @@
   border-radius: 8px;
   color: black;
   overflow: hidden;
-  align-items: left;
+  align-items: center;
   font-size: .7rem;
   border: 1px solid #22c55e;
   height: 80%;
@@ -63,6 +63,19 @@
   /* background-image: url("http://localhost:8080/media/slide1.png"); */
   background-position: center;
   background-size: cover;
+}
+
+.create-story {
+  display: flex;
+  justify-content: flex-start;
+  background-image: url("src/assets/user-placeholder.jpeg");
+}
+
+.actions {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
 }
 
 .swiper-wrapper {
