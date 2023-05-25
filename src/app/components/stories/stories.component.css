@@ -123,17 +123,18 @@
   margin: 0;
 }
 
-::ng-deep .p-dialog .p-dialog-header{
+::ng-deep .transparent  > .p-dialog-content
+,::ng-deep .transparent  > .p-dialog-header{
   background-color: transparent;
 }
-
+/*
 ::ng-deep .p-dialog .p-dialog-content {
   background-color: transparent;
 }
 
 ::ng-deep .p-dialog .p-dialog-header-icon .p-dialog-header-close-icon{
   color: black;
-}
+} */
 
 ::ng-deep .p-dialog .p-dialog-content::-webkit-scrollbar {
   width: 0;
