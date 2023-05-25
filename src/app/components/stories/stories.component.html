@@ -1,23 +1,37 @@
 <div class="stories">
-  <div class="story create-story" (click)="showStoryModal()">
+  <div class="story create-story" (click)="showStorySidebar()">
     <div class="actions">
-      <i class="pi pi-plus-circle" style="font-size: 1.5rem; color : forestgreen"></i>
+      <i
+        class="pi pi-plus-circle"
+        style="font-size: 1.5rem; color: forestgreen"
+      ></i>
       <strong>Create a Story</strong>
     </div>
   </div>
   <div class="action"></div>
-  <ng-container *ngFor="let story of stories, index as i">
-    <div class="story" [ngStyle]="{'background-image': 'url(&quot;' + story.media + '&quot;)'}" (click)="slideTo(i)">
+  <ng-container *ngFor="let story of stories; index as i">
+    <div
+      class="story"
+      [ngStyle]="{ 'background-image': 'url(&quot;' + story.media + '&quot;)' }"
+      (click)="slideTo(i)"
+    >
       <div class="profile-photos">
-        <img src="{{story.user.profileImg}}" alt="">
+        <img src="{{ story.user.profileImg }}" alt="" />
       </div>
-      <p>{{story.user.username}}</p>
+      <p>{{ story.user.username }}</p>
     </div>
   </ng-container>
 </div>
 <!-- Slider -->
 
-<p-dialog header="Stories"  [(visible)]="visible" [modal]="true" [style]="{ width: '100vw'}" [draggable]="false" [resizable]="false">
+<p-dialog
+  header="Stories"
+  [(visible)]="visible"
+  [modal]="true"
+  styleClass="transparent"
+  [draggable]="false"
+  [resizable]="false"
+>
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <ng-container>
@@ -26,9 +40,9 @@
             <img src="{{ story.media }}" alt="" />
             <div class="story-owner">
               <div class="profile-photos">
-                <img src="{{story.user.profileImg}}" alt="">
+                <img src="{{ story.user.profileImg }}" alt="" />
               </div>
-              <p>{{story.user.username}}</p>
+              <p>{{ story.user.username }}</p>
             </div>
           </div>
         </div>
@@ -39,10 +53,10 @@
 
 <!-- Stroy Modal -->
 <p-dialog
-  header="Create a new Post"
-  [(visible)]="displayModal"
+  header="Upload a Story"
+  [(visible)]="sidebarVisible"
   [modal]="true"
-  [style]="{ width: '70%' }"
+  [style]="{ width: '40%' }"
   [draggable]="false"
   [resizable]="false"
 >
@@ -56,7 +70,7 @@
       </file-pond>
     </div>
     <button (click)="createStory()" class="pots-btn">
-      <span>Create Post</span>
+      <span>Upload</span>
     </button>
   </form>
 </p-dialog>

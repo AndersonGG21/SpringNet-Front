@@ -19,7 +19,7 @@ export class StoriesComponent implements OnInit {
   private mediaService = inject(MediaService);
   visible = false;
   swiper : any;
-  displayModal: boolean | undefined;
+  sidebarVisible = false;
 
 
   ngOnInit(): void {
@@ -27,7 +27,6 @@ export class StoriesComponent implements OnInit {
       this.stories = response;
     })
   }
-
 
   showDialog() : void {
     this.visible = true;
@@ -50,6 +49,7 @@ export class StoriesComponent implements OnInit {
       })
     }, 200);
   }
+
   slideTo(i : number) : void{
     this.showDialog();
     setTimeout(() => {
@@ -79,25 +79,25 @@ export class StoriesComponent implements OnInit {
     maxFileSize: "8MB"
   };
 
+
+  formData = new FormData();
   pondHandleAddFile(event: any) {
     console.log('A file was added', event.file.file);
-    const formData = new FormData();
+    // const formData = new FormData();
     const file = event.file.file;
-    formData.append('file', file);
-
-    this.mediaService.uploadFile(formData).subscribe((res) => {
-      this.imageUrl = res.url;
-      console.log(this.imageUrl);
-    });
+    this.formData.append('file', file);
   }
 
-  showStoryModal() {
-    this.displayModal = true;
+  showStorySidebar() {
+    this.sidebarVisible = true;
   }
 
   createStory() {
-    this.storieService.createStory(this.imageUrl).subscribe(response => {
-      this.stories = response;
-    })
+    this.mediaService.uploadFile(this.formData).subscribe((res) => {
+      this.imageUrl = res.url;
+      console.log(this.imageUrl);
+    });
+
+
   }
 }
