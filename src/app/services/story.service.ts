@@ -24,6 +24,6 @@ export class StoryService {
   }
 
   createStory(story : any) : Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}`, story, {headers: this.options.headers})
+    return this.http.post<any>(`${this.baseUrl}/new-story`, story, {headers: this.options.headers})
   }
 }
