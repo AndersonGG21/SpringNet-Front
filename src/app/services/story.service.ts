@@ -17,6 +17,7 @@ export class StoryService {
     .set('Access-Control-Allow-Origin', '*')
     .set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   };
+
   constructor(private http : HttpClient, private cookie : CookieService) { }
 
   getStories() : Observable<any> {
