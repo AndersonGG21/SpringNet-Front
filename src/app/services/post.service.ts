@@ -24,10 +24,26 @@ export class PostService {
 
   constructor(private http : HttpClient, private messageService : MessageService, private cookie : CookieService) { }
 
+  /**
+   * This function sends a HTTP POST request to create a new post with the provided data.
+   * @param {Post} post - The post parameter is an object of type Post that contains the data for a new
+   * post to be created. This object may contain properties such as title, content, author, date, etc.
+   * @returns An Observable of type `any` is being returned.
+   */
   createPost(post : Post) : Observable<any>{
     return this.http.post<any>(`${this.baseUrl}new-post`,post,this.options);
   }
 
+  /**
+   * This function returns an Observable of an array of Post objects retrieved from an HTTP GET request
+   * with a specified ID and headers.
+   * @param {number} id - The id parameter is a number that represents the unique identifier of a post.
+   * It is used to retrieve a specific post from the server.
+   * @returns An Observable of an array of Post objects is being returned. The data is obtained by
+   * making an HTTP GET request to the URL formed by concatenating the `baseUrl` property of the class
+   * with the `id` parameter passed to the function. The request is made with the headers specified in
+   * the `options` property of the class.
+   */
   getPost(id : number) : Observable<Post[]> {
     return this.http.get<Post[]>(`${this.baseUrl}${id}`, {headers: this.options.headers});
   }
