@@ -45,3 +45,10 @@ export interface Follow {
     id : number
   }
 }
+
+export interface Story {
+  media : string;
+  user : {
+    id : number
+  }
+}

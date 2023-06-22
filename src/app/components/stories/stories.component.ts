@@ -5,6 +5,8 @@ import Swiper, { SwiperOptions } from 'swiper';
 import { delay } from 'rxjs';
 import {FilePondFile, FilePondOptions} from "filepond";
 import {MediaService} from "../../services/media.service";
+import { Story } from 'src/app/models/types';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-stories',
@@ -17,14 +19,18 @@ export class StoriesComponent implements OnInit {
   stories : any;
   private storieService = inject(StoryService);
   private mediaService = inject(MediaService);
+  private cookieService = inject(CookieService);
   visible = false;
   swiper : any;
   sidebarVisible = false;
+  story !: Story;
+
 
 
   ngOnInit(): void {
     this.storieService.getStories().subscribe(response => {
       this.stories = response;
+      console.log(response);
     })
   }
 
@@ -93,9 +99,21 @@ export class StoriesComponent implements OnInit {
   }
 
   createStory() {
+
     this.mediaService.uploadFile(this.formData).subscribe((res) => {
       this.imageUrl = res.url;
-      console.log(this.imageUrl);
+
+      this.story = {
+        media: this.imageUrl,
+        user: {
+          id: Number(this.cookieService.get("uuid")),
+        }
+      }
+
+      this.storieService.createStory(this.story).subscribe(() => {
+        console.log("Story created");
+      })
+
     });
 
 
