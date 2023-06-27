@@ -38,7 +38,10 @@ import * as FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-
 import * as FilePondPluginFilePoster from 'filepond-plugin-file-poster';
 import * as FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import { SavedPostsComponent } from './components/saved-posts/saved-posts.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
 registerPlugin(
   FilePondPluginFileValidateType,
@@ -62,7 +65,8 @@ registerPlugin(
     PostsCardComponent,
     ProfileComponent,
     GridConfigComponent,
-    SavedPostsComponent
+    SavedPostsComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +87,8 @@ registerPlugin(
     ToastModule,
     FilePondModule,
     SkeletonModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [MessageService, CookieService],
   bootstrap: [AppComponent]

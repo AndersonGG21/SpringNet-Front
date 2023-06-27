@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PostsCardComponent } from './components/posts-card/posts-card.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SavedPostsComponent } from './components/saved-posts/saved-posts.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
