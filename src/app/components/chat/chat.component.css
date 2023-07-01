@@ -1,35 +1,36 @@
 /*  */
-
-main {
-  /* position: absolute;
-  top: 80px; */
+.container {
   display: flex;
+  position: relative;
+  top: 80px;
   justify-content: center;
 }
 
 .chats {
   width: 258px;
-  height: 546px;
+  height: 550px;
   flex-shrink: 0;
-  border-right: 1px solid grey;
+  border: 1px solid black;
+  border-right: none;
+  padding: 0;
 }
 
-::ng-deep .p-inputtext {
-  background: #121617;
-  border-radius: 5px;
-  border: none;
+.chats ::ng-deep .p-inputtext {
+  font-size: small;
+  width: 257px;
+  border-bottom: 1px solid black;
+  border-radius: unset;
+  height: 44px;
 }
 
-.container {
-  display: flex;
-  position: absolute;
-  top: 80px;
-}
 
 .chat-span {
-  color: rgba(14, 13, 13, 0.3);
+  color: black;
   font-size: 12px;
   font-weight: 700;
+  margin-left: 10px;
+  display: block;
+  margin-top: 10px;
 }
 
 .direct-messages {
@@ -84,29 +85,22 @@ main {
 }
 
 .chat-area {
-  width: 521px;
-  height: 546px;
+  width: 900px;
+  height: 550px;
   /* background: rgba(0, 0, 0, 0.23); */
   display: flex;
   flex-direction: column;
   position: relative;
-}
-
-input {
-  position: absolute;
-  bottom: 0;
-  width: 95%;
-  align-self: center;
-  border-radius: 4px;
-  margin-top: 10px;
+  border: 1px solid black;
 }
 
 .chat-area header {
   display: flex;
   align-items: center;
   height: 8%;
-  background: #121617;
-  color: rgba(255, 255, 255, 0.80);
+  /* background: #121617; */
+  border-bottom: 1px solid black;
+  /* color: rgba(255, 255, 255, 0.80); */
   padding: 10px;
   gap: 5px;
 }
@@ -114,15 +108,24 @@ input {
 .chat-text-area {
   display: flex;
   flex-direction: column;
-  background: rgba(41, 44, 48, 0.60);
-  /* color: wheat; */
   height: 100%;
   gap: 20px;
-  padding: 20px;
-
+padding: 20px;
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  overflow: auto;
+  overflow-y: scroll;
+}
+
+.chat-text-area::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-text-area::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.chat-text-area::-webkit-scrollbar-thumb {
+background: #4e4e4e83;
+border-radius: 25px;
 }
 
 .left, .right {
@@ -160,4 +163,28 @@ input {
 
 .right {
   flex-direction: row-reverse;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  /* border: 1px solid red; */
+  padding: 0;
+  gap: 0;
+}
+
+input {
+  width: 100%;
+  height: 90%;
+  border: none;
+  border-top: 1px solid black;
+  padding: 10px;
+}
+
+input:focus {
+  outline: none;
+  /* background-color: red; */
+  /* border: 0px solid grey; */
 }

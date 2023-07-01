@@ -20,7 +20,6 @@
   </div>
 </div> -->
 <app-navbar></app-navbar>
-<app-grid-config></app-grid-config>
 <!-- <div id="chat-page" class="hidden">
   <div class="chat-container">
     <div class="chat-header">
@@ -53,109 +52,58 @@
     </li>
   </ul>
 </div> -->
-<main>
-  <div class="container">
-    <section class="chats">
-      <p-autoComplete
-        [(ngModel)]="selectedUser"
-        [suggestions]="filteredUsers"
-        field="username"
-        [dropdown]="false"
-        (completeMethod)="filterUsers($event)"
-        (onSelect)="showSelectedUser()"
-      >
-        <ng-template let-user pTemplate="item">
-          <div class="user-item">
-            <img src="{{ user.profileImg }}" width="30px" height="30px" />
-            <div>{{ user.username }}</div>
-          </div>
-        </ng-template>
-      </p-autoComplete>
-
-      <span class="chat-span">DIRECT MESSAGES</span>
-      <div class="direct-messages">
-        <div class="user-rectangle">
+<main class="container">
+  <section class="chats">
+    <p-autoComplete
+      [(ngModel)]="selectedUser"
+      [suggestions]="filteredUsers"
+      field="username"
+      [dropdown]="false"
+      (completeMethod)="filterUsers($event)"
+      (onSelect)="showSelectedUser()"
+      placeholder="Search a contact"
+    >
+      <ng-template let-user pTemplate="item">
+        <div class="user-item">
+          <img src="{{ user.profileImg }}" width="30px" height="30px" />
+          <div>{{ user.username }}</div>
+        </div>
+      </ng-template>
+    </p-autoComplete>
+    <span class="chat-span">DIRECT MESSAGES</span>
+    <div class="direct-messages">
+      <ng-container *ngFor="let user of users">
+        <div class="user-rectangle" (click)="connect(user.id)">
           <div class="user-pic"></div>
           <div class="user-info">
-            <span class="user-name">Kay Totleben</span>
+            <span class="user-name">{{ user.username }}</span>
             <span class="preview">These exciting concepts seem...</span>
           </div>
         </div>
-        <div class="user-rectangle">
-          <div class="user-pic"></div>
-          <div class="user-info">
-            <span class="user-name">Kay Totleben</span>
-            <span class="preview">These exciting concepts seem...</span>
-          </div>
-        </div>
-        <div class="user-rectangle">
-          <div class="user-pic"></div>
-          <div class="user-info">
-            <span class="user-name">Kay Totleben</span>
-            <span class="preview">These exciting concepts seem...</span>
-          </div>
-        </div>
+      </ng-container>
+    </div>
+  </section>
+  <section class="chat-area">
+    <header>
+      <div>
+        <div class="user-pic"></div>
       </div>
-    </section>
-    <section class="chat-area">
-      <header>
-        <div>
-          <div class="user-pic"></div>
-        </div>
-        <h3>Username</h3>
-      </header>
-      <div class="chat-text-area">
-        <div class="left">
+      <h4>Username</h4>
+    </header>
+    <div class="chat-text-area" #scrollMe [scrollTop]="scrollMe.scrollHeight - 100">
+      <ng-container *ngFor="let message of messages">
+        <div [ngClass]="message.sender != userID ? 'left' : 'right'">
           <div class="user-pic"></div>
           <div class="text">
-            <span>Name</span>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae ut voluptates iusto expedita numquam velit non obcaecati officiis in quia quod laboriosam suscipit hic vel deserunt, aut magni laudantium dicta.</p>
+            <span>{{ message.sender }}</span>
+            <p>{{ message.content }}</p>
           </div>
         </div>
-        <div class="right">
-          <div class="user-pic"></div>
-          <div class="text">
-            <span>Name</span>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae ut voluptates iusto expedita numquam velit non obcaecati officiis in quia quod laboriosam suscipit hic vel deserunt, aut magni laudantium dicta.</p>
-          </div>
-        </div>
-        <div class="left">
-          <div class="user-pic"></div>
-          <div class="text">
-            <span>Name</span>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae ut voluptates iusto expedita numquam velit non obcaecati officiis in quia quod laboriosam suscipit hic vel deserunt, aut magni laudantium dicta.</p>
-          </div>
-        </div>
-        <div class="right">
-          <div class="user-pic"></div>
-          <div class="text">
-            <span>Name</span>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae ut voluptates iusto expedita numquam velit non obcaecati officiis in quia quod laboriosam suscipit hic vel deserunt, aut magni laudantium dicta.</p>
-          </div>
-        </div>
-        <div class="right">
-          <div class="user-pic"></div>
-          <div class="text">
-            <span>Name</span>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae ut voluptates iusto expedita numquam velit non obcaecati officiis in quia quod laboriosam suscipit hic vel deserunt, aut magni laudantium dicta.</p>
-          </div>
-        </div>
-        <div class="left">
-          <div class="user-pic"></div>
-          <div class="text">
-            <span>Name</span>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae ut voluptates iusto expedita numquam velit non obcaecati officiis in quia quod laboriosam suscipit hic vel deserunt, aut magni laudantium dicta.</p>
-          </div>
-        </div>
-        <div class="right">
-          <div class="user-pic"></div>
-          <div class="text">
-            <span>Name</span>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae ut voluptates iusto expedita numquam velit non obcaecati officiis in quia quod laboriosam suscipit hic vel deserunt, aut magni laudantium dicta.</p>
-          </div>
-        </div>
-      </div>
-      <input type="text">
-    </section>
-  </div>
+      </ng-container>
+    </div>
+    <footer>
+      <input type="text" name="" id="" placeholder="Write a message" #msm />
+      <button (click)="sendMessage(msm.value)">Send</button>
+    </footer>
+  </section>
 </main>
