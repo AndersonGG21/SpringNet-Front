@@ -28,7 +28,7 @@ export class FeedComponent {
         this.posts = posts.value;
         this.posts.sort((a,b) => a.id! - b.id!);
         skeleton.style.display = 'none'
-      }, this.time * 5);
+      }, this.time * 0.1);
     })
 
     this.title.setTitle("Feed")
