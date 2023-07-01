@@ -10,17 +10,18 @@ export class SocketService {
 
   stompClient: any;
   topic : string = "/topic/public";
+  privateTopic: string = "/direct/"
   webSocketPoint : string = "http://localhost:8080/spring-websocket";
   messages : ChatMessage[] = [];
 
-  connect() : void {
+  connect(id : any) : void {
     console.log("Intialize WebSocket Connection");
     let ws = SockJS(this.webSocketPoint);
     this.stompClient = Stomp.over(ws);
     const _this = this;
     _this.stompClient.connect({}, function (frame : any){
-      _this.stompClient.subscribe(_this.topic,function (greetingResponse : any){
-        console.log("AQUI RETORNO EL MENSAHE")
+      console.log(id)
+      _this.stompClient.subscribe(`${_this.privateTopic}${id}`,function (greetingResponse : any){
         _this.onMessageRecieved(greetingResponse);
       })
     }, this.errorCallBack )
@@ -36,7 +37,7 @@ export class SocketService {
 
   send(message : any) {
     console.log("Sending.....................");
-    this.stompClient.send("/app/chat.senMessage", {}, JSON.stringify(message));
+    this.stompClient.send("/app/chat.sendMessageV1", {}, JSON.stringify(message));
   }
 
   onMessageRecieved(message : any) {
