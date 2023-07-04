@@ -1,4 +1,3 @@
-/*  */
 .container {
   display: flex;
   position: relative;
@@ -12,6 +11,7 @@
   flex-shrink: 0;
   border: 1px solid black;
   border-right: none;
+  border-radius: 8px 0px 0px 8px;
   padding: 0;
 }
 
@@ -19,10 +19,9 @@
   font-size: small;
   width: 257px;
   border-bottom: 1px solid black;
-  border-radius: unset;
   height: 44px;
+  border-radius: 8px 0px 0px 0px;
 }
-
 
 .chat-span {
   color: black;
@@ -38,16 +37,20 @@
   flex-direction: column;
   gap: 10px;
 }
+
 .user-rectangle{
   width: 258px;
   height: 40px;
   flex-shrink: 0;
   border-radius: 4px;
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   align-items: center;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  gap: 10px;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .user-rectangle:hover {
@@ -55,10 +58,10 @@
   transition: all 0.5s ease-in-out;
 }
 
-.user-info {
+/* .user-info {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .usern-name{
   font-size: 12px;
@@ -67,7 +70,6 @@
 }
 
 .preview {
-  /* color: rgba(255, 255, 255, 0.50); */
   color: black;
   font-size: 12px;
   font-style: normal;
@@ -75,32 +77,40 @@
   line-height: normal;
 }
 
-.user-pic {
+img{
   width: 40px;
   height: 40px;
-  flex-shrink: 0;
   border-radius: 50%;
-  background-color: red;
-  align-self: flex-start;
+  cursor: pointer;
+}
+
+.placeholder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 0px 8px 8px 0px;
 }
 
 .chat-area {
-  width: 900px;
+  width: 70%;
   height: 550px;
-  /* background: rgba(0, 0, 0, 0.23); */
   display: flex;
   flex-direction: column;
   position: relative;
   border: 1px solid black;
+  border-radius: 0px 8px 8px 0px;
+  display: none;
 }
 
 .chat-area header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 8%;
-  /* background: #121617; */
   border-bottom: 1px solid black;
-  /* color: rgba(255, 255, 255, 0.80); */
   padding: 10px;
   gap: 5px;
 }
@@ -110,7 +120,7 @@
   flex-direction: column;
   height: 100%;
   gap: 20px;
-padding: 20px;
+  padding: 20px;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
 }
@@ -145,14 +155,14 @@ border-radius: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* border-radius: 8px 2px 8px 8px; */
   background: rgba(33, 35, 38, 0.60);
   padding: 10px;
 }
 
 .text > span {
   font-size: 10px;
-  color: #4F7FB7;
+  color: white;
+  font-weight: bold;
   line-height: normal;
 }
 
@@ -170,7 +180,6 @@ footer {
   justify-content: center;
   width: 100%;
   height: 10%;
-  /* border: 1px solid red; */
   padding: 0;
   gap: 0;
 }
@@ -185,6 +194,98 @@ input {
 
 input:focus {
   outline: none;
-  /* background-color: red; */
-  /* border: 0px solid grey; */
 }
+
+::ng-deep .fade-up-badge{
+  opacity: 0;
+  transform: translateY(20px);
+  animation-name: fadeUpAnimation;
+  animation-duration: 1s;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeUpAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Input */
+.input-container {
+  position: relative;
+  display: flex;
+  height: 2.8rem;
+  width: 100%;
+  border-bottom: none;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
+}
+
+.input-container input {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid  rgb(176 190 197);
+  background-color: transparent;
+  padding: 0.625rem 70px 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  color: rgb(69 90 100);
+  outline: none;
+  transition: all .15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-container input:focus {
+  border: 1px solid rgb(99, 236, 72);
+  border-bottom: none;
+}
+
+.invite-btn {
+  position: absolute;
+  width: 45px;
+  right: 4px;
+  top: 4px;
+  bottom: 4px;
+  z-index: 10;
+  border-radius: 4px;
+  background-color: rgb(86, 236, 72);
+  color: #fff;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  transition: .6s ease;
+}
+
+.invite-btn:hover {
+  right: 2px;
+  top: 2px;
+  bottom: 2px;
+  border-radius: 8px;
+}
+
+.input-container input:placeholder-shown ~ .invite-btn {
+  pointer-events: none;
+  background-color: gray;
+  opacity: 0.5;
+}
+
+.close-btn{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
