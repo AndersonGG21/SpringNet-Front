@@ -43,7 +43,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     this.socketService.connectOnline();
     setTimeout(() => {
-       this.prueba();
+       this.onlineConnectionMessage();
     }, 3000);
   }
 
@@ -120,7 +120,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.socketService.send(chatMessage);
   }
 
-  prueba() : void {
+  onlineConnectionMessage() : void {
     let chatMessage = {
       content: "",
       sender: this.cookie.get("username"),
