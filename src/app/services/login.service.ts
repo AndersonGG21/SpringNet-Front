@@ -36,6 +36,7 @@ export class LoginService {
       console.log(response.id);
       const uuid = response.id;
       this.cookie.set("uuid", String(uuid));
+      this.cookie.set("username", String(response.username))
     })
   }
 
