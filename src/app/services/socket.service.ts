@@ -1,18 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, inject } from '@angular/core';
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 import { ChatMessage } from '../models/types';
+import { Observable, Subject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SocketService {
+export class SocketService implements OnInit {
+  ngOnInit(): void {}
 
   stompClient: any;
-  topic : string = "/topic/public";
+  topic : string = "/topic/online";
   privateTopic: string = "/direct/"
   webSocketPoint : string = "http://localhost:8080/spring-websocket";
   messages : ChatMessage[] = [];
+  connectUsers : string[] = [];
+  private onlineUsersSubject: Subject<any> = new Subject<any>();
 
   /**
    * The connect function initializes a WebSocket connection using SockJS and Stomp, and subscribes to
@@ -26,9 +32,20 @@ export class SocketService {
     this.stompClient = Stomp.over(ws);
     const _this = this;
     _this.stompClient.connect({}, function (frame : any){
-      console.log(id)
-      _this.stompClient.subscribe(`${_this.privateTopic}${id}`,function (greetingResponse : any){
-        _this.onMessageRecieved(greetingResponse);
+      _this.stompClient.subscribe(`${_this.privateTopic}${id}`,function (response : any){
+        _this.onMessageRecieved(response);
+      })
+    }, this.errorCallBack )
+  }
+
+  connectOnline() : void {
+    console.log("Intialize WebSocket Connection to online status");
+    let ws = SockJS(this.webSocketPoint);
+    this.stompClient = Stomp.over(ws);
+    const _this = this;
+    _this.stompClient.connect({}, function (frame : any){
+      _this.stompClient.subscribe(`${_this.topic}`,function (response : any){
+        _this.onMessageRecievedV1(response);
       })
     }, this.errorCallBack )
   }
@@ -39,10 +56,8 @@ export class SocketService {
    */
   disconnect() : void {
     if (this.stompClient != null) {
-      this.stompClient.disconnected();
+      this.stompClient.disconnect();
     }
-
-    console.log("Disconnected");
   }
 
   /**
@@ -51,7 +66,6 @@ export class SocketService {
    * data type. It represents the message that you want to send.
    */
   send(message : any) {
-    console.log("Sending.....................");
     this.stompClient.send("/app/chat.sendMessageV1", {}, JSON.stringify(message));
   }
 
@@ -61,9 +75,16 @@ export class SocketService {
   * type.
   */
   onMessageRecieved(message : any) {
-    console.log(`Message recieved from: ${message.body}`);
     const obj = JSON.parse(message.body);
     this.messages.push(obj);
+  }
+
+  onMessageRecievedV1(message : any) {
+    console.log(`Message recieved from: ${message.body}`);
+    const obj = JSON.parse(message.body);
+    if (obj.type == 'JOIN') {
+      this.onlineUsersSubject.next(obj.sender);
+    }
   }
 
   /**
@@ -81,6 +102,14 @@ export class SocketService {
   */
   getMessagesList() : ChatMessage[] {
     return this.messages;
+  }
+
+  getOnlineUsersSubject(): Observable<any> {
+    return this.onlineUsersSubject.asObservable();
+  }
+
+  sendConnection(chatMessage : any) : void {
+    this.stompClient.send("/app/chat.onlineUsers", {}, JSON.stringify(chatMessage));
   }
 
 }
