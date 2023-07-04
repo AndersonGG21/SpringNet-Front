@@ -42,8 +42,6 @@ export class LoginComponent implements OnInit{
     this.initScene();
   }
 
-
-
   toggle(): void {
       const pInput = <HTMLInputElement>document.getElementById("password");
       pInput.type == "password"
