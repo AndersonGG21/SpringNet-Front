@@ -38,6 +38,10 @@ export class SocketService implements OnInit {
     }, this.errorCallBack )
   }
 
+  /**
+   * The function `connectOnline()` initializes a WebSocket connection to receive online status
+   * updates.
+   */
   connectOnline() : void {
     console.log("Intialize WebSocket Connection to online status");
     let ws = SockJS(this.webSocketPoint);
@@ -104,10 +108,19 @@ export class SocketService implements OnInit {
     return this.messages;
   }
 
+  /**
+   * The function returns an Observable that emits the values of the onlineUsersSubject.
+   * @returns The method is returning an Observable of type 'any'.
+   */
   getOnlineUsersSubject(): Observable<any> {
     return this.onlineUsersSubject.asObservable();
   }
 
+ /**
+  * The function sends a chat message to the online users.
+  * @param {any} chatMessage - The chatMessage parameter is an object that contains the message to be
+  * sent in the chat. It should be in JSON format.
+  */
   sendConnection(chatMessage : any) : void {
     this.stompClient.send("/app/chat.onlineUsers", {}, JSON.stringify(chatMessage));
   }
