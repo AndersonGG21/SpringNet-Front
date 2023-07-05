@@ -127,17 +127,23 @@
 ,::ng-deep .transparent  > .p-dialog-header{
   background-color: transparent;
 }
-/*
-::ng-deep .p-dialog .p-dialog-content {
-  background-color: transparent;
-}
-
-::ng-deep .p-dialog .p-dialog-header-icon .p-dialog-header-close-icon{
-  color: black;
-} */
 
 ::ng-deep .p-dialog .p-dialog-content::-webkit-scrollbar {
   width: 0;
   background-color: transparent;
 }
 
+.upload-btn {
+  border-radius: 8px;
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
