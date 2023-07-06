@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.initScene();
+    // this.initScene();
   }
 
   toggle(): void {
