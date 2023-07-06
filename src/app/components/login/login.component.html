@@ -1,4 +1,4 @@
-<div id="container">
+<!-- <div id="container">
   <div class="right">
     <form [formGroup]="userForm" class="login-form">
       <h1>Log In</h1>
@@ -44,3 +44,77 @@
     </form>
   </div>
 </div>
+ -->
+
+ <main>
+  <aside>
+    <img src="../../../assets/login-present.png" alt="" width="80%">
+    <div class="info">
+      <h1>"Fast, Efficient and Productive"</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum perspiciatis architecto libero ipsam et expedita incidunt quia accusamus eligendi cum laudantium necessitatibus cumque voluptas officiis corrupti praesentium, exercitationem blanditiis aliquam.</p>
+    </div>
+  </aside>
+
+  <div class="right">
+    <div class="logo-container">
+      <img src="../../../assets/spring-net-logo.png" alt="SpringNet Logo" class="navbar-logo" width="70px"/>
+      <span>SpringNet</span>
+    </div>
+    <form [formGroup]="userForm" class="login-form">
+      <div class="form-info">
+        <h1>Sign Up<span>!</span></h1>
+        <p>"Connect with the world and live unforgettable experiences"</p>
+      </div>
+      <!-- <div class="group">
+        <input
+          type="text"
+          id="email"
+          name="email"
+          formControlName="email"
+          required
+        />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Email</label>
+      </div> -->
+      <div class="input-container">
+        <label for="email"></label>
+        <input required="" placeholder="Write a message" type="text" id="email" formControlName="email" required>
+      </div>
+      <div class="input-group">
+        <input required="" type="text" name="text" autocomplete="off" class="input" id="email" formControlName="email" required>
+        <label class="user-label">First Name</label>
+      </div>
+
+
+
+      <div class="group">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          required
+        />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Password:</label>
+        <button
+          type="button"
+          id="btnToggle"
+          class="toggle active"
+          (click)="toggle()"
+        >
+          <i class="bx bx-hide bx-xs"></i>
+        </button>
+      </div>
+      <button type="submit" class="login-btn" (click)="submitForm()">
+        Login
+      </button>
+      <span class="message"
+        >Not registered? <a href="#">Create an account</a></span
+      >
+    </form>
+  </div>
+
+ </main>
