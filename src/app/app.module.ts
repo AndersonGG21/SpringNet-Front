@@ -40,6 +40,7 @@ import * as FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-s
 import { SavedPostsComponent } from './components/saved-posts/saved-posts.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
@@ -66,7 +67,8 @@ registerPlugin(
     ProfileComponent,
     GridConfigComponent,
     SavedPostsComponent,
-    ChatComponent
+    ChatComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
