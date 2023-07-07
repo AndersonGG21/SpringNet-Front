@@ -1,46 +1,78 @@
-<nav class="sidebar-container">
-  <ul class="sidebar">
-    <li>
-      <button class="icon-btn">
-        <img src="../../../assets/home.svg" alt="Home Icon" />
+<div class="container">
+  <header class="header">
+    <div class="logo-container">
+      <img src="../../../assets/spring-net-logo.png" alt="" width="40px">
+      <span>SpringNet</span>
+    </div>
+    <form action="" class="autocomplete-form">
+      <button>
+        <i class="pi pi-search" style="font-size: 1rem; color: #76777E"></i>
       </button>
-      <span class="icon-title">Home</span>
-    </li>
-    <li>
-      <button class="icon-btn">
-        <img src="../../../assets/chat-icon.svg" alt="Chat Icon" />
-      </button>
-      <span class="icon-title">Chats</span>
-    </li>
-    <li>
-      <button class="icon-btn">
-        <img src="../../../assets/discover-icon.svg" alt="Discover Icon" />
-      </button>
-      <span class="icon-title">Soon</span>
-    </li>
-    <li>
-      <button class="icon-btn">
-        <img src="../../../assets/liked-icon.svg" alt="Liked Icon" />
-      </button>
-      <span class="icon-title">Likes</span>
-    </li>
-    <li>
-      <button class="icon-btn">
-        <img src="../../../assets/videos-icon.svg" alt="Videos Icon" />
-      </button>
-      <span class="icon-title">Videos</span>
-    </li>
-    <li>
-      <button class="icon-btn">
-        <img src="../../../assets/reels-icon.svg" alt="Reels Icon" />
-      </button>
-      <span class="icon-title">Reels</span>
-    </li>
-    <li>
-      <button class="icon-btn">
-        <img src="../../../assets/saved-icon.svg" alt="Saved Icon" />
-      </button>
-      <span class="icon-title">Saved</span>
-    </li>
-  </ul>
-</nav>
+      <p-autoComplete
+        [(ngModel)]="selectedUser"
+        [suggestions]="filteredUsers"
+        field="username"
+        [dropdown]="false"
+        (completeMethod)="filterUsers($event)"
+        (onSelect)="showSelectedUser()"
+        ngClass="autocomplete"
+        placeholder="Search"
+      >
+      <ng-template let-user pTemplate="item">
+        <div class="user-item">
+          <img
+            src="{{ user.profileImg }}"
+            width="30px"
+            height="30px"
+          />
+          <div>{{ user.username }}</div>
+        </div>
+      </ng-template>
+      </p-autoComplete>
+    </form>
+
+  </header>
+  <nav class="sidebar-container">
+    <ul class="sidebar">
+      <li routerLink="/feed">
+        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/feed') }">
+          <img src="../../../assets/home.svg" alt="Home Icon" />
+          <span class="icon-title">Home</span>
+        </button>
+      </li>
+      <li routerLink="/chat">
+        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/chat') }">
+          <img src="../../../assets/chat-icon.svg" alt="Chat Icon" />
+          <span class="icon-title">Chats</span>
+        </button>
+      </li>
+      <li routerLink="/">
+        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/liked') }">
+          <img src="../../../assets/liked-icon.svg" alt="Liked Icon" />
+          <span class="icon-title">Likes</span>
+        </button>
+      </li>
+      <li routerLink="/">
+        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/reels') }">
+          <img src="../../../assets/reels-icon.svg" alt="Reels Icon" />
+          <span class="icon-title">Reels</span>
+        </button>
+      </li>
+      <li (click)="redirectToSaved()">
+        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/profile/saved') }">
+          <img src="../../../assets/saved-icon.svg" alt="Saved Icon" />
+          <span class="icon-title">Saved</span>
+        </button>
+      </li>
+      <li>
+        <button class="icon-btn" (click)="menu.toggle($event)">
+        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" size="normal" shape="circle"></p-avatar>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <p-menu #menu [model]="items" [popup]="true"></p-menu>
+</div>
+
+<app-feed></app-feed>

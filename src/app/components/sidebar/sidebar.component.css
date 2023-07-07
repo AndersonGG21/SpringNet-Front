@@ -1,18 +1,28 @@
-.sidebar-container {
+.container {
+  display: flex;
+  /* width: 100vw; */
+  /* height: 100vh; */
+  position: relative;
+}
+
+.sidebar-container{
   height: 100vh;
   position: fixed;
   width: 90px;
   background-color: #151515;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  /* overflow: hidden; */
-  transition: all .5s ease-in-out;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #312F37;
+  transition: all .2s ease-in-out;
 }
 
 .sidebar-container:hover {
   width: 190px;
-  transition: all .5s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 .sidebar {
@@ -48,34 +58,30 @@
   border: none;
 }
 
-li:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-  transition: all .5s ease-in-out;
-}
-
-.sidebar-container{
-  display: flex;
-  flex-direction: column;
-  place-items: center;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-}
-
-.sidebar > li {
+.sidebar li {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   transition: all .5s ease-in-out;
+  cursor: pointer;
+}
+
+li:hover {
+  transform: scale(1.05);
+  transition: all .5s ease-in-out;
 }
 
 button {
-  position: relative;
+  /* position: relative; */
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
-button::after {
+.sidebar li:nth-child(1) .icon-btn-active::after {
   content: "";
   position: absolute;
   bottom: -10px;
@@ -88,17 +94,115 @@ button::after {
 }
 
 .icon-title {
-  position: absolute;
+  /* position: absolute; */
   font-size: small  ;
   color: white;
-  visibility: hidden;
-  right: -40px;
-  transition: all .5s ease-in-out;
+  display: none;
+  /* right: -40px; */
   font-weight: bold;
+  /* background-color: red; */
 }
 
 .sidebar-container:hover .icon-title{
-  visibility: visible;
-  transition: all .5s ease-in-out;
+  display: block;
 }
 
+.header {
+  position: fixed;
+  width: 93.4%;
+  height: 75px;
+  margin-left: 90px;
+  background-color: #151515;;
+  border: 1px solid #312F37;
+  border-left: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+  z-index: 10;
+}
+
+.logo-container {
+  display: flex;
+  color: white;
+  place-items: center;
+  gap: 10px;
+}
+
+::ng-deep .autocomplete {
+  width: 300px;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid #29292E;
+  background: #1B1A1C;
+  box-shadow: 0px 4px 40px 0px #171619 inset;
+  display: flex;
+  position: relative;
+}
+
+::ng-deep .autocomplete input {
+  background: none;
+  width: 300px;
+  height: 48px;
+  border: none;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: small;
+  justify-self: flex-end;
+  position: absolute;
+  left: 20px;
+}
+
+::ng-deep .autocomplete input:enabled:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+  position: relative;
+}
+
+::ng-deep .autocomplete input::placeholder {
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+.autocomplete-form {
+  display: flex;
+  position: relative;
+}
+
+.autocomplete-form button {
+  background:none;
+  border: none;
+  pointer-events: none;
+  position: absolute;
+  top: 15px;
+  z-index: 10;
+}
+
+::ng-deep .autocomplete .p-autocomplete-panel {
+  background-color: #151515;
+  border: 1px solid #312F37;
+}
+
+::ng-deep .autocomplete .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item,
+.p-autocomplete-item:hover{
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+
+::ng-deep .autocomplete .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:hover {
+  background-color: #312F37;
+  transition: all 0.2s ease-in-out;
+}
+
+::ng-deep .user-item {
+  display: flex;
+  place-items: center;
+  gap: 5px;
+}
+
+.user-item img {
+  border-radius: 50% ;
+}
