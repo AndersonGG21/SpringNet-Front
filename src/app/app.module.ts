@@ -16,6 +16,7 @@ import { FilePondModule, registerPlugin } from "ngx-filepond";
 import { CookieService } from 'ngx-cookie-service';
 import { SkeletonModule } from 'primeng/skeleton';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { AvatarModule } from 'primeng/avatar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -90,7 +91,8 @@ registerPlugin(
     FilePondModule,
     SkeletonModule,
     AutoCompleteModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    AvatarModule
   ],
   providers: [MessageService, CookieService],
   bootstrap: [AppComponent]
