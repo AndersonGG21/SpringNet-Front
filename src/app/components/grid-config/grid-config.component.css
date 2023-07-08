@@ -147,13 +147,14 @@ button:focus {
 
 ::ng-deep .filepond--drop-label {
   cursor: pointer;
-  background-color: #fff;
+  background-color: #151515;
   border: 1px solid gray;
   border-radius: 8px;
 }
 
 ::ng-deep .filepond--drop-label > label {
   cursor: pointer;
+  color: #FFF;
   font-size: small;
   font-weight: bold;
 }
