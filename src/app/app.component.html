@@ -1,2 +1,6 @@
-<app-sidebar *ngIf="renderLayout"></app-sidebar>
-<router-outlet></router-outlet>
+<header>
+  <app-sidebar *ngIf="renderLayout"></app-sidebar>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
