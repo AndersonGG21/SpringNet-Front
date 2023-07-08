@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
   private router = inject(Router);
   private cookie = inject(CookieService);
   private userService = inject(UserService);
-  selectedUser : User | undefined;
+  selectedUser : User = {};
   filteredUsers : User[] = [];
   users : User[] = [];
 
@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit {
       {
         label: 'Logout',
         icon: 'pi pi-fw pi-sign-out',
-        routerLink: '/'
+        routerLink: '/login'
       }
     ];
 

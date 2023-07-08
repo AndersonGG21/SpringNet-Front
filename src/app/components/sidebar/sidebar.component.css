@@ -18,6 +18,7 @@
   padding: 0;
   border: 1px solid #312F37;
   transition: all .2s ease-in-out;
+  z-index: 20;
 }
 
 .sidebar-container:hover {
@@ -81,7 +82,7 @@ button {
   align-items: center;
 }
 
-.sidebar li:nth-child(1) .icon-btn-active::after {
+.sidebar li .icon-btn-active::after {
   content: "";
   position: absolute;
   bottom: -10px;

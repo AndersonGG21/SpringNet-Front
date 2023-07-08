@@ -4,14 +4,14 @@
       <img src="../../../assets/spring-net-logo.png" alt="" width="40px">
       <span>SpringNet</span>
     </div>
-    <form action="" class="autocomplete-form">
+    <div class="autocomplete-form">
       <button>
         <i class="pi pi-search" style="font-size: 1rem; color: #76777E"></i>
       </button>
       <p-autoComplete
         [(ngModel)]="selectedUser"
         [suggestions]="filteredUsers"
-        field="username"
+        field="@"
         [dropdown]="false"
         (completeMethod)="filterUsers($event)"
         (onSelect)="showSelectedUser()"
@@ -29,7 +29,7 @@
         </div>
       </ng-template>
       </p-autoComplete>
-    </form>
+    </div>
 
   </header>
   <nav class="sidebar-container">
@@ -75,4 +75,4 @@
   <p-menu #menu [model]="items" [popup]="true"></p-menu>
 </div>
 
-<app-feed></app-feed>
+<!-- <app-feed></app-feed> -->
