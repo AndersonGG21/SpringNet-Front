@@ -37,7 +37,7 @@ export class LoginService {
           const uuid = response.id;
           this.cookie.set("uuid", String(uuid));
           this.cookie.set("username", String(response.username));
-          this.router.navigate(['/feed']);
+          this.router.navigateByUrl(("/feed")).then(() => window.location.reload());
         })
       }
     );
