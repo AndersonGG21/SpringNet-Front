@@ -9,7 +9,8 @@ import { ChatComponent } from './components/chat/chat.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 const routes: Routes = [
-  {path: "", component: LoginComponent},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {path: "login", component: LoginComponent},
   {path: "feed", component: FeedComponent},
   {path: "section", component: PostsCardComponent},
   {path: "profile/:id", component: ProfileComponent},
