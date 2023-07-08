@@ -16,6 +16,7 @@ export class PostsCardComponent implements OnInit {
   comments: Comment[] = [];
   likes = 0;
   saved = false;
+  date = new Date();
 
   constructor(
     private postService: PostService,
@@ -106,11 +107,15 @@ export class PostsCardComponent implements OnInit {
         id: this.post.id,
       },
       user: {
-        id: Number(this.cookie.get('uuid')),
+        id: Number(this.cookie.get('uuid'))
       },
     };
 
-    this.postService.commentPost(comment).subscribe((response) => {
+    this.postService.commentPost(comment).subscribe(() => {
+      if (comment.user) {
+        comment.user.username = this.cookie.get('username');
+      }
+      comment.date = this.date.toLocaleDateString();
       this.comments.push(comment);
       this.cdr.detectChanges();
     });
