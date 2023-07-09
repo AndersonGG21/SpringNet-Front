@@ -1,13 +1,14 @@
 .card {
   min-width: 310px;
   min-height: 200px;
-  background-color: inherit;
+  background-color: #151515;
   border-radius: 30px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-  color: black;
+  color: #FFF;
+  font-size: 12px;
   -webkit-box-shadow: 10px 10px 25px -10px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 25px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 25px -10px rgba(0, 0, 0, 0.75);
@@ -60,6 +61,7 @@
 .modal-post {
   position: relative;
   margin-top: 20px;
+  background-color: #151515;
 }
 
 .modal-post > img {
@@ -78,14 +80,6 @@
 .card-actions i {
   color: black;
   font-size: 16px;
-}
-
-section {
-  display: grid;
-  grid-gap: 40px;
-  padding: 20px;
-  place-content: center;
-  /* grid-template-rows: 370px 480px; */
 }
 
 .card-desc {
@@ -129,37 +123,6 @@ section {
 
 .comments-header {
   border: 1px solid black;
-}
-
-@-webkit-keyframes jump {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  20% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  40% {
-    -webkit-transform: translateY(-30px);
-    transform: translateY(-30px);
-  }
-  50% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  60% {
-    -webkit-transform: translateY(-15px);
-    transform: translateY(-15px);
-  }
-  80% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
 }
 
 @keyframes jump {
@@ -217,6 +180,7 @@ section {
 }
 
 .modal-desc {
+  color: #FFF;
   border-bottom: 1px solid #3C3E40;
 }
 
@@ -227,7 +191,8 @@ section {
 .titleBox {
   display: flex;
   align-items: center;
-  background-color: #fdfdfd;
+  background-color: #151515;
+  color: #FFF;
   gap: 10px;
 }
 
@@ -240,15 +205,11 @@ section {
   border-top: 1px dotted #bbb;
 }
 
-.commentBox .form-group:first-child,
-.actionBox .form-group:first-child {
+.commentBox .form-group,
+.actionBox .form-group {
   width: 80%;
 }
 
-.commentBox .form-group:nth-child(2),
-.actionBox .form-group:nth-child(2) {
-  width: 18%;
-}
 
 .actionBox .form-group * {
   width: 100%;
@@ -263,6 +224,9 @@ section {
   list-style: none;
   max-height: 300px;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .commentList li {
@@ -288,19 +252,21 @@ section {
 
 .commentText p {
   margin: 0;
+  color: #FFF;
   font-size: small;
 }
 
 .sub-text {
-  color: #4caf50;
+  color: #76777E;
   font-size: 11px;
 }
 
 .comment-input {
-  color: black;
+  color: #fff;
+  background: none;
   box-shadow: 0 0 0.4vw rgba(0, 0, 0, 0.5), 0 0 0 0.15vw transparent;
   border-radius: 0.4vw;
-  border: none;
+  border: 1px solid #312F37;
   outline: none;
   padding: 0.4vw;
   max-width: 90%;
@@ -325,53 +291,37 @@ section {
 
 /* From uiverse.io by @alshahwan */
 .btn-comment {
-  background-color: #fff;
+  background-color: #151515;
   border: 1px solid #4caf50;
   padding: 5px;
-  position: relative;
   width: 7.2em;
   height: 35px;
   transition: 0.5s;
   font-size: 17px;
   border-radius: 0.4em;
+  cursor: pointer;
 }
 
 .btn-comment p {
-  position: absolute;
-  top: 0.4em;
-  left: 1.2em;
   margin: 0;
   padding: 0;
   transition: 0.5s;
   color: #4caf50;
 }
 
-.btn-comment svg {
-  position: absolute;
-  top: 0.45em;
-  right: 0.5em;
-  margin: 0;
-  padding: 0;
-  opacity: 0;
-  transition: 0.5s;
-  height: 1em;
-  fill: #fff;
-}
-
 .btn-comment:hover p {
-  left: 0.6em;
   color: #fff;
-}
-
-.btn-comment:hover svg {
-  opacity: 1;
 }
 
 .btn-comment:hover {
   background-color: #4caf50;
 }
 
-:host ::ng-deep .pi-bookmark-fill {
-  color: black;
+::ng-deep .pi-bookmark-fill {
+  color: #FFF;
   transition: all 0.5s ease;
+}
+
+::ng-deep .p-dialog .p-dialog-content {
+  background-color: #151515;
 }
