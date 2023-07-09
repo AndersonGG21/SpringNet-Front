@@ -204,6 +204,11 @@ button {
   gap: 5px;
 }
 
+::ng-deep .avatar .p-avatar-circle{
+  width: 45px;
+  height: 45px;
+}
+
 .user-item img {
   border-radius: 50% ;
 }
