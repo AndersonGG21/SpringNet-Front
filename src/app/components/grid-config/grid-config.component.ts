@@ -18,6 +18,7 @@ export class GridConfigComponent {
   post!: Post;
   content = '';
   uploadedFiles: any[] = [];
+  enableButton = false;
   @ViewChild('myPond') myPond: FilePondComponent | undefined;
 
   constructor(
@@ -94,6 +95,7 @@ export class GridConfigComponent {
 
     this.mediaService.uploadFile(formData).subscribe((res) => {
       this.imgUrl = res.url;
+      this.enableButton = true;
       console.log(this.imgUrl);
     });
   }
