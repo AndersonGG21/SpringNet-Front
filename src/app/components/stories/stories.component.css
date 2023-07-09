@@ -133,7 +133,7 @@
   background-color: transparent;
 }
 
-.upload-btn {
+.upload-btn{
   width: 100%;
   background-color: #151515;
   border: 1px solid #4caf50;
@@ -147,7 +147,7 @@
   transition: all 0.5s ease-in-out;
 }
 
-.upload-btn:hover {
+.upload-btn:hover:not(:disabled){
   transition: all 0.5s ease-in-out;
   transform: scale(1.02);
   color: #FFF;
@@ -167,4 +167,10 @@
   background-color: #fff;
   border-radius: 50%;
   padding: 10px;
+}
+
+::ng-deep .badge .p-badge-danger {
+  margin-top: 10px;
+  background-color: transparent;
+  border: 1px solid #EF4444;
 }

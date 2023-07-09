@@ -69,8 +69,11 @@
       >
       </file-pond>
     </div>
-    <button (click)="createStory()" class="upload-btn">
+    <button (click)="createStory()" class="upload-btn" [disabled]="!enableButton">
       <span>Upload</span>
     </button>
+    <ng-container *ngIf="!enableButton">
+      <p-badge styleClass="mr-2" severity="danger" value="Upload an image first" class="badge"></p-badge>
+    </ng-container>
   </form>
 </p-dialog>

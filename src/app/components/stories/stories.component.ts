@@ -24,7 +24,7 @@ export class StoriesComponent implements OnInit {
   swiper : any;
   sidebarVisible = false;
   story !: Story;
-
+  enableButton = false;
 
 
   ngOnInit(): void {
@@ -92,6 +92,7 @@ export class StoriesComponent implements OnInit {
     // const formData = new FormData();
     const file = event.file.file;
     this.formData.append('file', file);
+    this.enableButton = true;
   }
 
   showStorySidebar() {
