@@ -114,6 +114,7 @@ export class PostsCardComponent implements OnInit {
     this.postService.commentPost(comment).subscribe(() => {
       if (comment.user) {
         comment.user.username = this.cookie.get('username');
+        comment.user.profileImg = this.cookie.get('user_profile_picture');
       }
       comment.date = this.date.toLocaleDateString();
       this.comments.push(comment);
