@@ -11,6 +11,7 @@
           width="70px"
           height="70px"
         />
+        <strong>@{{ user.username }}</strong>
         <div class="stats">
           <div class="stat">
             <span>{{ userPosts.length }}</span>
@@ -36,7 +37,6 @@
           {{ checkFollow ? "Following" : "Follow" }}
         </button>
         <div class="text">
-          <strong>@{{ user.username }}</strong>
           <p>
             {{ user.description }}
           </p>
@@ -49,5 +49,5 @@
       <app-posts-card [post]="post"></app-posts-card>
     </ng-container>
   </section>
-  <app-grid-config></app-grid-config>
+  <!-- <app-grid-config></app-grid-config> -->
 </div>

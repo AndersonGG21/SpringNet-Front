@@ -152,21 +152,18 @@
 @media screen and (min-width < 768px) {
   section {
     grid-template-columns: repeat(1, 1fr);
-    /* grid-template-rows: 370px 480px; */
   }
 }
 
 @media screen and (min-width: 768px) {
   section {
     grid-template-columns: repeat(2, 300px);
-    /* grid-template-rows: 370px 480px; */
   }
 }
 
 @media screen and (min-width: 1200px) {
   section {
     grid-template-columns: repeat(3, 300px);
-    /* grid-template-rows: 370px 480px; */
     align-items: start;
   }
 }

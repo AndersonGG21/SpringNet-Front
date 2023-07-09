@@ -1,22 +1,24 @@
 section {
   position: relative;
   display: grid;
-  grid-gap: 40px;
-  padding: 20px;
+  grid-gap: 25px;
   place-content: center;
-  max-width: 80%;
-  margin-top: 120px;
-  margin-left: 100px;
+  max-width: 70%;
+  margin-top: 110px;
+  margin-left: 140px;
 }
 
 .profile-aside {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 75px;
+  right: 0;
   width: 200px;
-  margin-top: 100px;
   height: 100vh;
   padding: 10px;
+  background: #151515;
+  border: 1px solid #312F37;
+  border-top: none;
+  box-shadow: 0px 10px 40px 0px #101011;
 }
 
 .user-info {
@@ -24,10 +26,12 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  color: #FFF;
 }
 
 .user-info > img {
   border-radius: 50%;
+  border: 1px solid #312F37;
 }
 
 .stats,
@@ -58,7 +62,7 @@ section {
 }
 
 .text p {
-  color: #76777E
+  color: #cebfbf;
 }
 
 .stats {
@@ -136,19 +140,6 @@ button:focus {
 
 .unfollow-hover:hover::after {
   content: "Unfollow";
-}
-
-@media screen and (min-width < 768px) {
-  section {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
-
-@media screen and (min-width: 768px) {
-  section {
-    grid-template-columns: repeat(2, 300px);
-  }
 }
 
 @media screen and (min-width: 1200px) {
