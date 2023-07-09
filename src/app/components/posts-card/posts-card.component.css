@@ -306,12 +306,17 @@
   color: #4caf50;
 }
 
-.btn-comment:hover p {
+.btn-comment:hover:not(:disabled) p {
   color: #fff;
 }
 
-.btn-comment:hover {
+.btn-comment:hover:not(:disabled) {
   background-color: #4caf50;
+}
+
+.btn-comment:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 ::ng-deep .pi-bookmark-fill {

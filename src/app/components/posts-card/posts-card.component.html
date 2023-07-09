@@ -97,7 +97,7 @@
               #comment
             />
           </div>
-          <button class="btn-comment" (click)="commentPost()">
+          <button class="btn-comment" (click)="commentPost()" [disabled]="!comment.value">
             <p>Comment</p>
           </button>
         </form>
