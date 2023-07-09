@@ -145,6 +145,7 @@
   cursor: pointer;
   color: #4caf50;
   transition: all 0.5s ease-in-out;
+  position: relative;
 }
 
 .upload-btn:hover:not(:disabled){
@@ -170,7 +171,8 @@
 }
 
 ::ng-deep .badge .p-badge-danger {
-  margin-top: 10px;
-  background-color: transparent;
-  border: 1px solid #EF4444;
+  position: absolute;
+  /* margin-top: 10px; */
+  right: 0;
+  bottom: -10px;
 }
