@@ -134,23 +134,33 @@
 }
 
 .upload-btn {
-  border-radius: 8px;
-  background-color: #22c55e;
-  color: white;
-  border: none;
-  padding: 10px;
-  transition: all 0.5s ease-in-out;
+  width: 100%;
+  background-color: #151515;
+  border: 1px solid #4caf50;
+  padding: 5px;
+  height: 35px;
+  transition: 0.5s;
+  font-size: 17px;
+  border-radius: 0.4em;
   cursor: pointer;
+  color: #4caf50;
+  transition: all 0.5s ease-in-out;
 }
 
 .upload-btn:hover {
   transition: all 0.5s ease-in-out;
-  transform: scale(1.05);
+  transform: scale(1.02);
+  color: #FFF;
+  background-color: #4caf50;
 }
 
 ::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
-  color: white;
+  color: #FFF;
   font-weight: bold;
+}
+
+::ng-deep .p-dialog .p-dialog-header {
+  background-color: #151515;
 }
 
 ::ng-deep .p-dialog .p-dialog-header .p-dialog-header-icon:last-child {
