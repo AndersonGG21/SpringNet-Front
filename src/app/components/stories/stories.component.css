@@ -155,6 +155,11 @@
   background-color: #4caf50;
 }
 
+.upload-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 ::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
   color: #FFF;
   font-weight: bold;
@@ -172,7 +177,7 @@
 
 ::ng-deep .badge .p-badge-danger {
   position: absolute;
-  /* margin-top: 10px; */
+  opacity: 1;
   right: 0;
   bottom: -10px;
 }
