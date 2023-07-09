@@ -13,6 +13,10 @@ main {
   place-items: center;
 }
 
+span {
+  color: #fff;
+}
+
 @media screen and (min-width: 1200px) {
   section {
     grid-template-columns: repeat(3, 300px);
