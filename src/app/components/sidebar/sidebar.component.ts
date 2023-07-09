@@ -19,10 +19,16 @@ export class SidebarComponent implements OnInit {
   selectedUser : User = {};
   filteredUsers : User[] = [];
   users : User[] = [];
+  image = this.cookie.get('user_profile_picture');
 
   ngOnInit()
   {
     this.items = [
+      {
+        label: 'Profile',
+        icon: 'pi pi-fw pi-user',
+        routerLink: `/profile/${Number(this.cookie.get("uuid"))}`
+      },
       {
         label: 'Logout',
         icon: 'pi pi-fw pi-sign-out',
