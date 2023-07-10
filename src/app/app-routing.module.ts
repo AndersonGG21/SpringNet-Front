@@ -7,6 +7,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SavedPostsComponent } from './components/saved-posts/saved-posts.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { LikedPostsComponent } from './components/liked-posts/liked-posts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: "profile/:id", component: ProfileComponent},
   {path: "profile/saved/:id", component: SavedPostsComponent},
   {path: "chat", component: ChatComponent},
-  {path: "test", component: SidebarComponent}
+  {path: "test", component: SidebarComponent},
+  {path: "liked", component: LikedPostsComponent}
 ];
 
 @NgModule({
