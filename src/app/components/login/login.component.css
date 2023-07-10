@@ -171,8 +171,9 @@
   height: 1px;
   background-color: rgb(219, 219, 219);
 }
-/*  */
 
 .message a {
-  color: #e8e8e8;
+  color: #f5f5f5;
+  text-decoration: underline;
+  cursor: pointer;
 }
