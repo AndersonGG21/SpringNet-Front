@@ -83,4 +83,8 @@ export class PostService {
   checkIfSaved(post : any) : Observable<any> {
     return this.http.post<any>(`http://localhost:8080/api/saved-posts/check`, post, {headers: this.options.headers});
   }
+
+  getLikedPosts(userId : number) : Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}liked-posts/${userId}`, {headers: this.options.headers});
+  }
 }
