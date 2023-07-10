@@ -1,0 +1,88 @@
+<div class="main-container">
+  <aside class="login-aside">
+    <img src="../../../assets/3d-construction-abstract-composition-with-hand.png" alt="" width="50%"/>
+    <div class="info">
+      <h1>Welcome to SpringNet</h1>
+    </div>
+  </aside>
+  <div class="right">
+    <form [formGroup]="newUserForm" class="login-form">
+      <div class="form-info">
+        <h1>Create your account<span>!</span></h1>
+      </div>
+      <div class="user-info">
+        <file-pond #myPond ngClass="filepond"></file-pond>
+      <div class="input-group">
+        <input
+          required=""
+          type="text"
+          name="text"
+          autocomplete="off"
+          class="input"
+          id="username"
+          formControlName="username"
+        />
+        <label class="user-label">Username</label>
+      </div>
+      </div>
+      <div class="input-group">
+        <input
+          required=""
+          type="text"
+          name="text"
+          autocomplete="off"
+          class="input"
+          id="description"
+          formControlName="description"
+        />
+        <label class="user-label">Description</label>
+      </div>
+      <div class="input-group">
+        <input
+          required=""
+          type="text"
+          name="text"
+          autocomplete="off"
+          class="input"
+          id="email"
+          formControlName="email"
+        />
+        <label class="user-label">Email</label>
+      </div>
+      <div class="input-group">
+        <input
+          required=""
+          type="password"
+          name="password"
+          autocomplete="off"
+          class="input"
+          id="password"
+          formControlName="password"
+        />
+        <label class="user-label">Password</label>
+      </div>
+      <button type="submit" class="login-btn">Create Account</button>
+      <span class="message"
+        >Already have account?
+        <a routerLink="/login">Sign Up</a></span
+      >
+    </form>
+  </div>
+</div>
+<style>
+  ::ng-deep .filepond .filepond--wrapper {
+  width: 100px;
+  height: 100px;
+}
+
+::ng-deep .filepond .filepond--drop-label {
+  background-color: #151515;
+  color: #f5f5f5;
+}
+
+.user-info {
+  display: flex;
+  place-items: center;
+  gap: 10px;
+}
+</style>
