@@ -44,7 +44,8 @@ export class SidebarComponent implements OnInit {
 
   isLinkActive(link: string): boolean {
     if (link == "/profile/saved/") {
-      link+= this.cookie.get("uuid");
+      link += `${this.cookie.get("uuid")}`;
+      console.log(link)
     }
     return this.router.isActive(link, true);
   }

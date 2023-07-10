@@ -46,7 +46,7 @@
           <span class="icon-title">Chats</span>
         </button>
       </li>
-      <li routerLink="/">
+      <li routerLink="/liked">
         <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/liked') }">
           <img src="../../../assets/liked-icon.svg" alt="Liked Icon" />
           <span class="icon-title">Likes</span>
@@ -59,7 +59,7 @@
         </button>
       </li>
       <li (click)="redirectToSaved()">
-        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/profile/saved') }">
+        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/profile/saved/') }">
           <img src="../../../assets/saved-icon.svg" alt="Saved Icon" />
           <span class="icon-title">Saved</span>
         </button>
