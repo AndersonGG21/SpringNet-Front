@@ -12,18 +12,32 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class SavedPostsComponent implements OnInit {
   posts : Post[] = [];
+  likedPosts : Post[] = [];
+  liked = false;
+  saved = false;
 
   constructor(private postService : PostService, private cookie : CookieService, private aRoute : ActivatedRoute, private title : Title){}
 
   ngOnInit(): void {
-    this.aRoute.paramMap.subscribe((params : ParamMap) => {
-      this.postService.getSavedPosts(Number(params.get('id'))).subscribe((response) => {
-        this.title.setTitle(`@${response[0].user.username} | Saved Posts`);
-        for (let index = 0; index < response.length; index++) {
-          this.posts.push(response[index].post)
-        }
-      })
-    })
+    this.aRoute.url.subscribe(url => {
+      if (url[0].path == "liked") {
+        this.liked = true;
+        this.postService.getLikedPosts(Number(this.cookie.get('uuid'))).subscribe((response) => {
+          this.title.setTitle(`${this.cookie.get('username')} | Liked Posts`);
+          this.likedPosts = response;
+        })
+      }else{
+        this.aRoute.paramMap.subscribe((params : ParamMap) => {
+          this.postService.getSavedPosts(Number(params.get('id'))).subscribe((response) => {
+            this.title.setTitle(`@${response[0].user.username} | Saved Posts`);
+            this.saved = true;
+            for (let index = 0; index < response.length; index++) {
+              this.posts.push(response[index].post)
+            }
+          })
+        })
+      }
+    });
 
   };
 

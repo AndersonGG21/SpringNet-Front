@@ -4,8 +4,15 @@
 <main>
   <span>Only you can see what you saved</span>
   <section>
-    <ng-container *ngFor="let post of posts">
-      <app-posts-card [post]="post"></app-posts-card>
+    <ng-container *ngIf="saved">
+      <ng-container *ngFor="let post of posts">
+        <app-posts-card [post]="post"></app-posts-card>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="liked">
+      <ng-container *ngFor="let post of likedPosts">
+        <app-posts-card [post]="post"></app-posts-card>
+      </ng-container>
     </ng-container>
   </section>
 </main>
