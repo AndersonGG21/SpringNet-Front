@@ -1,8 +1,4 @@
-body {
-  background-color: #151515;
-}
-
-main {
+.main-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -150,7 +146,7 @@ main {
   border: 1.5px solid #4caf50;
  }
 
- .input:focus ~ label, input:valid ~ label {
+ .input-group .input:focus ~ label, input:valid ~ label {
   transform: translateY(-50%) scale(0.8);
   background-color: #212121;
   padding: 0 .2em;
