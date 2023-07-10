@@ -42,6 +42,7 @@ import { SavedPostsComponent } from './components/saved-posts/saved-posts.compon
 import { ChatComponent } from './components/chat/chat.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { LikedPostsComponent } from './components/liked-posts/liked-posts.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
@@ -69,7 +70,8 @@ registerPlugin(
     GridConfigComponent,
     SavedPostsComponent,
     ChatComponent,
-    SidebarComponent
+    SidebarComponent,
+    LikedPostsComponent
   ],
   imports: [
     BrowserModule,

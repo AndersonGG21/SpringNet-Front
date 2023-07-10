@@ -1,0 +1,26 @@
+section {
+  position: relative;
+  display: grid;
+  grid-gap: 40px;
+  padding: 20px;
+  max-width: 80%;
+}
+
+main {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+span {
+  color: #fff;
+}
+
+@media screen and (min-width: 1200px) {
+  section {
+    grid-template-columns: repeat(3, 300px);
+    align-items: start;
+  }
+}
+
