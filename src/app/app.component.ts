@@ -1,24 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-
   renderLayout: boolean = false;
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) {
-  }
   ngOnInit(): void {
-    this.renderLayout = true;
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.renderLayout = !event.url.includes('/login');
-        if (this.renderLayout && event.url.includes('/test')) {
+        const url = this.router.url;
+        if (url.includes('/test') || url.includes('/login')) {
           this.renderLayout = false;
+        } else {
+          this.renderLayout = true;
         }
       }
     });
