@@ -13,7 +13,6 @@ import { PostService } from 'src/app/services/post.service';
 export class SavedPostsComponent implements OnInit {
   posts : Post[] = [];
   likedPosts : Post[] = [];
-  liked = false;
   saved = false;
 
   constructor(private postService : PostService, private cookie : CookieService, private aRoute : ActivatedRoute, private title : Title){}
@@ -21,7 +20,6 @@ export class SavedPostsComponent implements OnInit {
   ngOnInit(): void {
     this.aRoute.url.subscribe(url => {
       if (url[0].path == "liked") {
-        this.liked = true;
         this.postService.getLikedPosts(Number(this.cookie.get('uuid'))).subscribe((response) => {
           this.title.setTitle(`${this.cookie.get('username')} | Liked Posts`);
           this.likedPosts = response;
