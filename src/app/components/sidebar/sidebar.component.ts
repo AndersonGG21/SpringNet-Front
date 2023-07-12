@@ -39,13 +39,11 @@ export class SidebarComponent implements OnInit {
     this.userService.getAllUsers().subscribe((response) => {
       this.users = response;
     })
-
   }
 
   isLinkActive(link: string): boolean {
     if (link == "/profile/saved/") {
       link += `${this.cookie.get("uuid")}`;
-      console.log(link)
     }
     return this.router.isActive(link, true);
   }
@@ -72,4 +70,6 @@ export class SidebarComponent implements OnInit {
     const userId = this.selectedUser?.id
     this.router.navigate([`/profile/${userId}`])
   }
+
+
 }
