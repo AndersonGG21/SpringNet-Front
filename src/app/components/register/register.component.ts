@@ -1,6 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FilePondFile, FilePondOptions } from 'filepond';
 import * as FilePond from 'filepond';
 import { User } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
@@ -73,6 +72,7 @@ export class RegisterComponent implements OnInit {
       description: description,
       password: password,
       email: email,
+      profileImg: this.imgUrl
     };
 
     this.userService.createNewUser(newUser).subscribe();
