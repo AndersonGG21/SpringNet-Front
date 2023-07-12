@@ -4,6 +4,7 @@ import { FilePondFile, FilePondOptions } from 'filepond';
 import * as FilePond from 'filepond';
 import { User } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -15,8 +16,9 @@ export class RegisterComponent implements OnInit {
   public newUserForm!: FormGroup;
   private fb = inject(FormBuilder);
   private mediaService = inject(MediaService);
+  private userService = inject(UserService);
   imgUrl = '';
-  uploadFile = false;
+  uploadFile = true;
 
   ngOnInit(): void {
     this.newUserForm = this.fb.group({
@@ -40,17 +42,17 @@ export class RegisterComponent implements OnInit {
       styleButtonRemoveItemPosition: 'left bottom',
       styleButtonProcessItemPosition: 'right bottom',
       maxFileSize: '8MB',
-      onerror(error, file, status) {
-        alert(error.main)
+      onerror : (error, file, status) => {
+        this.uploadFile = false;
+        alert(error.main);
       },
       onaddfile: (error, file) => {
         const formData = new FormData();
         formData.append('file', file.file);
 
-        if (this.uploadFile) {
+        if (this.uploadFile && formData.has('file')) {
           this.mediaService.uploadFile(formData).subscribe((res) => {
             this.imgUrl = res.url;
-            alert(this.imgUrl);
           });
         }else {
           alert('Please choose a file to upload');
@@ -73,6 +75,6 @@ export class RegisterComponent implements OnInit {
       email: email,
     };
 
-    // this.loginService.createUser(this.newUser);
+    this.userService.createNewUser(newUser).subscribe();
   }
 }
