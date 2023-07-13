@@ -1,7 +1,4 @@
 <div class="main">
-  <!-- <header>
-    <app-navbar></app-navbar>
-  </header> -->
   <ng-container *ngIf="user">
     <aside class="profile-aside">
       <div class="user-info">
@@ -29,12 +26,9 @@
         <button
           (click)="setFollow()"
           *ngIf="flag"
-          [ngClass]="checkFollow ? 'unfollow-hover' : ''"
           class="follow-btn"
-          (mouseover)="deleteText()"
-          (mouseout)="addText()"
         >
-          {{ checkFollow ? "Following" : "Follow" }}
+          {{ checkFollow ? "Unfollow" : "Follow" }}
         </button>
         <div class="text">
           <p>
@@ -44,10 +38,16 @@
       </div>
     </aside>
   </ng-container>
-  <section>
+  <section *ngIf="userPosts.length > 0; else elseBlock">
     <ng-container *ngFor="let post of userPosts">
       <app-posts-card [post]="post"></app-posts-card>
     </ng-container>
   </section>
+  <ng-template #elseBlock>
+    <section class="place-holder">
+      <img src="../../../assets/camera.svg" alt="Camera Logo" width="40px">
+      This user doesn't have posts
+    </section>
+  </ng-template>
   <!-- <app-grid-config></app-grid-config> -->
 </div>

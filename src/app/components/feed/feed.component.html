@@ -1,81 +1,68 @@
-<!-- <header>
-  <app-navbar [home]="true"></app-navbar>
-</header> -->
 <div class="story-feed">
   <app-stories></app-stories>
 </div>
 
-<main>
-  <section>
+<div class="main-container">
+  <section *ngIf="posts.length > 0">
     <ng-container *ngFor="let post of posts">
       <app-posts-card [post]="post"></app-posts-card>
     </ng-container>
   </section>
-</main>
-
-<div class="skeleton-loader" id="skeleton-loader">
-  <div class="skeleton">
-    <div class="skeleton-header">
-      <p-skeleton shape="circle" size="2.5rem" styleClass="mr-2"></p-skeleton>
-      <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+  <ng-container *ngIf="renderPlaceholder">
+    <div class="container">
+      <div class="placeholder">
+        <img src="../../../assets/users.svg" alt="users icon" width="40px"/>
+        <span style="width: 80%; text-align: center;">Your feed is waiting for you to make new connections. Add friends and discover interesting content to fill your feed - start exploring now!</span>
+      </div>
+      <div class="recommended-container">
+        <div class="recommendedUsers" *ngFor="let user of recommendedUsers" routerLink="/profile/{{user.id}}">
+          <ng-container *ngIf="user.id != userId">
+            <p-avatar image="{{user.profileImg}}" shape="circle"></p-avatar>
+            <span>{{user.username}}</span>
+          </ng-container>
+        </div>
+      </div>
     </div>
-    <div class="skeleton-img">
-      <p-skeleton width="20rem" height="10rem"></p-skeleton>
-    </div>
-    <div class="skeleton-icons">
-      <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
-      <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
-      <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
-    </div>
-    <div class="skeleton-bottom">
-      <p-skeleton width="10rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
-      <br>
-      <p-skeleton width="20rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
-    </div>
-  </div>
-
-  <div class="skeleton">
-    <div class="skeleton-header">
-      <p-skeleton shape="circle" size="2.5rem" styleClass="mr-2"></p-skeleton>
-      <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
-    </div>
-    <div class="skeleton-img">
-      <p-skeleton width="20rem" height="10rem"></p-skeleton>
-    </div>
-    <div class="skeleton-icons">
-      <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
-      <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
-      <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
-    </div>
-    <div class="skeleton-bottom">
-      <p-skeleton width="10rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
-      <br>
-      <p-skeleton width="20rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
-    </div>
-  </div>
-
-  <div class="skeleton">
-    <div class="skeleton-header">
-      <p-skeleton shape="circle" size="2.5rem" styleClass="mr-2"></p-skeleton>
-      <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
-    </div>
-    <div class="skeleton-img">
-      <p-skeleton width="20rem" height="10rem"></p-skeleton>
-    </div>
-    <div class="skeleton-icons">
-      <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
-      <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
-      <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
-    </div>
-    <div class="skeleton-bottom">
-      <p-skeleton width="10rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
-      <br>
-      <p-skeleton width="20rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
-    </div>
-  </div>
+  </ng-container>
 </div>
+
+<!-- <div class="skeleton-loader" id="skeleton-loader">
+  <ng-container *ngFor="let item of skeletons">
+    <div class="skeleton">
+      <div class="skeleton-header">
+        <p-skeleton
+          shape="circle"
+          size="2.5rem"
+          styleClass="mr-2"
+        ></p-skeleton>
+        <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+      </div>
+      <div class="skeleton-img">
+        <p-skeleton width="20rem" height="10rem"></p-skeleton>
+      </div>
+      <div class="skeleton-icons">
+        <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
+        <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
+        <p-skeleton size="1rem" styleClass="mr-2"></p-skeleton>
+      </div>
+      <div class="skeleton-bottom">
+        <p-skeleton
+          width="10rem"
+          styleClass="mb-2"
+          borderRadius="16px"
+        ></p-skeleton>
+        <br />
+        <p-skeleton
+          width="20rem"
+          styleClass="mb-2"
+          borderRadius="16px"
+        ></p-skeleton>
+      </div>
+    </div>
+  </ng-container>
+</div> -->
+
 
 <div class="grid-aside">
   <app-grid-config></app-grid-config>
 </div>
-

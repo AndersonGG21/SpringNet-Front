@@ -1,4 +1,4 @@
-section {
+.section {
   position: relative;
   display: grid;
   grid-gap: 40px;
@@ -6,11 +6,12 @@ section {
   max-width: 80%;
 }
 
-main {
+.main {
   margin-top: 100px;
   display: flex;
   flex-direction: column;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 span {
@@ -18,9 +19,19 @@ span {
 }
 
 @media screen and (min-width: 1200px) {
-  section {
+  .section {
     grid-template-columns: repeat(3, 300px);
     align-items: start;
   }
+}
+
+.placeholder {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
 }
 

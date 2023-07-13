@@ -205,6 +205,7 @@ button {
 ::ng-deep .avatar .p-avatar-circle{
   width: 45px;
   height: 45px;
+  border: 1px solid #312F37;
 }
 
 .user-item img {

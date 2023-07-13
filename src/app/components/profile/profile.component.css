@@ -80,7 +80,6 @@ section {
   right: 0;
   top: 0;
   height: 100vh;
-  /* background-color: rebeccapurple; */
 }
 
 button {
@@ -88,8 +87,6 @@ button {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  /* background-color: #333; */
-  /* color: #fff; */
   background-color: inherit;
   cursor: pointer;
 }
@@ -134,17 +131,19 @@ button:focus {
   display: grid;
 }
 
-.unfollow-hover:hover {
-  background-color: #3d813f;
-}
-
-.unfollow-hover:hover::after {
-  content: "Unfollow";
-}
-
 @media screen and (min-width: 1200px) {
   section {
     grid-template-columns: repeat(3, 300px);
     align-items: start;
   }
+}
+
+.place-holder {
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin-top: 0;
 }
