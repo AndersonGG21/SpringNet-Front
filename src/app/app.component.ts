@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const url = this.router.url;
-        if (url.includes('/test') || url.includes('/login')) {
+        if (url.includes('/register') || url.includes('/login')) {
           this.renderLayout = false;
         } else {
           this.renderLayout = true;
