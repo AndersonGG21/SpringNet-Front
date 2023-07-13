@@ -68,14 +68,4 @@ export class ProfileComponent implements OnInit{
     this.followService.setFollow(this.follow).subscribe();
     this.checkFollow = !this.checkFollow;
   }
-
-  deleteText() : void {
-    const button = document.querySelector('.follow-btn') as HTMLButtonElement;
-    button.textContent = '';
-  }
-
-  addText() : void {
-    const button = document.querySelector('.follow-btn') as HTMLButtonElement;
-    button.textContent = 'Following';
-  }
 }
