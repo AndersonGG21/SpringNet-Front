@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { Post } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
 import { PostDataBehaviorSubjectService } from 'src/app/services/post-data-behavior-subject.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-grid-config',
@@ -25,8 +26,8 @@ export class GridConfigComponent implements OnInit {
   constructor(
     private mediaService: MediaService,
     private cookie : CookieService,
-    private postDataB : PostDataBehaviorSubjectService,
-    private messageService : MessageService
+    private messageService : MessageService,
+    private postService : PostService
   ) {}
 
     ngOnInit(): void {
@@ -69,9 +70,12 @@ export class GridConfigComponent implements OnInit {
       },
     };
 
-    this.postDataB.addPost(this.post);
-    this.displayModal = false;
-    this.messageService.add({key: 'tc', severity: 'success', detail: 'Post created', life: 1000});
+    this.postService.createPost(this.post).subscribe((res) => {
+      this.displayModal = false;
+      this.messageService.add({key: 'tc', severity: 'success', detail: 'Post created', life: 1000});
+    }, error => {
+      this.messageService.add({key: 'tc', severity: 'danger', detail: 'Error', life: 1000});
+    })
 
   }
 
