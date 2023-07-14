@@ -169,35 +169,6 @@ button:focus {
   flex-direction: row-reverse;
 }
 
-::ng-deep .p-toast .p-toast-message.p-toast-message-success {
-  background-color: #151515;
-  border: 1px solid #312F37;
-  height: 50px;
-  width: 250px;
-}
-
-::ng-deep .toast-message{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  gap: 10px;
-}
-
-::ng-deep .p-toast .p-toast-message .p-toast-message-content {
-  padding: 0;
-  padding-left: 10px;
-}
-
-::ng-deep .p-toast .p-toast-message .p-toast-icon-close {
-  align-self: center;
-}
-
-::ng-deep .toast-message p,::ng-deep .p-toast .p-toast-message.p-toast-message-success .p-toast-icon-close {
-  color: #4caf50;
-}
-
-
 @keyframes moveGradient {
   50% {
     background-position: 100% 50%;
