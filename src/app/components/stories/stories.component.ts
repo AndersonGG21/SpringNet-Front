@@ -7,6 +7,7 @@ import {FilePondFile, FilePondOptions} from "filepond";
 import {MediaService} from "../../services/media.service";
 import { Story } from 'src/app/models/types';
 import { CookieService } from 'ngx-cookie-service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-stories',
@@ -20,6 +21,7 @@ export class StoriesComponent implements OnInit {
   private storieService = inject(StoryService);
   private mediaService = inject(MediaService);
   private cookieService = inject(CookieService);
+  private messageService = inject(MessageService);
   visible = false;
   swiper : any;
   sidebarVisible = false;
@@ -112,7 +114,8 @@ export class StoriesComponent implements OnInit {
       }
 
       this.storieService.createStory(this.story).subscribe(() => {
-        console.log("Story created");
+        this.sidebarVisible = false;
+        this.messageService.add({key: 'tc', severity: 'success', detail: 'Story created', life: 1000});
       })
 
     });
