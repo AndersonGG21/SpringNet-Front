@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as FilePond from 'filepond';
+import { MessageService } from 'primeng/api';
 import { User } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
 import { UserService } from 'src/app/services/user.service';
@@ -16,6 +18,8 @@ export class RegisterComponent implements OnInit {
   private fb = inject(FormBuilder);
   private mediaService = inject(MediaService);
   private userService = inject(UserService);
+  private messageService = inject(MessageService);
+  private router = inject(Router);
   imgUrl = '';
   uploadFile = true;
 
@@ -43,7 +47,7 @@ export class RegisterComponent implements OnInit {
       maxFileSize: '8MB',
       onerror : (error, file, status) => {
         this.uploadFile = false;
-        alert(error.main);
+        alert("Error uploading file, please choose another one");
       },
       onaddfile: (error, file) => {
         const formData = new FormData();
@@ -75,6 +79,12 @@ export class RegisterComponent implements OnInit {
       profileImg: this.imgUrl
     };
 
-    this.userService.createNewUser(newUser).subscribe();
+    this.userService.createNewUser(newUser).subscribe(() => {
+      this.messageService.add({key: 'tc', severity: 'success', detail: 'User created', life: 1500});
+
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 1500);
+    });
   }
 }
