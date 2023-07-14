@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FilePondFile, FilePondOptions } from 'filepond';
 import { CookieService } from 'ngx-cookie-service';
 import { FilePondComponent } from 'ngx-filepond';
+import { MessageService } from 'primeng/api';
 import { Post } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
 import { PostDataBehaviorSubjectService } from 'src/app/services/post-data-behavior-subject.service';
@@ -11,7 +12,7 @@ import { PostDataBehaviorSubjectService } from 'src/app/services/post-data-behav
   templateUrl: './grid-config.component.html',
   styleUrls: ['./grid-config.component.css'],
 })
-export class GridConfigComponent {
+export class GridConfigComponent implements OnInit {
   value = 0;
   imgUrl = '';
   displayModal: boolean | undefined;
@@ -24,8 +25,13 @@ export class GridConfigComponent {
   constructor(
     private mediaService: MediaService,
     private cookie : CookieService,
-    private postDataB : PostDataBehaviorSubjectService
+    private postDataB : PostDataBehaviorSubjectService,
+    private messageService : MessageService
   ) {}
+
+    ngOnInit(): void {
+
+    }
 
   changeColumns = (numColumns: number): void => {
     const section = document.querySelector('section') as HTMLElement;
@@ -64,6 +70,9 @@ export class GridConfigComponent {
     };
 
     this.postDataB.addPost(this.post);
+    this.displayModal = false;
+    this.messageService.add({key: 'tc', severity: 'success', detail: 'Post created', life: 1000});
+
   }
 
 
@@ -96,7 +105,6 @@ export class GridConfigComponent {
     this.mediaService.uploadFile(formData).subscribe((res) => {
       this.imgUrl = res.url;
       this.enableButton = true;
-      console.log(this.imgUrl);
     });
   }
 
