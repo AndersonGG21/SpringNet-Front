@@ -69,6 +69,17 @@
     </form>
   </div>
 </div>
+<p-toast position="bottom-right" key="tc" ngClass="toast">
+  <ng-template let-message pTemplate="message">
+    <div class="flex flex-column" style="flex: 1">
+      <div class="toast-message">
+        <i class="pi pi-check" style="color: #4caf50"></i>
+        <p>{{ message.detail }}</p>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
+
 <style>
   ::ng-deep .filepond .filepond--wrapper {
   width: 100px;
