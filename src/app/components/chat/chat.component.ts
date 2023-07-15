@@ -40,11 +40,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.socketService.getOnlineUsersSubject().subscribe((changes) => {
       this.onlineUsers.push(changes);
     })
-
-    this.socketService.connectOnline();
-    setTimeout(() => {
-       this.onlineConnectionMessage();
-    }, 3000);
   }
 
   ngAfterViewChecked(): void {
@@ -128,7 +123,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     const placeholder = document.querySelector(".placeholder") as HTMLElement;
     container.style.display = "flex";
     placeholder.style.display = "none";
-    this.onlineUsers.find(username => username == this.selectedUser?.username) ? this.connected = true : this.connected = false;
   }
 
   /**
@@ -153,20 +147,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   /**
-   * The function sends a connection message to a socket service with the sender's username, session
-   * ID, and a type of 'JOIN'.
-   */
-  onlineConnectionMessage() : void {
-    let chatMessage = {
-      content: "",
-      sender: this.cookie.get("username"),
-      sessionID: this.sessionID,
-      type: 'JOIN',
-    };
-    this.socketService.sendConnection(chatMessage);
-  }
-
-  /**
    * The function `onDisconnected` sends a leave message to the server, disconnects the socket
    * connection, and hides the chat area while displaying a placeholder.
    */
@@ -179,9 +159,19 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     };
     this.socketService.send(chatMessage);
     this.socketService.disconnect();
+    this.connected = false;
     const container = document.querySelector(".chat-area") as HTMLElement;
     const placeholder = document.querySelector(".placeholder") as HTMLElement;
     container.style.display = "none";
     placeholder.style.display = "flex";
+  }
+
+  avoidEnter(event : any) : void {
+    let key = event.keyCode;
+
+    if (key === 13) {
+        event.preventDefault();
+        this.sendMessage(event.target.value);
+    }
   }
 }
