@@ -39,22 +39,6 @@ export class SocketService implements OnInit {
   }
 
   /**
-   * The function `connectOnline()` initializes a WebSocket connection to receive online status
-   * updates.
-   */
-  connectOnline() : void {
-    console.log("Intialize WebSocket Connection to online status");
-    let ws = SockJS(this.webSocketPoint);
-    this.stompClient = Stomp.over(ws);
-    const _this = this;
-    _this.stompClient.connect({}, function (frame : any){
-      _this.stompClient.subscribe(`${_this.topic}`,function (response : any){
-        _this.onMessageRecievedV1(response);
-      })
-    }, this.errorCallBack )
-  }
-
-  /**
    * The disconnect function checks if the stompClient is not null and then calls the disconnected
    * method on it, and logs "Disconnected" to the console.
    */
@@ -83,14 +67,6 @@ export class SocketService implements OnInit {
     this.messages.push(obj);
   }
 
-  onMessageRecievedV1(message : any) {
-    console.log(`Message recieved from: ${message.body}`);
-    const obj = JSON.parse(message.body);
-    if (obj.type == 'JOIN') {
-      this.onlineUsersSubject.next(obj.sender);
-    }
-  }
-
   /**
    * The errorCallBack function logs the error message to the console.
    * @param {any} error - The error parameter is of type "any", which means it can be any data type. It
@@ -114,15 +90,6 @@ export class SocketService implements OnInit {
    */
   getOnlineUsersSubject(): Observable<any> {
     return this.onlineUsersSubject.asObservable();
-  }
-
- /**
-  * The function sends a chat message to the online users.
-  * @param {any} chatMessage - The chatMessage parameter is an object that contains the message to be
-  * sent in the chat. It should be in JSON format.
-  */
-  sendConnection(chatMessage : any) : void {
-    this.stompClient.send("/app/chat.onlineUsers", {}, JSON.stringify(chatMessage));
   }
 
 }
