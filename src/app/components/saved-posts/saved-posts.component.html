@@ -1,9 +1,6 @@
-<!-- <header>
-  <app-navbar [likes]="true"></app-navbar>
-</header> -->
 <div class="main">
   <span>Only you can see this posts</span>
-  <div class="section">
+  <section>
     <ng-container *ngIf="saved; else liked">
       <ng-container *ngFor="let post of posts">
         <app-posts-card [post]="post"></app-posts-card>
@@ -14,7 +11,7 @@
         <app-posts-card [post]="post"></app-posts-card>
       </ng-container>
     </ng-template>
-  </div>
+  </section>
   <div class="placeholder" *ngIf="renderPlaceholder">
     <img src="../../../assets/{{saved ? 'bookmark-x.svg' : 'heart-broken.svg'}}" alt="users icon" width="40px" />
     <span style="width: 80%; text-align: left"

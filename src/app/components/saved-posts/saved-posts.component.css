@@ -1,4 +1,4 @@
-.section {
+section {
   position: relative;
   display: grid;
   grid-gap: 40px;
@@ -19,7 +19,7 @@ span {
 }
 
 @media screen and (min-width: 1200px) {
-  .section {
+  section {
     grid-template-columns: repeat(3, 300px);
     align-items: start;
   }
