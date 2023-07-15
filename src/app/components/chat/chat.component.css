@@ -2,21 +2,37 @@
   width: 95%;
   display: flex;
   position: relative;
-  top: 80px;
+  top: 130px;
   justify-content: center;
   left: 65px;
 }
 
 .chats {
   width: 258px;
-  height: 550px;
+  height: 70vh;
   flex-shrink: 0;
   border: 1px solid #312F37;
   border-right: none;
   border-radius: 8px 0px 0px 8px;
   padding: 0;
   background-color: #151515;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
+
+.chats::-webkit-scrollbar {
+  width: 20px;
+}
+
+.chats::-webkit-scrollbar-track {
+  background-color: #101010;
+}
+
+.chats::-webkit-scrollbar-thumb {
+  background: #151515;
+  border-radius: 20px;
+}
+
 
 .chat-span {
   color: #fff;
@@ -31,6 +47,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 10px 0;
 }
 
 .user-rectangle{
@@ -80,7 +97,7 @@ img{
 
 .chat-area {
   width: 70%;
-  height: 550px;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -94,9 +111,9 @@ img{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 9%;
+  height: 15%;
   border-bottom: 1px solid #312F37;
-  padding: 10px;
+  padding: 20px;
   gap: 5px;
   color: #fff;
 }
@@ -124,9 +141,10 @@ background: #4e4e4e83;
 border-radius: 25px;
 }
 
-.left, .right {
+.left, .right{
   gap: 8px;
   display: flex;
+  position: relative;
 }
 
 .left > .text {
@@ -140,8 +158,9 @@ border-radius: 25px;
 .text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background: rgba(33, 35, 38, 0.60);
+  word-wrap: break-word;
+  max-width: 70%;
+  background: #101010;
   padding: 10px;
 }
 
@@ -153,12 +172,22 @@ border-radius: 25px;
 }
 
 .text > p {
-  font-size: 10px;
+  font-size: 12px;
+  color: white;
   font-weight: 400;
 }
 
 .right {
   flex-direction: row-reverse;
+}
+
+.center {
+  align-self: center;
+}
+
+.center .text {
+  width: 200px;
+  border-radius: 8px;
 }
 
 footer {
@@ -197,14 +226,13 @@ input:focus {
 .input-container {
   position: relative;
   display: flex;
-  height: 2.8rem;
+  height: 44px;
   width: 100%;
   border-bottom: none;
   background-color: #151515;
-  box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
 }
 
-.input-container input {
+.input-container textarea {
   border: none;
   padding: 10px;
   height: 100%;
@@ -214,16 +242,23 @@ input:focus {
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 400;
-  color: rgb(69 90 100);
-  transition: all .15s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #fff;
+  outline: none;
+  resize: none;
 }
 
-.input-container input:focus {
-  border: 1px solid rgb(99, 236, 72);
-  border-bottom: none;
+.input-container button {
+  border: none;
+  border-top: 1px solid #312F37;
+  background: #151515;
+  transition: background 0.5s ease-in-out;
 }
 
-.invite-btn {
+.input-container button:hover {
+  background: #312F37;
+  transition: background 0.5s ease-in-out;
+}
+/* .invite-btn {
   position: absolute;
   width: 45px;
   right: 4px;
@@ -244,20 +279,8 @@ input:focus {
   text-transform: uppercase;
   border: none;
   transition: .6s ease;
-}
+} */
 
-.invite-btn:hover {
-  right: 2px;
-  top: 2px;
-  bottom: 2px;
-  border-radius: 8px;
-}
-
-.input-container input:placeholder-shown ~ .invite-btn {
-  pointer-events: none;
-  background-color: gray;
-  opacity: 0.5;
-}
 
 .close-btn{
   border: none;
