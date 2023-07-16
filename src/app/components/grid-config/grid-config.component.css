@@ -160,11 +160,7 @@ button:focus {
   color: #FFF;
 }
 
-::ng-deep .modal .p-dialog .p-dialog-content {
-  background-color: #151515;
-}
-
-::ng-deep .modal .p-dialog-header {
+::ng-deep .reverse .p-dialog-header {
   display: flex;
   flex-direction: row-reverse;
 }

@@ -41,6 +41,10 @@ section {
   place-items: center;
 }
 
+.interactive {
+  cursor: pointer;
+}
+
 .stat > span:nth-child(1){
   font-weight: bold;
 }
@@ -147,3 +151,61 @@ button:focus {
   width: 100vw;
   margin-top: 0;
 }
+
+.followers-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.follower {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.follower-info {
+  display: flex;
+  align-items: center;
+}
+
+.follower-info span{
+  color: #FFF;
+  margin-left: 10px;
+}
+
+.upload-btn{
+  background-color: #151515;
+  border: 1px solid #4caf50;
+  padding: 5px;
+  height: 30px;
+  transition: 0.5s;
+  font-size: 12px;
+  border-radius: 0.4em;
+  cursor: pointer;
+  color: #4caf50;
+  transition: all 0.2s ease-in-out;
+}
+
+.upload-btn:hover{
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.02);
+}
+
+::ng-deep .modal .p-dialog-content {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+::ng-deep .modal .p-dialog-content::-webkit-scrollbar {
+  width: 20px;
+}
+
+::ng-deep .modal .p-dialog-content::-webkit-scrollbar-track {
+  background-color: #101010;
+}
+
+::ng-deep .modal .p-dialog-content::-webkit-scrollbar-thumb {
+  background: #151515;
+  border-radius: 20px;
+}
+

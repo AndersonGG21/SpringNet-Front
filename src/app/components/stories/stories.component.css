@@ -160,21 +160,6 @@
   cursor: default;
 }
 
-::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
-  color: #FFF;
-  font-weight: bold;
-}
-
-::ng-deep .p-dialog .p-dialog-header {
-  background-color: #151515;
-}
-
-::ng-deep .p-dialog .p-dialog-header .p-dialog-header-icon:last-child {
-  background-color: #fff;
-  border-radius: 50%;
-  padding: 10px;
-}
-
 ::ng-deep .badge .p-badge-danger {
   position: absolute;
   opacity: 1;
