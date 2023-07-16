@@ -25,3 +25,22 @@
 ::ng-deep .toast-message p,::ng-deep .p-toast .p-toast-message.p-toast-message-success .p-toast-icon-close {
   color: #4caf50;
 }
+
+::ng-deep .modal .p-dialog .p-dialog-content, .p-dialog-header {
+  background-color: #151515;
+}
+
+::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
+  color: #FFF;
+  font-weight: bold;
+}
+
+::ng-deep .p-dialog .p-dialog-header {
+  background-color: #151515;
+}
+
+::ng-deep .modal .p-dialog .p-dialog-header .p-dialog-header-icon:last-child {
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+}
