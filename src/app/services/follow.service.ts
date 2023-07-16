@@ -38,4 +38,8 @@ export class FollowService {
   getFollowers(id : number) : Observable<User[]>{
     return this.http.get<User[]>(`${this.baseUrl}/${id}/followers`, {headers : this.options.headers});
   }
+
+  getFollowings(id : number) : Observable<User[]>{
+    return this.http.get<User[]>(`${this.baseUrl}/${id}/followings`, {headers : this.options.headers});
+  }
 }
