@@ -1,6 +1,6 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Button } from 'primeng/button';
 import { Follow, Post, User } from 'src/app/models/types';
@@ -16,12 +16,15 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileComponent implements OnInit{
 
   userPosts : Post[] = [];
-  followers  = 0;
-  following  = 0;
+  followersList : User[] = [];
+  followedList : User[] = [];
   userId = 0;
   user !: User;
   flag = false;
   checkFollow = false;
+  displayFollowersModal = false;
+  displayFollowingsModal = false;
+  private router = inject(Router);
   follow : Follow = {
     follower : {
       id: Number(this.cookie.get('uuid'))
@@ -50,12 +53,12 @@ export class ProfileComponent implements OnInit{
         this.userPosts = response
       })
 
-      this.followService.getCountOfFollowers(this.userId).subscribe((response) => {
-        this.followers = response;
+      this.followService.getFollowings(this.userId).subscribe((followings) => {
+        this.followedList = followings;
       });
 
-      this.followService.getCountOfFollowing(this.userId).subscribe((response) => {
-        this.following = response;
+      this.followService.getFollowers(this.userId).subscribe((followers) => {
+        this.followersList = followers;
       });
     })
 
@@ -68,4 +71,18 @@ export class ProfileComponent implements OnInit{
     this.followService.setFollow(this.follow).subscribe();
     this.checkFollow = !this.checkFollow;
   }
+
+  showFollowersModal() : void {
+    this.displayFollowersModal = true;
+  }
+
+  showFollowingsModal() : void {
+    this.displayFollowingsModal = true;
+  }
+
+  redirectToProfile(id : number) : void {
+    this.displayFollowersModal = false;
+    this.router.navigateByUrl(`/profile/${id}`);
+  }
+
 }
