@@ -14,20 +14,16 @@
             <span>{{ userPosts.length }}</span>
             <span>Posts</span>
           </div>
-          <div class="stat">
-            <span>{{ followers }}</span>
+          <div class="stat interactive" (click)="showFollowersModal()">
+            <span>{{ followersList.length }}</span>
             <span>Followers</span>
           </div>
-          <div class="stat">
-            <span>{{ following }}</span>
+          <div class="stat interactive" (click)="showFollowingsModal()">
+            <span>{{ followedList.length }}</span>
             <span> Following</span>
           </div>
         </div>
-        <button
-          (click)="setFollow()"
-          *ngIf="flag"
-          class="follow-btn"
-        >
+        <button (click)="setFollow()" *ngIf="flag" class="follow-btn">
           {{ checkFollow ? "Unfollow" : "Follow" }}
         </button>
         <div class="text">
@@ -45,9 +41,60 @@
   </section>
   <ng-template #elseBlock>
     <section class="place-holder">
-      <img src="../../../assets/camera.svg" alt="Camera Logo" width="40px">
+      <img src="../../../assets/camera.svg" alt="Camera Logo" width="40px" />
       This user doesn't have posts
     </section>
   </ng-template>
-  <!-- <app-grid-config></app-grid-config> -->
 </div>
+
+<!-- Followers List Modal -->
+<p-dialog
+  header="Followers"
+  [(visible)]="displayFollowersModal"
+  [modal]="true"
+  [style]="{ width: '30vw' }"
+  ngClass="modal"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <div class="followers-container">
+    <ng-container *ngFor="let follower of followersList">
+      <div class="follower">
+        <div class="follower-info">
+          <p-avatar image="{{ follower.profileImg }}" shape="circle"></p-avatar>
+          <span>{{ follower.username }}</span>
+        </div>
+        <ng-container *ngIf="follower.id">
+          <button (click)="redirectToProfile(follower.id)" class="upload-btn">See profile</button>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</p-dialog>
+<!-- End Followers List Modal -->
+
+<!-- Followings List Modal -->
+<p-dialog
+  header="Followed"
+  [(visible)]="displayFollowingsModal"
+  [modal]="true"
+  [style]="{ width: '30vw' }"
+  ngClass="modal"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <div class="followers-container">
+    <ng-container *ngFor="let followingUser of followedList">
+      <div class="follower">
+        <div class="follower-info">
+          <p-avatar image="{{ followingUser.profileImg }}" shape="circle"></p-avatar>
+          <span>{{ followingUser.username }}</span>
+        </div>
+        <ng-container *ngIf="followingUser.id">
+          <button (click)="redirectToProfile(followingUser.id)" class="upload-btn">See profile</button>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</p-dialog>
+<!-- End Followings List Modal -->

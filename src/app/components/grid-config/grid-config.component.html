@@ -43,7 +43,8 @@
   [style]="{ width: '70%' }"
   [draggable]="false"
   [resizable]="false"
-  ngClass="modal"
+  ngClass="modal reverse"
+  [ngClass]="{ 'modal' : true,'reverse' : true}"
 >
   <ng-template pTemplate="header" styleClass="modal-header">
     <button (click)="createPost()" class="pots-btn" [disabled]="!enableButton">
