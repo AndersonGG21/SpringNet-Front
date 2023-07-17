@@ -1,10 +1,11 @@
-import { AfterViewChecked,Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked,Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { SocketService } from 'src/app/services/socket.service';
 import { ChatMessage, User } from 'src/app/models/types';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject, interval, switchMap } from 'rxjs';
+import { FollowService } from 'src/app/services/follow.service';
 
 @Component({
   selector: 'app-chat',
@@ -24,6 +25,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   connected = false;
   onlineUsers : string[] = [];
   @ViewChild("input") input: ElementRef = {} as ElementRef;
+  private followService = inject(FollowService);
 
   constructor(
     private socketService: SocketService,
@@ -33,7 +35,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe((response) => {
+    this.followService.getFollowers(Number(this.cookie.get("uuid"))).subscribe((response) => {
       this.users = response;
     });
 
