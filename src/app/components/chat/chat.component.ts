@@ -35,8 +35,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit(): void {
-    this.followService.getFollowers(Number(this.cookie.get("uuid"))).subscribe((response) => {
+    this.followService.getFollowings(Number(this.cookie.get("uuid"))).subscribe((response) => {
       this.users = response;
+      console.log(response);
     });
 
     this.socketService.getOnlineUsersSubject().subscribe((changes) => {
