@@ -5,7 +5,6 @@ import { FilePondComponent } from 'ngx-filepond';
 import { MessageService } from 'primeng/api';
 import { Post } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
-import { PostDataBehaviorSubjectService } from 'src/app/services/post-data-behavior-subject.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -13,13 +12,11 @@ import { PostService } from 'src/app/services/post.service';
   templateUrl: './grid-config.component.html',
   styleUrls: ['./grid-config.component.css'],
 })
-export class GridConfigComponent implements OnInit {
-  value = 0;
+export class GridConfigComponent{
   imgUrl = '';
   displayModal: boolean | undefined;
   post!: Post;
   content = '';
-  uploadedFiles: any[] = [];
   enableButton = false;
   @ViewChild('myPond') myPond: FilePondComponent | undefined;
 
@@ -29,10 +26,6 @@ export class GridConfigComponent implements OnInit {
     private messageService : MessageService,
     private postService : PostService
   ) {}
-
-    ngOnInit(): void {
-
-    }
 
   changeColumns = (numColumns: number): void => {
     const section = document.querySelector('section') as HTMLElement;
