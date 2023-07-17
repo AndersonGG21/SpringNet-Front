@@ -23,7 +23,6 @@ export class LoginService {
   login(login : Login){
     this.http.post(this.loginUrl, login, {observe : 'response'}).subscribe(
       response => {
-        console.log(response.headers.get("Authorization"));
         const token = response.headers?.get("Authorization");
 
         if (token != null) {
@@ -38,7 +37,7 @@ export class LoginService {
           this.cookie.set("uuid", String(uuid));
           this.cookie.set("username", String(response.username));
           this.cookie.set("user_profile_picture", String(response.profileImg));
-          this.router.navigateByUrl(("/feed")).then(() => window.location.reload());
+          this.router.navigate(['/feed']);
         })
       }
     );
