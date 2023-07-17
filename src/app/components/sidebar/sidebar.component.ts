@@ -32,7 +32,10 @@ export class SidebarComponent implements OnInit {
       {
         label: 'Logout',
         icon: 'pi pi-fw pi-sign-out',
-        routerLink: '/login'
+        command: () => {
+          this.cookie.deleteAll();
+          this.router.navigate(['/login']);
+        }
       }
     ];
 
