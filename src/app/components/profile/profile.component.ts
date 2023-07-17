@@ -48,6 +48,9 @@ export class ProfileComponent implements OnInit{
       this.userService.getUserProfile(this.userId).subscribe((response) => {
         this.user = response;
         this.title.setTitle(`@${this.user.username} | Pics and Videos`);
+        this.followService.checkFollow(this.follow).subscribe((response) => {
+          response >= 1 ? this.checkFollow = true : this.checkFollow = false;
+        });
       })
 
       this.postService.getPostByUser(this.userId).subscribe((response) => {
@@ -64,10 +67,6 @@ export class ProfileComponent implements OnInit{
         this.followersList = followers;
       });
     })
-
-    this.followService.checkFollow(this.follow).subscribe((response) => {
-      response >= 1 ? this.checkFollow = true : this.checkFollow = false;
-    });
   }
 
   setFollow() : void {
@@ -86,6 +85,9 @@ export class ProfileComponent implements OnInit{
   redirectToProfile(id : number) : void {
     this.displayFollowersModal = false;
     this.router.navigateByUrl(`/profile/${id}`);
+    this.displayFollowersModal = false;
+    this.displayFollowingsModal = false;
+
   }
 
 }
