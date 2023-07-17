@@ -26,6 +26,7 @@ export class LoginService {
         const token = response.headers?.get("Authorization");
 
         if (token != null) {
+          this.cookie.deleteAll();
           this.cookie.set("Bearer", token.replace("Bearer", "").trim());
         }
 
