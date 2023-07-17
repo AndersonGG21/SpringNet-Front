@@ -13,13 +13,13 @@ export class PostService {
   baseUrl  = 'http://localhost:8080/api/posts/'
   status = 0;
 
-  private options = {
-    observe: 'response' as const,
-    headers : new HttpHeaders()
-    .set('Authorization', `Bearer ${this.cookie.get("Bearer")}`)
-    .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  };
+  // private options = {
+  //   observe: 'response' as const,
+  //   headers : new HttpHeaders()
+  //   .set('Authorization', `Bearer ${this.cookie.get("Bearer")}`)
+  //   .set('Access-Control-Allow-Origin', '*')
+  //   .set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  // };
 
 
   constructor(private http : HttpClient, private messageService : MessageService, private cookie : CookieService) { }
@@ -31,7 +31,7 @@ export class PostService {
    * @returns An Observable of type `any` is being returned.
    */
   createPost(post : Post) : Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}new-post`,post,this.options);
+    return this.http.post<any>(`${this.baseUrl}new-post`,post);
   }
 
   /**
@@ -45,46 +45,46 @@ export class PostService {
    * the `options` property of the class.
    */
   getPost(id : number) : Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}${id}`, {headers: this.options.headers});
+    return this.http.get<Post[]>(`${this.baseUrl}${id}`);
   }
 
   getPostByUser(id : number) : Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}user-posts/${id}`, {headers: this.options.headers});
+    return this.http.get<Post[]>(`${this.baseUrl}user-posts/${id}`);
   }
 
   likePost(like : Like) : Observable<any> {
-    return this.http.post<any>(`http://localhost:8080/api/posts/like`,like,this.options);
+    return this.http.post<any>(`http://localhost:8080/api/posts/like`,like);
   }
 
   checkLike(like : Like) : Observable<number> {
-    return this.http.post<number>(`${this.baseUrl}liked`, like ,{headers : this.options.headers});
+    return this.http.post<number>(`${this.baseUrl}liked`, like);
   }
 
   getComments(post : number) : Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.baseUrl}${post}/comments`, {headers : this.options.headers});
+    return this.http.get<Comment[]>(`${this.baseUrl}${post}/comments`);
   }
 
   commentPost(comment : Comment) : Observable<string> {
-    return this.http.post<any>(`${this.baseUrl}comment`, comment, {headers: this.options.headers});
+    return this.http.post<any>(`${this.baseUrl}comment`, comment);
   }
 
   getPostLikes(post : number) : Observable<number> {
-    return this.http.get<number>(`${this.baseUrl}${post}/likes`, {headers: this.options.headers});
+    return this.http.get<number>(`${this.baseUrl}${post}/likes`);
   }
 
   savePost(post : Post) : Observable<any> {
-    return this.http.post<any>(`http://localhost:8080/api/saved-posts/save-post`, post, {headers: this.options.headers});
+    return this.http.post<any>(`http://localhost:8080/api/saved-posts/save-post`, post);
   }
 
   getSavedPosts(userId : number) : Observable<any> {
-    return this.http.get<any>(`http://localhost:8080/api/saved-posts/${userId}`, {headers: this.options.headers});
+    return this.http.get<any>(`http://localhost:8080/api/saved-posts/${userId}`);
   }
 
   checkIfSaved(post : any) : Observable<any> {
-    return this.http.post<any>(`http://localhost:8080/api/saved-posts/check`, post, {headers: this.options.headers});
+    return this.http.post<any>(`http://localhost:8080/api/saved-posts/check`, post);
   }
 
   getLikedPosts(userId : number) : Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}liked-posts/${userId}`, {headers: this.options.headers});
+    return this.http.get<any>(`${this.baseUrl}liked-posts/${userId}`);
   }
 }
