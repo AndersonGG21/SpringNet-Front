@@ -194,7 +194,7 @@ button {
 }
 
 
-::ng-deep .autocomplete .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:hover {
+::ng-deep .autocomplete .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:hover,::ng-deep .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item.p-highlight {
   background-color: #312F37;
   transition: all 0.2s ease-in-out;
 }
