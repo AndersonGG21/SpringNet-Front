@@ -11,16 +11,6 @@ import { Comment, Like, Post } from '../models/types';
 export class PostService {
 
   baseUrl  = 'http://localhost:8080/api/posts/'
-  status = 0;
-
-  // private options = {
-  //   observe: 'response' as const,
-  //   headers : new HttpHeaders()
-  //   .set('Authorization', `Bearer ${this.cookie.get("Bearer")}`)
-  //   .set('Access-Control-Allow-Origin', '*')
-  //   .set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  // };
-
 
   constructor(private http : HttpClient, private messageService : MessageService, private cookie : CookieService) { }
 
