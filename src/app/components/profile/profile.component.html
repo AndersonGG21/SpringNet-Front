@@ -34,7 +34,7 @@
       </div>
     </aside>
   </ng-container>
-  <section *ngIf="userPosts.length > 0; else elseBlock">
+  <section *ngIf="!showPlaceholder; else elseBlock">
     <ng-container *ngFor="let post of userPosts">
       <app-posts-card [post]="post"></app-posts-card>
     </ng-container>

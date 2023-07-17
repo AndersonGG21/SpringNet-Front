@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit{
   checkFollow = false;
   displayFollowersModal = false;
   displayFollowingsModal = false;
+  showPlaceholder = false;
   private router = inject(Router);
   follow : Follow = {
     follower : {
@@ -51,6 +52,8 @@ export class ProfileComponent implements OnInit{
 
       this.postService.getPostByUser(this.userId).subscribe((response) => {
         this.userPosts = response
+
+        this.userPosts.length > 0 ? this.showPlaceholder = false : this.showPlaceholder = true;
       })
 
       this.followService.getFollowings(this.userId).subscribe((followings) => {
