@@ -194,18 +194,20 @@ button:focus {
 ::ng-deep .modal .p-dialog-content {
   max-height: 500px;
   overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
 ::ng-deep .modal .p-dialog-content::-webkit-scrollbar {
-  width: 20px;
+  width: 6px;
+  background-color: transparent;
 }
 
 ::ng-deep .modal .p-dialog-content::-webkit-scrollbar-track {
-  background-color: #101010;
+  background-color: transparent;
 }
 
 ::ng-deep .modal .p-dialog-content::-webkit-scrollbar-thumb {
-  background: #151515;
-  border-radius: 20px;
+  background-color: transparent;
 }
 
