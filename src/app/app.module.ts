@@ -21,7 +21,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { FeedComponent } from './components/feed/feed.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import {MenuModule} from 'primeng/menu';
 import { StoriesComponent } from './components/stories/stories.component';
 import { PostsCardComponent } from './components/posts-card/posts-card.component';
@@ -63,7 +62,6 @@ registerPlugin(
     AppComponent,
     LoginComponent,
     FeedComponent,
-    NavbarComponent,
     StoriesComponent,
     PostsCardComponent,
     ProfileComponent,
