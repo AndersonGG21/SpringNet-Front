@@ -119,6 +119,9 @@ button {
   justify-content: space-between;
   padding: 0px 10px;
   z-index: 10;
+  backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(21, 21, 21, 0.75);
 }
 
 .logo-container {
