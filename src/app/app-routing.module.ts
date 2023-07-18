@@ -8,6 +8,7 @@ import { SavedPostsComponent } from './components/saved-posts/saved-posts.compon
 import { ChatComponent } from './components/chat/chat.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotLoggedComponent } from './components/not-logged/not-logged.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,7 +20,9 @@ const routes: Routes = [
   {path: "chat", component: ChatComponent},
   {path: "register", component: RegisterComponent},
   {path: "liked", component: SavedPostsComponent},
-  {path: "not-logged", component: NotLoggedComponent}
+  {path: "not-logged", component: NotLoggedComponent},
+  {path: "404", component: NotFoundComponent},
+  {path: "**", redirectTo: "404"}
 ];
 
 @NgModule({
