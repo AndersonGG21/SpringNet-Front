@@ -32,7 +32,6 @@ export class StoriesComponent implements OnInit {
   ngOnInit(): void {
     this.storieService.getStories().subscribe(response => {
       this.stories = response;
-      console.log(response);
     })
   }
 
