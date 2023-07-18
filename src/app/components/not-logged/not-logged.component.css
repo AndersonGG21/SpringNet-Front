@@ -1,0 +1,31 @@
+.container, .wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  gap: 20px;
+}
+
+.container button {
+  background-color: #151515;
+  border: 1px solid #4caf50;
+  padding: 5px;
+  width: 7.2em;
+  height: 35px;
+  transition: 0.5s;
+  font-size: 17px;
+  border-radius: 0.4em;
+  cursor: pointer;
+  color: #4caf50;
+  transition: all 0.5s ease-in-out;
+}
+
+.wrapper {
+  background-color: #151515;
+  width: 60%;
+  height: 60%;
+  border-radius: 8px;
+}
