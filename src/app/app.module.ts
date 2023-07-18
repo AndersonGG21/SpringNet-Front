@@ -44,6 +44,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotLoggedComponent } from './components/not-logged/not-logged.component';
 import { HttpInterceptor } from './shared/interceptors/http.interceptor';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
@@ -72,7 +73,8 @@ registerPlugin(
     ChatComponent,
     SidebarComponent,
     RegisterComponent,
-    NotLoggedComponent
+    NotLoggedComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

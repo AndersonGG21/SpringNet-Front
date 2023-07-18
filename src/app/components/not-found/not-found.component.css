@@ -1,0 +1,79 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.text-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+}
+
+.number {
+  font-size: 128px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.not-found {
+  font-family: Gavency Free;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.sorry-text {
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+img {
+  position: absolute;
+  top: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #FFF;
+  background-color: #151515;
+  padding: 13px 34px;
+  border-radius: 12px;
+}
+
+.circle {
+  top: 50px;
+  left: 180px;
+  position: absolute;
+}
+
+.circle2 {
+  top: 550px;
+  right: 290px;
+  position: absolute;
+}
+
+.x {
+  top: 150px;
+  right: 150px;
+  position: absolute;
+}
+
+.x2 {
+  top: 450px;
+  left: 280px;
+  position: absolute;
+}
+
