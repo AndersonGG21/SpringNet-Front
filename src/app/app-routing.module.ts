@@ -7,6 +7,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SavedPostsComponent } from './components/saved-posts/saved-posts.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { RegisterComponent } from './components/register/register.component';
+import { NotLoggedComponent } from './components/not-logged/not-logged.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: "profile/saved/:id", component: SavedPostsComponent},
   {path: "chat", component: ChatComponent},
   {path: "register", component: RegisterComponent},
-  {path: "liked", component: SavedPostsComponent}
+  {path: "liked", component: SavedPostsComponent},
+  {path: "not-logged", component: NotLoggedComponent}
 ];
 
 @NgModule({
