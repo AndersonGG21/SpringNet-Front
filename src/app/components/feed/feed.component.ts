@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { MenuItem } from 'primeng/api';
 import { timeInterval } from 'rxjs';
 import { Post, User } from 'src/app/models/types';
+import { LoginService } from 'src/app/services/login.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.css'],
 })
-export class FeedComponent {
+export class FeedComponent implements OnInit {
 
   font: any;
   posts : Post[] = [];
@@ -20,10 +22,13 @@ export class FeedComponent {
   time = 0;
   renderPlaceholder = false;
   userId = Number(this.cookie.get('uuid'));
-  // skeletons : Number[] = [1,2,3];
+  private loginService = inject(LoginService);
+
+  ngOnInit(): void {
+    this.loginService.isLoggedIn();
+  }
 
   constructor(private title : Title, private cookie : CookieService, private userService : UserService, private postService : PostService) {
-
 
     this.postService.getPost(Number(cookie.get("uuid"))).subscribe((posts) => {
       this.posts = posts;

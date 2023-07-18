@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Post } from 'src/app/models/types';
+import { LoginService } from 'src/app/services/login.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -15,10 +16,13 @@ export class SavedPostsComponent implements OnInit {
   likedPosts : Post[] = [];
   saved = false;
   renderPlaceholder = false;
+  private loginService = inject(LoginService);
 
   constructor(private postService : PostService, private cookie : CookieService, private aRoute : ActivatedRoute, private title : Title){}
 
   ngOnInit(): void {
+    this.loginService.isLoggedIn();
+
     this.aRoute.url.subscribe(url => {
       if (url[0].path == "liked") {
         this.postService.getLikedPosts(Number(this.cookie.get('uuid'))).subscribe((response) => {

@@ -44,4 +44,10 @@ export class LoginService {
     );
   }
 
+  isLoggedIn() {
+    if (!this.cookie.check("Bearer")) {
+      this.router.navigate(['/not-logged']);
+    }
+  }
+
 }
