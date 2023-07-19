@@ -39,8 +39,8 @@ export class SidebarComponent implements OnInit {
       }
     ];
 
-    this.userService.getAllUsers().subscribe((response) => {
-      this.users = response;
+    this.userService.users$.subscribe(users => {
+      this.users = users;
     })
   }
 
