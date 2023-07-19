@@ -1,18 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { MessageService } from 'primeng/api';
-import { Observable } from 'rxjs';
-import { Comment, Like, Post } from '../models/types';
+import { BehaviorSubject, Observable, map } from 'rxjs';
+import { Comment, Like, Post, SavedPost } from '../models/types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  baseUrl  = 'http://localhost:8080/api/posts/'
+  baseUrl  = 'http://localhost:8080/api/posts/';
+  private postSubject: BehaviorSubject<Post[]> = new BehaviorSubject<Post[]>([]);
+  public posts$: Observable<Post[]> = this.postSubject.asObservable();
+  private savedPostsSubject: BehaviorSubject<SavedPost[]> = new BehaviorSubject<SavedPost[]>([]);
+  public savedPosts$: Observable<SavedPost[]> = this.savedPostsSubject.asObservable();
 
-  constructor(private http : HttpClient, private messageService : MessageService, private cookie : CookieService) { }
+  constructor(private http : HttpClient, private cookie : CookieService) {
+  }
 
   /**
    * This function sends a HTTP POST request to create a new post with the provided data.
@@ -138,6 +142,22 @@ export class PostService {
    * @returns an Observable of type 'any'.
    */
   getLikedPosts(userId : number) : Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}liked-posts/${userId}`);
+    return this.http.get<any>(`${this.baseUrl}liked-posts/${userId}`)
+  };
+
+  getUserLikedPosts() {
+    this.http.get<Post[]>(`${this.baseUrl}liked-posts/${this.cookie.get("uuid")}`).pipe(
+      map((posts: Post[]) => {
+        this.postSubject.next(posts);
+      })
+    ).subscribe();
+  }
+
+  getUserSavedPosts() {
+    this.http.get<SavedPost[]>(`http://localhost:8080/api/saved-posts/${this.cookie.get("uuid")}`).pipe(
+      map((posts: SavedPost[]) => {
+        this.savedPostsSubject.next(posts);
+      })
+    ).subscribe();
   }
 }
