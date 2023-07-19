@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as FilePond from 'filepond';
 import { MessageService } from 'primeng/api';
-import { User } from 'src/app/models/types';
+import { UserWithPassword } from 'src/app/models/types';
 import { MediaService } from 'src/app/services/media.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -71,7 +71,7 @@ export class RegisterComponent implements OnInit {
     const password = this.newUserForm.get('password')?.value;
     const email = this.newUserForm.get('email')?.value;
 
-    const newUser : Partial<User> = {
+    const newUser : UserWithPassword = {
       username: username,
       description: description,
       password: password,
