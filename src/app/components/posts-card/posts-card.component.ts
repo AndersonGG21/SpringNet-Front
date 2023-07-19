@@ -1,6 +1,6 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { Comment, Like, Post } from 'src/app/models/types';
+import { Comment, Like, Post, SavedPost } from 'src/app/models/types';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { PostService } from 'src/app/services/post.service';
   templateUrl: './posts-card.component.html',
   styleUrls: ['./posts-card.component.css'],
 })
-export class PostsCardComponent implements OnInit {
+export class PostsCardComponent implements OnInit, OnDestroy {
   @Input() post!: Post;
   @ViewChild('comment') commentInput: ElementRef | undefined;
   liked = false;
@@ -17,6 +17,8 @@ export class PostsCardComponent implements OnInit {
   likes = 0;
   saved = false;
   date = new Date();
+  userLikedPosts: Post[] = [];
+  userSavedPosts: SavedPost[] = [];
 
   constructor(
     private postService: PostService,
@@ -25,32 +27,52 @@ export class PostsCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const like: Like = {
-      user: {
-        id: Number(this.cookie.get('uuid')),
-      },
-      post: {
-        id: this.post.id,
-      },
-    };
 
-    this.postService.checkLike(like).subscribe((response) => {
-      if (response >= 1) {
+    // const like: Like = {
+    //   user: {
+    //     id: Number(this.cookie.get('uuid')),
+    //   },
+    //   post: {
+    //     id: this.post.id,
+    //   },
+    // };
+
+    // this.postService.checkLike(like).subscribe((response) => {
+    //   if (response >= 1) {
+    //     this.liked = true;
+    //   }
+    // });
+
+    setTimeout(() => {
+      this.postService.posts$.subscribe(posts => {
+        this.userLikedPosts = posts;
+        console.log(this.userLikedPosts)
+      })
+
+      this.postService.savedPosts$.subscribe(savedPosts => {
+        this.userSavedPosts = savedPosts;
+      });
+
+      if (this.userLikedPosts.findIndex(post => post.id == this.post.id) >= 0) {
         this.liked = true;
       }
-    });
 
-    const post = {
-      user: {
-        id : Number(this.cookie.get('uuid'))
-      },
-      post : {
-        id : this.post.id
+      if (this.userSavedPosts.findIndex(saved => saved.post.id == this.post.id) >= 0) {
+        this.saved = true;
       }
-    }
-    this.postService.checkIfSaved(post).subscribe((response) => {
-      this.saved = response;
-    })
+    }, 1000);
+
+    // const post = {
+    //   user: {
+    //     id : Number(this.cookie.get('uuid'))
+    //   },
+    //   post : {
+    //     id : this.post.id
+    //   }
+    // }
+    // this.postService.checkIfSaved(post).subscribe((response) => {
+    //   this.saved = response;
+    // })
 
     this.getLikes();
   }
@@ -141,11 +163,15 @@ export class PostsCardComponent implements OnInit {
       user: {
         id : Number(this.cookie.get('uuid'))
       },
-      post : {
+      post :  {
         id : this.post.id
       }
     }
 
     this.postService.savePost(post).subscribe();
+  }
+
+  ngOnDestroy(): void {
+    // this.userLikedPosts = [];
   }
 }
