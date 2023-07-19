@@ -8,17 +8,25 @@ export interface Post {
   content?: string;
   image?: string;
   publicationDate? : string;
-  user? : User
+  user? : User;
+}
+
+export interface SavedPost  {
+  id : number;
+  user : User;
+  post: Post;
 }
 
 export interface User {
   id? : number,
   username? : string,
-  password? : string,
   email? : string,
-  registrationDate? : string,
   description? : string,
   profileImg? : string
+}
+
+export interface UserWithPassword extends User {
+  password : string
 }
 
 export interface Like {
