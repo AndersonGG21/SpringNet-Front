@@ -26,21 +26,24 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginService.isLoggedIn();
+    this.userService.getAllUsers();
+    this.postService.getUserLikedPosts();
+    this.postService.getUserSavedPosts();
   }
 
   constructor(private title : Title, private cookie : CookieService, private userService : UserService, private postService : PostService) {
 
     this.postService.getPost(Number(cookie.get("uuid"))).subscribe((posts) => {
       this.posts = posts;
-      this.posts.sort((a,b) => a.id! - b.id!);
+      this.posts.sort((a,b) => b.id! - a.id!);
 
       this.posts.length > 0 ? this.renderPlaceholder = false : this.renderPlaceholder = true;
     })
 
     if (!this.renderPlaceholder) {
-      this.userService.getAllUsers().subscribe((users) => {
+      this.userService.users$.subscribe(users => {
         this.recommendedUsers = users;
-      });
+      })
     }
 
     this.title.setTitle("Feed")
