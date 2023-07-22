@@ -7,7 +7,7 @@
     >
       <img
         src="{{ post.user?.profileImg }}"
-        alt=""
+        alt="User profile"
         width="40px"
         height="40px"
       />
@@ -23,7 +23,7 @@
     </button>
   </div>
   <div class="card-img">
-    <img src="{{ post.image }}" alt="" id="post-img" />
+    <img src="{{ post.image }}" alt="Post Image" id="post-img" />
   </div>
   <div class="card-actions">
     <div class="main-actions">
@@ -61,12 +61,12 @@
 >
   <div class="modal-body" style="height: 100%">
     <div class="modal-post" style="width: 700px">
-      <img src="{{ post.image }}" alt="" />
+      <img src="{{ post.image }}" alt="Post Image" />
     </div>
     <div class="detailBox">
       <div class="titleBox">
         <div class="commenterImage">
-          <img src="{{ post.user?.profileImg }}" />
+          <img src="{{ post.user?.profileImg }}" alt="User profile"/>
         </div>
         <p>@{{ post.user?.username }}</p>
       </div>
@@ -78,7 +78,7 @@
           <ng-container *ngFor="let comment of comments">
             <li>
               <div class="commenterImage">
-                <img src="{{ comment.user?.profileImg }}" />
+                <img src="{{ comment.user?.profileImg }}" alt="User profile"/>
               </div>
               <div class="commentText">
                 <p class="">{{ comment.comment }}</p>

@@ -1,12 +1,12 @@
 <div class="container">
   <header class="header">
     <div class="logo-container">
-      <img src="../../../assets/spring-net-logo.png" alt="" width="40px">
+      <img src="../../../assets/spring-net-logo.png" alt="" width="40px" />
       <span>SpringNet</span>
     </div>
     <div class="autocomplete-form">
-      <button>
-        <i class="pi pi-search" style="font-size: 1rem; color: #76777E"></i>
+      <button title="search-icon">
+        <i class="pi pi-search" style="font-size: 1rem; color: #76777e"></i>
       </button>
       <p-autoComplete
         [(ngModel)]="selectedUser"
@@ -18,61 +18,79 @@
         ngClass="autocomplete"
         placeholder="Search"
       >
-      <ng-template let-user pTemplate="item">
-        <div class="user-item">
-          <img
-            src="{{ user.profileImg }}"
-            width="30px"
-            height="30px"
-          />
-          <div>{{ user.username }}</div>
-        </div>
-      </ng-template>
+        <ng-template let-user pTemplate="item">
+          <div class="user-item">
+            <img src="{{ user.profileImg }}" width="30px" height="30px" />
+            <div>{{ user.username }}</div>
+          </div>
+        </ng-template>
       </p-autoComplete>
     </div>
-
   </header>
   <nav class="sidebar-container">
     <ul class="sidebar">
       <li routerLink="/feed">
-        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/feed') }">
+        <button
+          class="icon-btn"
+          title="Nav icon"
+          [ngClass]="{ 'icon-btn-active': isLinkActive('/feed') }"
+        >
           <img src="../../../assets/home.svg" alt="Home Icon" />
           <span class="icon-title">Home</span>
         </button>
       </li>
       <li routerLink="/chat">
-        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/chat') }">
+        <button
+          class="icon-btn"
+          title="Nav icon"
+          [ngClass]="{ 'icon-btn-active': isLinkActive('/chat') }"
+        >
           <img src="../../../assets/chat-icon.svg" alt="Chat Icon" />
           <span class="icon-title">Chats</span>
         </button>
       </li>
       <li routerLink="/liked">
-        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/liked') }">
+        <button
+          class="icon-btn"
+          title="Nav icon"
+          [ngClass]="{ 'icon-btn-active': isLinkActive('/liked') }"
+        >
           <img src="../../../assets/liked-icon.svg" alt="Liked Icon" />
           <span class="icon-title">Likes</span>
         </button>
       </li>
       <li routerLink="/">
-        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/reels') }">
+        <button
+          class="icon-btn"
+          title="Nav icon"
+          [ngClass]="{ 'icon-btn-active': isLinkActive('/reels') }"
+        >
           <img src="../../../assets/reels-icon.svg" alt="Reels Icon" />
           <span class="icon-title">Reels</span>
         </button>
       </li>
       <li (click)="redirectToSaved()">
-        <button class="icon-btn" [ngClass]="{ 'icon-btn-active': isLinkActive('/profile/saved/') }">
+        <button
+          class="icon-btn"
+          title="Nav icon"
+          tabindex="0"
+          [ngClass]="{ 'icon-btn-active': isLinkActive('/bookmarks') }"
+        >
           <img src="../../../assets/saved-icon.svg" alt="Saved Icon" />
           <span class="icon-title">Saved</span>
         </button>
       </li>
       <li>
         <button class="icon-btn" (click)="menu.toggle($event)">
-        <p-avatar image="{{image}}" styleClass="mr-2" shape="circle" ngClass="avatar"></p-avatar>
+          <p-avatar
+            image="{{ image }}"
+            styleClass="mr-2"
+            shape="circle"
+            ngClass="avatar"
+          ></p-avatar>
         </button>
       </li>
     </ul>
   </nav>
-
   <p-menu #menu [model]="items" [popup]="true"></p-menu>
 </div>
-
-<!-- <app-feed></app-feed> -->
