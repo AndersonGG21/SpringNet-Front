@@ -23,7 +23,7 @@
             <span> Following</span>
           </div>
         </div>
-        <button (click)="setFollow()" *ngIf="flag" class="follow-btn">
+        <button (click)="setFollow()" *ngIf="flag" class="follow-btn" title="Follow/Unfollow button">
           {{ checkFollow ? "Unfollow" : "Follow" }}
         </button>
         <div class="text">
@@ -65,7 +65,7 @@
           <span>{{ follower.username }}</span>
         </div>
         <ng-container *ngIf="follower.id">
-          <button (click)="redirectToProfile(follower.id)" class="upload-btn">See profile</button>
+          <button (click)="redirectToProfile(follower.id)" class="upload-btn" title="See profile button">See profile</button>
         </ng-container>
       </div>
     </ng-container>
@@ -91,7 +91,7 @@
           <span>{{ followingUser.username }}</span>
         </div>
         <ng-container *ngIf="followingUser.id">
-          <button (click)="redirectToProfile(followingUser.id)" class="upload-btn">See profile</button>
+          <button (click)="redirectToProfile(followingUser.id)" class="upload-btn" title="See profile button">See profile</button>
         </ng-container>
       </div>
     </ng-container>

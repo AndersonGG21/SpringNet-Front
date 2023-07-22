@@ -16,7 +16,7 @@
       (click)="slideTo(i)"
     >
       <div class="profile-photos">
-        <img src="{{ story.user.profileImg }}" alt="" />
+        <img src="{{ story.user.profileImg }}" alt="User profile" />
       </div>
       <p>{{ story.user.username }}</p>
     </div>
@@ -37,10 +37,10 @@
       <ng-container>
         <div class="swiper-slide" *ngFor="let story of stories">
           <div class="picture">
-            <img src="{{ story.media }}" alt="" />
+            <img src="{{ story.media }}" alt="Story image" />
             <div class="story-owner">
               <div class="profile-photos">
-                <img src="{{ story.user.profileImg }}" alt="" />
+                <img src="{{ story.user.profileImg }}" alt="User profile" />
               </div>
               <p>{{ story.user.username }}</p>
             </div>
@@ -70,7 +70,7 @@
       >
       </file-pond>
     </div>
-    <button (click)="createStory()" class="upload-btn" [disabled]="!enableButton">
+    <button (click)="createStory()" class="upload-btn" [disabled]="!enableButton" title="Create story button">
       Upload
       <p-badge styleClass="mr-2" severity="danger" value="Upload an image first" class="badge" [badgeDisabled]="enableButton"></p-badge>
     </button>

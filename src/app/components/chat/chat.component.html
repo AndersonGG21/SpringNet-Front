@@ -12,7 +12,7 @@
     >
       <ng-template let-user pTemplate="item">
         <div class="user-item">
-          <img src="{{ user.profileImg }}" width="30px" height="30px" />
+          <img src="{{ user.profileImg }}" width="30px" height="30px" alt="User profile" />
           <div>{{ user.username }}</div>
         </div>
       </ng-template>
@@ -40,7 +40,7 @@
         <h4>@{{ selectedUser?.username }}</h4>
       </div>
       <div style="display: flex; align-items: center; gap: 10px; justify-content: space-between">
-        <button class="close-btn" type="button" (click)="onDisconnected()">
+        <button class="close-btn" type="button" (click)="onDisconnected()" title="Close button">
           <i class="pi pi-times" style="font-size: 1rem" style="color:white"></i>
         </button>
       </div>
@@ -64,7 +64,7 @@
     <footer>
       <form class="input-container">
         <textarea name="text" rows="14" cols="10" placeholder="Write a message" wrap="soft" #input (keypress)="avoidEnter($event)"></textarea>
-        <button class="invite-btn" type="button" (click)="sendMessage(input.value)">
+        <button class="invite-btn" type="button" (click)="sendMessage(input.value)" title="Invite Button">
           <i class="pi pi-send" style="font-size: 1rem; color: white"></i>
         </button>
       </form>

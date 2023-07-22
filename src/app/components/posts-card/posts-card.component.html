@@ -18,7 +18,7 @@
         }}</span>
       </div>
     </div>
-    <button (click)="savePost()">
+    <button (click)="savePost()" title="Save post button">
       <i class="pi pi-bookmark-fill" [ngStyle]="{'opacity' : saved ? '1' : '0.5'}"></i>
     </button>
   </div>
@@ -27,13 +27,13 @@
   </div>
   <div class="card-actions">
     <div class="main-actions">
-      <button class="heart" (click)="likePost()">
+      <button class="heart" (click)="likePost()" title="Like post button">
         <i class="pi pi-thumbs-up" [ngClass]="{ active: liked }"></i>
       </button>
-      <button (click)="modalShow(post.id)">
+      <button (click)="modalShow(post.id)" title="Comment post button">
         <i class="pi pi-comment"></i>
       </button>
-      <button (click)="sharePost()">
+      <button (click)="sharePost()" title="Share post button">
         <i class="pi pi-send"></i>
       </button>
     </div>
@@ -45,7 +45,7 @@
     <p style="font-size: 13px">{{ post.content }}</p>
   </div>
   <ng-container *ngIf="stringLength(post.content) > 100">
-    <button class="show-btn" (click)="toggleShow()">Show more</button>
+    <button class="show-btn" (click)="toggleShow()" title="Show more text button">Show more</button>
   </ng-container>
 </div>
 
@@ -97,7 +97,7 @@
               #comment
             />
           </div>
-          <button class="btn-comment" (click)="commentPost()" [disabled]="!comment.value">
+          <button class="btn-comment" (click)="commentPost()" [disabled]="!comment.value" title="Add comment button">
             <p>Comment</p>
           </button>
         </form>
