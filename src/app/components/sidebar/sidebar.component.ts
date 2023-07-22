@@ -52,7 +52,7 @@ export class SidebarComponent implements OnInit {
   }
 
   redirectToSaved() : void {
-    this.router.navigate([`/profile/saved/${Number(this.cookie.get("uuid"))}`])
+    this.router.navigate([`/bookmarks`])
   }
 
   filterUsers(event : any) {
