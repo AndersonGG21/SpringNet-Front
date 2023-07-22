@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FilePondFile, FilePondOptions } from 'filepond';
 import { CookieService } from 'ngx-cookie-service';
 import { FilePondComponent } from 'ngx-filepond';

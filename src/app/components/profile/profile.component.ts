@@ -1,8 +1,7 @@
-import { Component, Injectable, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { Button } from 'primeng/button';
 import { Follow, Post, User } from 'src/app/models/types';
 import { FollowService } from 'src/app/services/follow.service';
 import { LoginService } from 'src/app/services/login.service';

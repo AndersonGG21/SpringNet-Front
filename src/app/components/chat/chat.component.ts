@@ -4,7 +4,6 @@ import { ChatMessage, User } from 'src/app/models/types';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { Subject, interval, switchMap } from 'rxjs';
 import { FollowService } from 'src/app/services/follow.service';
 
 @Component({

@@ -1,9 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { MenuItem } from 'primeng/api';
-import { timeInterval } from 'rxjs';
 import { Post, User } from 'src/app/models/types';
 import { LoginService } from 'src/app/services/login.service';
 import { PostService } from 'src/app/services/post.service';
