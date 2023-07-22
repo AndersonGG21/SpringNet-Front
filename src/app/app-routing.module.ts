@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: "feed", component: FeedComponent},
   {path: "section", component: PostsCardComponent},
   {path: "profile/:id", component: ProfileComponent},
-  {path: "profile/saved/:id", component: SavedPostsComponent},
+  {path: "bookmarks", component: SavedPostsComponent},
   {path: "chat", component: ChatComponent},
   {path: "register", component: RegisterComponent},
   {path: "liked", component: SavedPostsComponent},
