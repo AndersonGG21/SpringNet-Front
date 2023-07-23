@@ -43,7 +43,7 @@ export class FeedComponent implements OnInit {
       })
     }
 
-    this.title.setTitle("Feed")
+    this.title.setTitle("SpringNet | Feed")
 
   }
 

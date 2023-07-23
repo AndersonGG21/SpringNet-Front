@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { FollowService } from 'src/app/services/follow.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-chat',
@@ -25,6 +26,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   onlineUsers : string[] = [];
   @ViewChild("input") input: ElementRef = {} as ElementRef;
   private followService = inject(FollowService);
+  private title = inject(Title);
 
   constructor(
     private socketService: SocketService,
@@ -42,6 +44,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.socketService.getOnlineUsersSubject().subscribe((changes) => {
       this.onlineUsers.push(changes);
     })
+
+    this.title.setTitle("Messages")
   }
 
   ngAfterViewChecked(): void {
