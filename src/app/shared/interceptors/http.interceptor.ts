@@ -4,14 +4,17 @@ import {
   HttpHandler,
   HttpEvent,
   HttpHeaders,
+  HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpInterceptor implements HttpInterceptor {
 
   private cookieService = inject(CookieService);
+  private router = inject(Router);
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
@@ -29,7 +32,12 @@ export class HttpInterceptor implements HttpInterceptor {
 
     const clonedRequest = request.clone({ headers });
 
-    return next.handle(clonedRequest);
+    return next.handle(clonedRequest).pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.router.navigate(['/server-error']);
+        return throwError(error);
+      })
+    );
   }
 }
 
