@@ -1,0 +1,38 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.image-container {
+  display: flex;
+  place-items: center;
+}
+
+.error {
+  width: 50%;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  color: #FFF;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  width: 200px;
+  height: 70px;
+  padding: 15.362px 45.655px 14.477px 45.063px;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(8.065250396728516px);
+  border-radius: 45.063px;
+  background: rgba(255, 255, 255, 0.01);
+  box-shadow: 6.452199935913086px 6.452199935913086px 9.678300857543945px 0px rgba(255, 255, 255, 0.10) inset;
+  color: #FFF;
+  gap: 10px;
+}
