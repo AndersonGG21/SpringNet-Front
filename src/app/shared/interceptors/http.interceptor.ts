@@ -3,6 +3,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
+  HttpHeaders,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
@@ -13,12 +14,20 @@ export class HttpInterceptor implements HttpInterceptor {
   private cookieService = inject(CookieService);
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const clonedRequest = request.clone({
-      setHeaders: {
+
+    const isMultipart = request.body instanceof FormData;
+
+    let headers: HttpHeaders;
+    if (isMultipart) {
+      headers = new HttpHeaders(); // Leave headers empty for multipart
+    } else {
+      headers = new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.cookieService.get('Bearer')}`,
-      },
-    });
+      });
+    }
+
+    const clonedRequest = request.clone({ headers });
 
     return next.handle(clonedRequest);
   }
