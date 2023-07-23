@@ -1,8 +1,6 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, Inject, OnInit, inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {  Component, OnInit, inject } from '@angular/core';
 import { StoryService } from 'src/app/services/story.service';
 import Swiper, { SwiperOptions } from 'swiper';
-import { delay } from 'rxjs';
 import {FilePondFile, FilePondOptions} from "filepond";
 import {MediaService} from "../../services/media.service";
 import { Story } from 'src/app/models/types';
