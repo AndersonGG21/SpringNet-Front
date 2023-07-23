@@ -1,17 +1,11 @@
 <div class="main-container">
-  <aside class="login-aside">
-    <img src="../../../assets/3d-construction-abstract-composition-with-hand.png" alt="3d Image" width="50%"/>
-    <div class="info">
-      <h1>Welcome to SpringNet</h1>
-    </div>
-  </aside>
   <div class="right">
     <form [formGroup]="newUserForm" class="login-form">
       <div class="form-info">
         <h1>Create your account<span>!</span></h1>
       </div>
+      <file-pond #myPond ngClass="filepond"></file-pond>
       <div class="user-info">
-        <file-pond #myPond ngClass="filepond"></file-pond>
       <div class="input-group">
         <input
           required=""

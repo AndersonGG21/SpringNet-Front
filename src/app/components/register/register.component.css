@@ -1,3 +1,23 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.right {
+  background-color: #151515;
+  border-radius: 8px;
+  height: 90%;
+  width: 35%;
+  align-self: center;
+}
+
+.message {
+  margin-bottom: 20px;
+}
+
 ::ng-deep .filepond .filepond--wrapper {
   width: 100px;
   height: 100px;
