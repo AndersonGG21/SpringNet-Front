@@ -9,6 +9,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotLoggedComponent } from './components/not-logged/not-logged.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ServerErrorComponent } from './components/server-error/server-error.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: "liked", component: SavedPostsComponent},
   {path: "not-logged", component: NotLoggedComponent},
   {path: "404", component: NotFoundComponent},
+  {path: "server-error", component: ServerErrorComponent},
   {path: "**", redirectTo: "404"}
 ];
 
