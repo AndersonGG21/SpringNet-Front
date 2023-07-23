@@ -83,17 +83,13 @@ export class PostsCardComponent implements OnInit, OnDestroy {
     });
   }
 
-  toggleShow(): void {
-    const textContainer = document.querySelector(
-      '.card-desc'
-    ) as HTMLDivElement;
-    const btn = document.querySelector('.show-btn') as HTMLButtonElement;
+  toggleShow(element : any): void {
+    const textContainer = element.previousElementSibling as HTMLDivElement;
+    const btn = element as HTMLButtonElement;
 
     textContainer.classList.toggle('show-more');
 
-    btn.textContent == 'Show more'
-      ? (btn.textContent = 'Show less')
-      : (btn.textContent = 'Show more');
+    btn.textContent = textContainer.classList.contains('show-more') ? 'Show less' : 'Show more';
   }
 
   stringLength(string: any): number {
