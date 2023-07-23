@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit{
 
       this.postService.getPostByUser(this.userId).subscribe((response) => {
         this.userPosts = response
-
+        this.userPosts.sort((a,b) => b.id! - a.id!);
         this.userPosts.length > 0 ? this.showPlaceholder = false : this.showPlaceholder = true;
       })
 
