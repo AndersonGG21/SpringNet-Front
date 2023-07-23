@@ -15,10 +15,9 @@
   <div class="right">
     <div class="logo-container">
       <img
-        src="../../../assets/spring-net-logo.png"
+        src="../../../assets/Logo.png"
         alt="SpringNet Logo"
-        class="navbar-logo"
-        width="50px"
+        width="70px"
       />
       <span>SpringNet</span>
     </div>
@@ -53,7 +52,12 @@
         />
         <label class="user-label">Password</label>
       </div>
-      <button type="submit" class="login-btn" (click)="submitForm()" title="Submit form button">
+      <button
+        type="submit"
+        class="login-btn"
+        (click)="submitForm()"
+        title="Submit form button"
+      >
         Login
       </button>
       <div class="content__or-text">
@@ -62,8 +66,7 @@
         <span></span>
       </div>
       <span class="message"
-        >Not registered?
-        <a routerLink="/register">Create an account</a></span
+        >Not registered? <a routerLink="/register">Create an account</a></span
       >
     </form>
   </div>
