@@ -123,9 +123,9 @@
   margin: 0;
 }
 
-::ng-deep .transparent  > .p-dialog-content
-,::ng-deep .transparent  > .p-dialog-header{
-  background-color: transparent;
+::ng-deep .transparent  .p-dialog-content
+,::ng-deep .transparent  .p-dialog-header{
+  background-color: transparent !important;
 }
 
 ::ng-deep .p-dialog .p-dialog-content::-webkit-scrollbar {
