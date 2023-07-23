@@ -46,7 +46,6 @@ export class PostsCardComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.postService.posts$.subscribe(posts => {
         this.userLikedPosts = posts;
-        console.log(this.userLikedPosts)
       })
 
       this.postService.savedPosts$.subscribe(savedPosts => {
