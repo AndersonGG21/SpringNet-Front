@@ -15,7 +15,7 @@ export class SocketService implements OnInit {
   stompClient: any;
   topic : string = "/topic/online";
   privateTopic: string = "/direct/"
-  webSocketPoint : string = "http://localhost:8080/spring-websocket";
+  webSocketPoint : string = "http://springnet-production.up.railway.app/spring-websocket";
   messages : ChatMessage[] = [];
   connectUsers : string[] = [];
   private onlineUsersSubject: Subject<any> = new Subject<any>();

@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
 
-  private loginUrl  = "http://localhost:8080/login";
-  private usersUrl = "http://localhost:8080/api/users"
+  private loginUrl  = "http://springnet-production.up.railway.app/login";
+  private usersUrl = "http://springnet-production.up.railway.app/api/users"
   private router = inject(Router);
 
   private options = {

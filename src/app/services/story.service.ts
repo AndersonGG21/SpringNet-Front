@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class StoryService {
 
-  baseUrl  = 'http://localhost:8080/api/stories'
+  baseUrl  = 'http://springnet-production.up.railway.app/api/stories'
 
   constructor(private http : HttpClient, private cookie : CookieService) { }
 

@@ -10,6 +10,6 @@ export class MediaService {
   constructor(private http : HttpClient) { }
 
   uploadFile(formData : FormData) : Observable<any>{
-    return this.http.post('http://localhost:8080/media/upload', formData);
+    return this.http.post('http://springnet-production.up.railway.app/media/upload', formData);
   }
 }

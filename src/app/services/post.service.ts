@@ -58,7 +58,7 @@ export class PostService {
    * @returns an Observable of type 'any'.
    */
   likePost(like : Like) : Observable<any> {
-    return this.http.post<any>(`http://localhost:8080/api/posts/like`,like);
+    return this.http.post<any>(`http://springnet-production.up.railway.app/api/posts/like`,like);
   }
 
   /**

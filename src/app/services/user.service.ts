@@ -10,7 +10,7 @@ import { User } from '../models/types';
 })
 export class UserService {
 
-  private baseUrl  = 'http://localhost:8080/api/users';
+  private baseUrl  = 'http://springnet-production.up.railway.app/api/users';
   users : User[] = [];
   private userSubject: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   public users$: Observable<User[]> = this.userSubject.asObservable();
