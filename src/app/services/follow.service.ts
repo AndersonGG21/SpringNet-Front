@@ -9,7 +9,8 @@ import { Follow, User } from '../models/types';
 })
 export class FollowService {
 
-  private baseUrl  = 'http://localhost:8080/api/follows';
+  private baseUrl  = 'http:/springnet-production.up.railway.app/api/follows';
+
 
   constructor(private http : HttpClient, private cookie : CookieService) { }
 

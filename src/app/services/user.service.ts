@@ -32,6 +32,6 @@ export class UserService {
   }
 
   createNewUser(user : User) : Observable<any> {
-    return this.http.post<User>(`${this.baseUrl}/new-user`, user);
+    return this.http.post<User>(`${this.baseUrl}/newUser`, user);
   }
 }
