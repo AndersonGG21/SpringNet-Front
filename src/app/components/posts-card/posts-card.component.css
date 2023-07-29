@@ -85,13 +85,10 @@
 .card-desc {
   position: relative;
   max-height: 50px;
-  overflow: hidden;
-  text-overflow: ellipsis ellipsis;
-  transition: height 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  overflow-y: hidden;
 }
 
 .show-btn {
-  /* position: relative; */
   margin-left: 60%;
   background: none;
   border: none;
@@ -100,9 +97,8 @@
 }
 
 .show-more {
-  min-height: 140px;
+  max-height: 170px;
   overflow-wrap: break-word;
-  transition: all 0.5s steps();
 }
 
 .pi-thumbs-up:before {

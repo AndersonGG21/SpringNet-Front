@@ -11,16 +11,27 @@
   <ng-container *ngIf="renderPlaceholder">
     <div class="container">
       <div class="placeholder">
-        <img src="../../../assets/users.svg" alt="users icon" width="40px"/>
-        <span style="width: 80%; text-align: center;">Your feed is waiting for you to make new connections. Add friends and discover interesting content to fill your feed - start exploring now!</span>
+        <img src="../../../assets/users.svg" alt="users icon" width="40px" />
+        <span style="width: 80%; text-align: center"
+          >Your feed is waiting for you to make new connections. Add friends and
+          discover interesting content to fill your feed - start exploring
+          now!</span
+        >
       </div>
       <div class="recommended-container">
-        <div class="recommendedUsers" *ngFor="let user of recommendedUsers" routerLink="/profile/{{user.id}}">
-          <ng-container *ngIf="user.id != userId">
-            <p-avatar image="{{user.profileImg}}" shape="circle"></p-avatar>
-            <span>{{user.username}}</span>
-          </ng-container>
-        </div>
+        <ng-container *ngIf="recommendedUsers.length > 1; else elseBlock">
+          <div
+            class="recommendedUsers"
+            *ngFor="let user of recommendedUsers"
+            routerLink="/profile/{{ user.id }}"
+          >
+            <ng-container *ngIf="user.id != userId">
+              <p-avatar image="{{ user.profileImg }}" shape="circle"></p-avatar>
+              <span>{{ user.username }}</span>
+            </ng-container>
+          </div>
+        </ng-container>
+        <ng-template #elseBlock> Not more users registered </ng-template>
       </div>
     </div>
   </ng-container>

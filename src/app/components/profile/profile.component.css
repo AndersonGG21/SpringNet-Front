@@ -16,7 +16,7 @@ section {
   height: 100vh;
   padding: 10px;
   background: #151515;
-  border: 1px solid #312F37;
+  border: 1px solid #312f37;
   border-top: none;
   box-shadow: 0px 10px 40px 0px #101011;
 }
@@ -26,12 +26,12 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  color: #FFF;
+  color: #fff;
 }
 
 .user-info > img {
   border-radius: 50%;
-  border: 1px solid #312F37;
+  border: 1px solid #312f37;
 }
 
 .stats,
@@ -45,13 +45,13 @@ section {
   cursor: pointer;
 }
 
-.stat > span:nth-child(1){
+.stat > span:nth-child(1) {
   font-weight: bold;
 }
 
-.stat > span:nth-child(2){
+.stat > span:nth-child(2) {
   font-size: 12px;
-  color: #76777E;
+  color: #76777e;
 }
 
 .text {
@@ -61,7 +61,8 @@ section {
   text-align: center;
 }
 
-.text strong, p{
+.text strong,
+p {
   font-size: small;
 }
 
@@ -143,7 +144,7 @@ button:focus {
 }
 
 .place-holder {
-  color: #FFF;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -168,12 +169,12 @@ button:focus {
   align-items: center;
 }
 
-.follower-info span{
-  color: #FFF;
+.follower-info span {
+  color: #fff;
   margin-left: 10px;
 }
 
-.upload-btn{
+.upload-btn {
   background-color: #151515;
   border: 1px solid #4caf50;
   padding: 5px;
@@ -186,7 +187,7 @@ button:focus {
   transition: all 0.2s ease-in-out;
 }
 
-.upload-btn:hover{
+.upload-btn:hover {
   transition: all 0.2s ease-in-out;
   transform: scale(1.02);
 }
@@ -211,3 +212,21 @@ button:focus {
   background-color: transparent;
 }
 
+svg path,
+svg rect {
+  fill: #4caf50;
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* margin: 0 0 2em; */
+  /* height: 100px; */
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
