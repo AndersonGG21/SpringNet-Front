@@ -3,7 +3,6 @@ section {
   grid-gap: 40px;
   padding: 20px;
   place-content: center;
-  /* max-width: 80%; */
 }
 
 .main-container {
@@ -111,21 +110,11 @@ h1 {
   gap: 30px;
   max-width: 80%;
   overflow-x: scroll;
-  scroll-snap-type: x mandatory;
   border: 1px solid #312F37;
   border-radius: 8px;
   padding: 20px;
 }
 
 .recommended-container::-webkit-scrollbar {
-  width: 20px;
-}
-
-.recommended-container::-webkit-scrollbar-track {
-  background-color: #101010;
-}
-
-.recommended-container::-webkit-scrollbar-thumb {
-  background: #151515;
-  border-radius: 20px;
+  display: none;
 }
