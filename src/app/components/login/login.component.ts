@@ -1,5 +1,6 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Login } from 'src/app/models/types';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -16,12 +17,15 @@ export class LoginComponent{
   public userForm!: FormGroup;
   public email = '';
   public pass = '';
+  private title = inject(Title);
 
   constructor(private loginService: LoginService, private fb: FormBuilder) {
     this.userForm = this.fb.group({
       email: '',
       password: '',
     });
+
+    this.title.setTitle('Login | SpringNet');
   }
 
   submitForm(): void {
