@@ -34,7 +34,12 @@ export class HttpInterceptor implements HttpInterceptor {
 
     return next.handle(clonedRequest).pipe(
       catchError((error: HttpErrorResponse) => {
-        this.router.navigate(['/server-error']);
+        if (error.status === 401) {
+          this.router.navigate(['/not-logged']);
+        } else if (error.name === "HttpErrorResponse"
+        ) {
+          this.router.navigate(['/server-error']);
+        }
         return throwError(error);
       })
     );
