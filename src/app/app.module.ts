@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule, withInterceptors } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import {CardModule} from 'primeng/card';
@@ -39,7 +39,6 @@ import * as FilePondPluginFilePoster from 'filepond-plugin-file-poster';
 import * as FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import { SavedPostsComponent } from './components/saved-posts/saved-posts.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotLoggedComponent } from './components/not-logged/not-logged.component';
@@ -47,7 +46,6 @@ import { HttpInterceptor } from './shared/interceptors/http.interceptor';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
 
-const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
 registerPlugin(
   FilePondPluginFileValidateType,
@@ -98,7 +96,6 @@ registerPlugin(
     FilePondModule,
     SkeletonModule,
     AutoCompleteModule,
-    SocketIoModule.forRoot(config),
     AvatarModule
   ],
   providers: [MessageService, CookieService, {
