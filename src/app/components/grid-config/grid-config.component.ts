@@ -18,6 +18,7 @@ export class GridConfigComponent{
   post!: Post;
   content = '';
   enableButton = false;
+  formData = new FormData();
   @ViewChild('myPond') myPond: FilePondComponent | undefined;
 
   constructor(
@@ -35,7 +36,7 @@ export class GridConfigComponent{
   show1Column(): void {
     this.changeColumns(1);
     const section = document.querySelector('section') as HTMLElement;
-    section.style.width = '450px';
+    section.style.width = '350px';
   }
 
   show2Columns(): void {
@@ -57,31 +58,30 @@ export class GridConfigComponent{
   createPost() {
     this.post = {
       content: this.content,
-      image: this.imgUrl,
       user: {
         id: Number(this.cookie.get("uuid")),
       },
     };
 
-    this.postService.createPost(this.post).subscribe((res) => {
-      this.displayModal = false;
-      this.messageService.add({key: 'tc', severity: 'success', detail: 'Post created', life: 1000});
-    }, error => {
-      this.messageService.add({key: 'tc', severity: 'danger', detail: 'Error', life: 1000});
-    })
+    this.mediaService.uploadFile(this.formData).subscribe((res) => {
+      this.post.image = res.url;
+
+      this.postService.createPost(this.post).subscribe((res) => {
+        this.displayModal = false;
+        this.messageService.add({key: 'tc', severity: 'success', detail: 'Post created', life: 1000});
+      }, error => {
+        this.messageService.add({key: 'tc', severity: 'danger', detail: 'Error', life: 1000});
+      })
+    });
+
 
   }
 
-
-  // FilePond
   imageUrl = '';
 
   onProcessFile(event: any) {
     const file: FilePondFile = event.file;
     const reader = new FileReader();
-    reader.onload = (e: any) => {
-      this.imageUrl = e.target.result;
-    };
     reader.readAsDataURL(file.file);
   }
 
@@ -94,15 +94,10 @@ export class GridConfigComponent{
   };
 
   pondHandleAddFile(event: any) {
-    console.log('A file was added', event.file.file);
-    const formData = new FormData();
+    this.formData.delete('file');
     const file = event.file.file;
-    formData.append('file', file);
-
-    this.mediaService.uploadFile(formData).subscribe((res) => {
-      this.imgUrl = res.url;
-      this.enableButton = true;
-    });
+    this.formData.append('file', file);
+    this.enableButton = true;
   }
 
 }
