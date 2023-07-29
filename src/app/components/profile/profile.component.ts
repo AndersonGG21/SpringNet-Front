@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit{
   displayFollowersModal = false;
   displayFollowingsModal = false;
   showPlaceholder = false;
+  loader = true;
   private router = inject(Router);
   private loginService = inject(LoginService);
   follow : Follow = {
@@ -39,6 +40,10 @@ export class ProfileComponent implements OnInit{
   constructor( private postService : PostService, private followService : FollowService, private userService : UserService, private title : Title, private route : ActivatedRoute, private cookie : CookieService){}
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+      this.loader = false;
+    }, 1000);
 
     this.loginService.isLoggedIn();
 
