@@ -28,21 +28,6 @@ export class PostsCardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // const like: Like = {
-    //   user: {
-    //     id: Number(this.cookie.get('uuid')),
-    //   },
-    //   post: {
-    //     id: this.post.id,
-    //   },
-    // };
-
-    // this.postService.checkLike(like).subscribe((response) => {
-    //   if (response >= 1) {
-    //     this.liked = true;
-    //   }
-    // });
-
     setTimeout(() => {
       this.postService.posts$.subscribe(posts => {
         this.userLikedPosts = posts;
@@ -60,18 +45,6 @@ export class PostsCardComponent implements OnInit, OnDestroy {
         this.saved = true;
       }
     }, 1000);
-
-    // const post = {
-    //   user: {
-    //     id : Number(this.cookie.get('uuid'))
-    //   },
-    //   post : {
-    //     id : this.post.id
-    //   }
-    // }
-    // this.postService.checkIfSaved(post).subscribe((response) => {
-    //   this.saved = response;
-    // })
 
     this.getLikes();
   }
@@ -137,6 +110,9 @@ export class PostsCardComponent implements OnInit, OnDestroy {
       this.comments.push(comment);
       this.cdr.detectChanges();
     });
+
+    this.commentInput?.nativeElement.value ? this.commentInput.nativeElement.value = '' : '';
+
   }
 
   getLikes(): void {
@@ -167,6 +143,6 @@ export class PostsCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.userLikedPosts = [];
+    this.userLikedPosts = [];
   }
 }
