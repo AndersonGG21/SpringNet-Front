@@ -53,10 +53,10 @@
             <p>{{ message.content }}</p>
           </div>
         </div>
-        <div class="center" *ngIf=" (message.type == 'JOIN' || message.type == 'LEAVE' ) && message.sender != username">
+        <div class="center" *ngIf="(message.type == 'JOIN' || message.type == 'LEAVE') && message.sender != username">
           <div class="text">
             <span>@{{ message.sender }}</span>
-            <p>{{message.type == 'JOIN' ? 'Enters' : 'Leave'}} the chat</p>
+            <p>{{message.type == 'JOIN' ? 'Enters' : 'Leaves'}} the chat</p>
           </div>
         </div>
       </ng-container>
