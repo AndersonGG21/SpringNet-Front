@@ -1,4 +1,11 @@
-import { AfterViewChecked,Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { SocketService } from 'src/app/services/socket.service';
 import { ChatMessage, User } from 'src/app/models/types';
 import { UserService } from 'src/app/services/user.service';
@@ -13,18 +20,13 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./chat.component.css'],
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
-
-
   users: User[] = [];
   filteredUsers: User[] = [];
   selectedUser: User | undefined;
   sessionID = 0;
-  username = this.cookie.get("username");
+  username = this.cookie.get('username');
   messages: ChatMessage[] = [];
-  scroller = 0;
-  connected = false;
-  onlineUsers : string[] = [];
-  @ViewChild("input") input: ElementRef = {} as ElementRef;
+  @ViewChild('input') input: ElementRef = {} as ElementRef;
   private followService = inject(FollowService);
   private title = inject(Title);
 
@@ -32,20 +34,21 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     private socketService: SocketService,
     private userService: UserService,
     private router: Router,
-    private cookie : CookieService
+    private cookie: CookieService
   ) {}
 
   ngOnInit(): void {
-    this.followService.getFollowings(Number(this.cookie.get("uuid"))).subscribe((response) => {
-      this.users = response;
-      console.log(response);
+    this.followService
+      .getFollowings(Number(this.cookie.get('uuid')))
+      .subscribe((response) => {
+        this.users = response;
+      });
+
+    this.socketService.getMessages().subscribe((message) => {
+      this.messages.push(message);
     });
 
-    this.socketService.getOnlineUsersSubject().subscribe((changes) => {
-      this.onlineUsers.push(changes);
-    })
-
-    this.title.setTitle("Messages")
+    this.title.setTitle('Messages');
   }
 
   ngAfterViewChecked(): void {
@@ -60,15 +63,15 @@ export class ChatComponent implements OnInit, AfterViewChecked {
    * It likely contains information such as the user's ID, name, and other relevant details.
    */
   connect(user: User) {
-    this.sessionID = Number(user.id) + Number(this.cookie.get("uuid"));
-    this.messages = this.socketService.getMessagesList();
-    this.socketService.connect(this.sessionID);
-    this.selectedUser = user;
-    this.showChatArea();
-
-    setTimeout(() => {
-      this.onConnected();
-    }, 500);
+    this.sessionID = Number(user.id) + Number(this.cookie.get('uuid'));
+    if (this.selectedUser == null) {
+      this.socketService.connect(this.sessionID);
+      this.selectedUser = user;
+      this.showChatArea();
+      setTimeout(() => {
+        this.onConnected();
+      }, 500);
+    }
   }
 
   /**
@@ -76,26 +79,32 @@ export class ChatComponent implements OnInit, AfterViewChecked {
    * @param {string} message - The `message` parameter is a string that represents the content of the
    * message that will be sent.
    */
-  sendMessage(message : string) {
+  sendMessage(message: string) {
     if (message) {
       let chatMessage = {
         content: message,
-        sender: this.cookie.get("username"),
+        sender: this.cookie.get('username'),
         sessionID: this.sessionID,
         type: 'CHAT',
       };
-      this.socketService.send(chatMessage);
+
+      if (
+        this.messages.findIndex((m) => m.content == chatMessage.content) == -1
+      ) {
+        this.socketService.send(chatMessage);
+      }
     }
 
-    this.messages = this.socketService.getMessagesList();
-    this.input.nativeElement.value = "";
+    this.input.nativeElement.value = '';
   }
 
   /**
    * The scrollDown function scrolls to the bottom of a chat text area with a smooth animation.
    */
   scrollDown() {
-    const container = document.querySelector('.chat-text-area') as HTMLDivElement;
+    const container = document.querySelector(
+      '.chat-text-area'
+    ) as HTMLDivElement;
     container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
   }
 
@@ -124,60 +133,64 @@ export class ChatComponent implements OnInit, AfterViewChecked {
    * The function `showChatArea()` displays the chat area, hides the placeholder, and checks if the
    * selected user is online.
    */
-  showChatArea() : void {
-    const container = document.querySelector(".chat-area") as HTMLElement;
-    const placeholder = document.querySelector(".placeholder") as HTMLElement;
-    container.style.display = "flex";
-    placeholder.style.display = "none";
+  showChatArea(): void {
+    const container = document.querySelector('.chat-area') as HTMLElement;
+    const placeholder = document.querySelector('.placeholder') as HTMLElement;
+    container.style.display = 'flex';
+    placeholder.style.display = 'none';
   }
 
   /**
    * The function navigates to the profile page of the selected user.
    */
-  showSelectedUser() : void {
-    const userId = this.selectedUser?.id
-    this.router.navigate([`/profile/${userId}`])
+  showSelectedUser(): void {
+    const userId = this.selectedUser?.id;
+    this.router.navigate([`/profile/${userId}`]);
   }
 
   /**
    * The function sends a JOIN message to the socket service with the sender's username and session ID.
    */
-  onConnected() : void{
+  onConnected(): void {
     let chatMessage = {
-      content: "",
-      sender: this.cookie.get("username"),
+      content: '',
+      sender: this.cookie.get('username'),
       sessionID: this.sessionID,
       type: 'JOIN',
     };
-    this.socketService.send(chatMessage);
+    if (this.messages.findIndex((m) => m.type == chatMessage.type) == -1) {
+      this.socketService.send(chatMessage);
+    }
   }
 
   /**
    * The function `onDisconnected` sends a leave message to the server, disconnects the socket
    * connection, and hides the chat area while displaying a placeholder.
    */
-  onDisconnected() : void {
+  onDisconnected(): void {
     let chatMessage = {
-      content: "",
-      sender: this.cookie.get("username"),
+      content: ``,
+      sender: this.cookie.get('username'),
       sessionID: this.sessionID,
       type: 'LEAVE',
     };
-    this.socketService.send(chatMessage);
+
+    if (this.messages.findIndex((m) => m.type == chatMessage.type) == -1) {
+      this.socketService.send(chatMessage);
+    }
     this.socketService.disconnect();
-    this.connected = false;
-    const container = document.querySelector(".chat-area") as HTMLElement;
-    const placeholder = document.querySelector(".placeholder") as HTMLElement;
-    container.style.display = "none";
-    placeholder.style.display = "flex";
+    const container = document.querySelector('.chat-area') as HTMLElement;
+    const placeholder = document.querySelector('.placeholder') as HTMLElement;
+    container.style.display = 'none';
+    placeholder.style.display = 'flex';
   }
 
-  avoidEnter(event : any) : void {
+  avoidEnter(event: any): void {
     let key = event.keyCode;
 
     if (key === 13) {
-        event.preventDefault();
-        this.sendMessage(event.target.value);
+      event.preventDefault();
+      this.sendMessage(event.target.value);
     }
   }
 }
