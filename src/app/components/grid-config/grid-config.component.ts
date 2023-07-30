@@ -36,12 +36,12 @@ export class GridConfigComponent{
   show1Column(): void {
     this.changeColumns(1);
     const section = document.querySelector('section') as HTMLElement;
-    section.style.width = '350px';
+    section.style.width = '35%';
   }
 
   show2Columns(): void {
     const section = document.querySelector('section') as HTMLElement;
-    section.style.width = '80%';
+    section.style.width = '70%';
     this.changeColumns(2);
   }
 
