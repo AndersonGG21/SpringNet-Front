@@ -32,7 +32,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private socketService: SocketService,
-    private userService: UserService,
     private router: Router,
     private cookie: CookieService
   ) {}
