@@ -1,4 +1,4 @@
-import { Injectable, OnInit, inject } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 import { ChatMessage } from '../models/types';
@@ -15,10 +15,10 @@ export class SocketService implements OnInit {
   stompClient: any;
   topic : string = "/topic/online";
   privateTopic: string = "/direct/"
-  webSocketPoint : string = "http://springnet-production.up.railway.app/spring-websocket";
+  webSocketPoint : string = "http://localhost:8080/spring-websocket";
   messages : ChatMessage[] = [];
   connectUsers : string[] = [];
-  private onlineUsersSubject: Subject<any> = new Subject<any>();
+  private chats : Subject<ChatMessage> = new Subject<ChatMessage>();
 
   /**
    * The connect function initializes a WebSocket connection using SockJS and Stomp, and subscribes to
@@ -31,11 +31,13 @@ export class SocketService implements OnInit {
     let ws = SockJS(this.webSocketPoint);
     this.stompClient = Stomp.over(ws);
     const _this = this;
-    _this.stompClient.connect({}, function (frame : any){
-      _this.stompClient.subscribe(`${_this.privateTopic}${id}`,function (response : any){
-        _this.onMessageRecieved(response);
-      })
-    }, this.errorCallBack )
+    if (this.stompClient) {
+      _this.stompClient.connect({}, function (frame : any){
+        _this.stompClient.subscribe(`${_this.privateTopic}${id}`,function (response : any){
+          _this.onMessageRecieved(response);
+        })
+      }, this.errorCallBack )
+    }
   }
 
   /**
@@ -65,6 +67,7 @@ export class SocketService implements OnInit {
   onMessageRecieved(message : any) {
     const obj = JSON.parse(message.body);
     this.messages.push(obj);
+    this.chats.next(obj);
   }
 
   /**
@@ -76,20 +79,8 @@ export class SocketService implements OnInit {
     console.log("errorCallBack -> " + error)
   }
 
- /**
-  * The function returns a list of chat messages.
-  * @returns an array of ChatMessage objects.
-  */
-  getMessagesList() : ChatMessage[] {
-    return this.messages;
-  }
-
-  /**
-   * The function returns an Observable that emits the values of the onlineUsersSubject.
-   * @returns The method is returning an Observable of type 'any'.
-   */
-  getOnlineUsersSubject(): Observable<any> {
-    return this.onlineUsersSubject.asObservable();
+  getMessages(): Observable<ChatMessage> {
+    return this.chats.asObservable();
   }
 
 }
