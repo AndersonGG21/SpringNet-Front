@@ -18,7 +18,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 10px;
   border-radius: 8px;
   color: black;
@@ -32,25 +32,20 @@
 
 .story::before {
   content: '';
-  height: 3rem;
+  height: 50%;
   width: 100%;
   display: block;
-  background:linear-gradient(transparent, lightgreen);
+  background:linear-gradient(transparent, #1df164);
   position: absolute;
   bottom: 0;
   left: 0;
 }
 
-.story p {
-  z-index: 1;
-  font-weight: bold;
-}
-
 .profile-photos {
   height: 2rem;
   width: 2rem;
-  border: 2px dotted lightgreen;
   border-radius: 50%;
+  z-index: 1;
 }
 
 .profile-photos img {
@@ -86,7 +81,6 @@
   background-position: center;
   background-size: cover;
   width: 320px;
-  background-color: #fff;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -112,6 +106,7 @@
   place-items: center;
   gap: 5px;
   color: white;
+  backdrop-filter: blur(2px);
 }
 
 .detail {
@@ -124,7 +119,7 @@
 
 ::ng-deep .transparent  .p-dialog-content
 ,::ng-deep .transparent  .p-dialog-header{
-  background-color: transparent !important;
+  background-color: #151515f3 !important;
 }
 
 ::ng-deep .p-dialog .p-dialog-content::-webkit-scrollbar {
