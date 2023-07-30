@@ -19,7 +19,9 @@ export class FeedComponent implements OnInit {
   time = 0;
   renderPlaceholder = false;
   userId = Number(this.cookie.get('uuid'));
+  skeletons = [1,2,3];
   private loginService = inject(LoginService);
+  skeleton = true;
 
   ngOnInit(): void {
     this.loginService.isLoggedIn();
@@ -33,8 +35,8 @@ export class FeedComponent implements OnInit {
     this.postService.getPost(Number(cookie.get("uuid"))).subscribe((posts) => {
       this.posts = posts;
       this.posts.sort((a,b) => b.id! - a.id!);
-
       this.posts.length > 0 ? this.renderPlaceholder = false : this.renderPlaceholder = true;
+      this.skeleton = false;
     })
 
     if (!this.renderPlaceholder) {

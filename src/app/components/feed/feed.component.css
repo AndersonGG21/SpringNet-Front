@@ -69,6 +69,10 @@ h1 {
   color: black;
 }
 
+::ng-deep .p-skeleton {
+  background-color: #312F37;
+}
+
 .skeleton-loader {
   display: flex;
   gap: 15px;
@@ -79,7 +83,7 @@ h1 {
   display: flex;
   align-items: center;
   margin: 10px 0;
-  gap: 10px
+  gap: 10px;
 }
 
 @media screen and (min-width: 1200px) {
