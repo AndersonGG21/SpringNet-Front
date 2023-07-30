@@ -18,9 +18,6 @@
         }}</span>
       </div>
     </div>
-    <button (click)="savePost()" title="Save post button">
-      <i class="pi pi-bookmark-fill" [ngStyle]="{'opacity' : saved ? '1' : '0.5'}"></i>
-    </button>
   </div>
   <div class="card-img">
     <img src="{{ post.image }}" alt="Post Image" id="post-img" />
@@ -33,8 +30,8 @@
       <button (click)="modalShow(post.id)" title="Comment post button">
         <i class="pi pi-comment"></i>
       </button>
-      <button (click)="sharePost()" title="Share post button">
-        <i class="pi pi-send"></i>
+      <button (click)="savePost()" title="Save post button">
+        <i class="{{saved ? 'pi pi-bookmark-fill' : 'pi pi-bookmark'}}"></i>
       </button>
     </div>
   </div>
@@ -59,6 +56,9 @@
   [showHeader]="false"
   [dismissableMask]="true"
 >
+  <button class="close-btn" (click)="displayModal = false">
+    <i class="pi pi-times"></i>
+  </button>
   <div class="modal-body" style="height: 100%">
     <div class="modal-post" style="width: 700px">
       <img src="{{ post.image }}" alt="Post Image" />

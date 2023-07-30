@@ -145,16 +145,27 @@
   }
 }
 
-@media screen and (min-width < 768px) {
-  section {
-    grid-template-columns: repeat(1, 1fr);
-  }
+.close-btn {
+  position: absolute;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin: 0;
+  transition: border 0.3s ease-in-out;
 }
 
-@media screen and (min-width: 768px) {
-  section {
-    grid-template-columns: repeat(2, 300px);
-  }
+.close-btn i {
+  font-size: 15px;
+  color: white;
+}
+
+.close-btn:hover{
+  border: 1px solid #fff;
+  padding: 5px;
+  border-radius: 50%;
+  transition: border 0.3s ease-in-out;
 }
 
 @media screen and (min-width: 1200px) {
