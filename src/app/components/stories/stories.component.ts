@@ -67,7 +67,8 @@ export class StoriesComponent implements OnInit {
           depth: 300,
           modifier: 1,
           slideShadows: false
-        }
+        },
+        grabCursor: true
       });
       var swiper2 = new Swiper(".mySwiper2", {
         direction: "vertical",
@@ -78,6 +79,7 @@ export class StoriesComponent implements OnInit {
           el: ".swiper-pagination",
           clickable: true,
         },
+        grabCursor: true,
       });
     }, 200);
   }
