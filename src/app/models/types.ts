@@ -57,8 +57,10 @@ export interface Follow {
 export interface Story {
   media : string;
   user : {
-    id : number
-  }
+    id : number,
+    username? : string,
+    profileImg? : string
+  };
 }
 
 export interface ChatMessage {
