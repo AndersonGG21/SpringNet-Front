@@ -7,51 +7,99 @@ import { Story } from 'src/app/models/types';
 import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from 'primeng/api';
 
+
 @Component({
   selector: 'app-stories',
   templateUrl: './stories.component.html',
   styleUrls: ['./stories.component.css']
 })
-
 export class StoriesComponent implements OnInit {
 
-  stories : any;
+  stories : Story[] = [];
   private storieService = inject(StoryService);
   private mediaService = inject(MediaService);
   private cookieService = inject(CookieService);
   private messageService = inject(MessageService);
   visible = false;
   swiper : any;
+  storiesSwiper : any;
   sidebarVisible = false;
   story !: Story;
   enableButton = false;
+  gropuedStories : any = [];
 
 
   ngOnInit(): void {
     this.storieService.getStories().subscribe(response => {
       this.stories = response;
+      const groupedStories = this.groupBy(this.stories, s => s.user.id);
+
+      const array = Object.values(groupedStories);
+      this.gropuedStories = array;
+      // console.log(array)
+
+      array.forEach(element => {
+        console.log(element);
+      });
+
     })
   }
+
+  groupBy = <T, K extends keyof any>(list: T[], getKey: (item: T) => K) =>
+  list.reduce((previous, currentItem) => {
+    const group = getKey(currentItem);
+    if (!previous[group]) previous[group] = [];
+    previous[group].push(currentItem);
+    return previous;
+  }, {} as Record<K, T[]>);
 
   showDialog() : void {
     this.visible = true;
     setTimeout(() => {
-      this.swiper = new Swiper(".swiper-container",{
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        coverflowEffect: {
-          rotate: 20,
-          stretch: 0,
-          depth: 350,
-          modifier: 1,
-          slideShadows: true
+      // this.swiper = new Swiper(".swiper-container",{
+      //   effect: "coverflow",
+      //   grabCursor: true,
+      //   centeredSlides: true,
+      //   slidesPerView: "auto",
+      //   coverflowEffect: {
+      //     rotate: 20,
+      //     stretch: 0,
+      //     depth: 350,
+      //     modifier: 1,
+      //     slideShadows: true
+      //   },
+      //   autoplay: {
+      //     delay: 10000
+      //   }
+      // })
+
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 50,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
         },
-        autoplay: {
-          delay: 10000
+        centeredSlides: true,
+        slidesPerView: 2,
+        effect: 'coverflow',
+        coverflowEffect: {
+          rotate: 10,
+          stretch: 0,
+          depth: 300,
+          modifier: 1,
+          slideShadows: false
         }
-      })
+      });
+      var swiper2 = new Swiper(".mySwiper2", {
+        direction: "vertical",
+        spaceBetween: 50,
+        slidesPerView: 1,
+        centeredSlides: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
     }, 200);
   }
 
@@ -105,9 +153,9 @@ export class StoriesComponent implements OnInit {
 
       this.story = {
         media: this.imageUrl,
-        user: {
+        user : {
           id: Number(this.cookieService.get("uuid")),
-        }
+        },
       }
 
       this.storieService.createStory(this.story).subscribe(() => {
