@@ -36,11 +36,7 @@ export class StoriesComponent implements OnInit {
 
       const array = Object.values(groupedStories);
       this.gropuedStories = array;
-      // console.log(array)
 
-      array.forEach(element => {
-        console.log(element);
-      });
 
     })
   }
@@ -56,23 +52,6 @@ export class StoriesComponent implements OnInit {
   showDialog() : void {
     this.visible = true;
     setTimeout(() => {
-      // this.swiper = new Swiper(".swiper-container",{
-      //   effect: "coverflow",
-      //   grabCursor: true,
-      //   centeredSlides: true,
-      //   slidesPerView: "auto",
-      //   coverflowEffect: {
-      //     rotate: 20,
-      //     stretch: 0,
-      //     depth: 350,
-      //     modifier: 1,
-      //     slideShadows: true
-      //   },
-      //   autoplay: {
-      //     delay: 10000
-      //   }
-      // })
-
       var swiper = new Swiper(".mySwiper", {
         spaceBetween: 50,
         pagination: {
