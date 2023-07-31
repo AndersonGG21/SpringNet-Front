@@ -8,15 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class StoryService {
 
-  baseUrl  = 'http://springnet-production.up.railway.app/api/stories'
+  private API_URL  = 'http://18.117.253.243/api/stories'
 
   constructor(private http : HttpClient, private cookie : CookieService) { }
 
   getStories() : Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${Number(this.cookie.get('uuid'))}`)
+    return this.http.get<any>(`${this.API_URL}/${Number(this.cookie.get('uuid'))}`)
   }
 
   createStory(story : any) : Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/new-story`, story)
+    return this.http.post<any>(`${this.API_URL}/new-story`, story)
   }
 }

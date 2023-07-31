@@ -9,7 +9,7 @@ import { Comment, Like, Post, SavedPost } from '../models/types';
 })
 export class PostService {
 
-  baseUrl  = 'http://localhost:8080/api/posts/';
+  private API_URL  = 'http://18.117.253.243/api/posts/';
   private postSubject: BehaviorSubject<Post[]> = new BehaviorSubject<Post[]>([]);
   public posts$: Observable<Post[]> = this.postSubject.asObservable();
   private savedPostsSubject: BehaviorSubject<SavedPost[]> = new BehaviorSubject<SavedPost[]>([]);
@@ -25,7 +25,7 @@ export class PostService {
    * @returns An Observable of type `any` is being returned.
    */
   createPost(post : Post) : Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}new-post`,post);
+    return this.http.post<any>(`${this.API_URL}new-post`,post);
   }
 
   /**
@@ -39,7 +39,7 @@ export class PostService {
    * the `options` property of the class.
    */
   getPost(id : number) : Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}${id}`);
+    return this.http.get<Post[]>(`${this.API_URL}${id}`);
   }
 
   /**
@@ -48,7 +48,7 @@ export class PostService {
    * @returns an Observable of type Post[].
    */
   getPostByUser(id : number) : Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}user-posts/${id}`);
+    return this.http.get<Post[]>(`${this.API_URL}user-posts/${id}`);
   }
 
   /**
@@ -58,7 +58,7 @@ export class PostService {
    * @returns an Observable of type 'any'.
    */
   likePost(like : Like) : Observable<any> {
-    return this.http.post<any>(`http://springnet-production.up.railway.app/api/posts/like`,like);
+    return this.http.post<any>(`http://localhost:8080/api/posts/like`,like);
   }
 
   /**
@@ -69,7 +69,7 @@ export class PostService {
    * @returns an Observable of type number.
    */
   checkLike(like : Like) : Observable<number> {
-    return this.http.post<number>(`${this.baseUrl}liked`, like);
+    return this.http.post<number>(`${this.API_URL}liked`, like);
   }
 
   /**
@@ -78,7 +78,7 @@ export class PostService {
    * @returns an Observable of type Comment[].
    */
   getComments(post : number) : Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.baseUrl}${post}/comments`);
+    return this.http.get<Comment[]>(`${this.API_URL}${post}/comments`);
   }
 
   /**
@@ -88,7 +88,7 @@ export class PostService {
    * @returns an Observable of type string.
    */
   commentPost(comment : Comment) : Observable<string> {
-    return this.http.post<any>(`${this.baseUrl}comment`, comment);
+    return this.http.post<any>(`${this.API_URL}comment`, comment);
   }
 
   /**
@@ -98,7 +98,7 @@ export class PostService {
    * @returns an Observable of type number.
    */
   getPostLikes(post : number) : Observable<number> {
-    return this.http.get<number>(`${this.baseUrl}${post}/likes`);
+    return this.http.get<number>(`${this.API_URL}${post}/likes`);
   }
 
   /**
@@ -142,11 +142,11 @@ export class PostService {
    * @returns an Observable of type 'any'.
    */
   getLikedPosts(userId : number) : Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}liked-posts/${userId}`)
+    return this.http.get<any>(`${this.API_URL}liked-posts/${userId}`)
   };
 
   getUserLikedPosts() {
-    this.http.get<Post[]>(`${this.baseUrl}liked-posts/${this.cookie.get("uuid")}`).pipe(
+    this.http.get<Post[]>(`${this.API_URL}liked-posts/${this.cookie.get("uuid")}`).pipe(
       map((posts: Post[]) => {
         this.postSubject.next(posts);
       })

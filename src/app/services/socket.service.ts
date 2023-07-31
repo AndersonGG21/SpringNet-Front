@@ -13,9 +13,8 @@ export class SocketService implements OnInit {
   ngOnInit(): void {}
 
   stompClient: any;
-  topic : string = "/topic/online";
   privateTopic: string = "/direct/"
-  webSocketPoint : string = "http://localhost:8080/spring-websocket";
+  webSocketPoint : string = "http://18.117.253.243/spring-websocket";
   messages : ChatMessage[] = [];
   connectUsers : string[] = [];
   private chats : Subject<ChatMessage> = new Subject<ChatMessage>();

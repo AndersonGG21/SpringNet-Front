@@ -10,7 +10,7 @@ import { User } from '../models/types';
 })
 export class UserService {
 
-  private baseUrl  = 'http://18.117.253.243/api/users';
+  private API_URL  = 'http://18.117.253.243/api/users';
   users : User[] = [];
   private userSubject: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   public users$: Observable<User[]> = this.userSubject.asObservable();
@@ -20,11 +20,11 @@ export class UserService {
   }
 
   getUserProfile(id : number) : Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/${id}`);
+    return this.http.get<User>(`${this.API_URL}/${id}`);
   }
 
   getAllUsers() {
-    this.http.get<User[]>(`${this.baseUrl}`).pipe(
+    this.http.get<User[]>(`${this.API_URL}`).pipe(
       map((users: User[]) => {
         this.userSubject.next(users);
       })
@@ -32,6 +32,6 @@ export class UserService {
   }
 
   createNewUser(user : User) : Observable<any> {
-    return this.http.post<User>(`${this.baseUrl}/newUser`, user);
+    return this.http.post<User>(`${this.API_URL}/new-user`, user);
   }
 }

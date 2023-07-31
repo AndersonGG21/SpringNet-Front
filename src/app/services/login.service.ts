@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
 
-  private loginUrl  = "http://springnet-production.up.railway.app/login";
-  private usersUrl = "http://springnet-production.up.railway.app/api/users"
+  private API_LOGIN_URL  = "http://18.117.253.243/login";
+  private API_USERS_URL = "http://18.117.253.243/api/users"
   private router = inject(Router);
 
   private options = {
@@ -21,7 +21,7 @@ export class LoginService {
   constructor(private http : HttpClient, private cookie : CookieService) { }
 
   login(login : Login){
-    this.http.post(this.loginUrl, login, {observe : 'response'}).subscribe(
+    this.http.post(this.API_LOGIN_URL, login, {observe : 'response'}).subscribe(
       response => {
         const token = response.headers?.get("Authorization");
 
@@ -33,7 +33,7 @@ export class LoginService {
       }, error => {
         alert("Wrong username or password");
       }, () => {
-        this.http.get<User>(`${this.usersUrl}/by-email/${login.email}`,{headers : this.options.headers}).subscribe((response) => {
+        this.http.get<User>(`${this.API_USERS_URL}/by-email/${login.email}`,{headers : this.options.headers}).subscribe((response) => {
           const uuid = response.id;
           this.cookie.set("uuid", String(uuid));
           this.cookie.set("username", String(response.username));

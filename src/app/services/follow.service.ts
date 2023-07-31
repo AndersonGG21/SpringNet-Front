@@ -9,33 +9,33 @@ import { Follow, User } from '../models/types';
 })
 export class FollowService {
 
-  private baseUrl  = 'http:/springnet-production.up.railway.app/api/follows';
+  private API_URL  = 'http://18.117.253.243/api/follows';
 
 
   constructor(private http : HttpClient, private cookie : CookieService) { }
 
 
   getCountOfFollowers(id : number): Observable<number>{
-    return this.http.get<number>(`${this.baseUrl}/count-followers/${id}`);
+    return this.http.get<number>(`${this.API_URL}/count-followers/${id}`);
   }
 
   getCountOfFollowing(id : number): Observable<number>{
-    return this.http.get<number>(`${this.baseUrl}/count-following/${id}`);
+    return this.http.get<number>(`${this.API_URL}/count-following/${id}`);
   }
 
   setFollow(follow : Follow) : Observable<any> {
-    return this.http.post<Follow>(`${this.baseUrl}/follow-user`, follow)
+    return this.http.post<Follow>(`${this.API_URL}/follow-user`, follow)
   }
 
   checkFollow(follow : Follow) : Observable<number> {
-    return this.http.post<any>(`${this.baseUrl}/check-follow`, follow);
+    return this.http.post<any>(`${this.API_URL}/check-follow`, follow);
   }
 
   getFollowers(id : number) : Observable<User[]>{
-    return this.http.get<User[]>(`${this.baseUrl}/${id}/followers`);
+    return this.http.get<User[]>(`${this.API_URL}/${id}/followers`);
   }
 
   getFollowings(id : number) : Observable<User[]>{
-    return this.http.get<User[]>(`${this.baseUrl}/${id}/followings`);
+    return this.http.get<User[]>(`${this.API_URL}/${id}/followings`);
   }
 }
