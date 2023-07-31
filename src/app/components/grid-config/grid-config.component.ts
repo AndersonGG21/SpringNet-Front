@@ -73,8 +73,6 @@ export class GridConfigComponent{
         this.messageService.add({key: 'tc', severity: 'danger', detail: 'Error', life: 1000});
       })
     });
-
-
   }
 
   imageUrl = '';
