@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="action"></div>
-  <ng-container *ngFor="let story of stories; index as i">
+  <!-- <ng-container *ngFor="let story of stories; index as i">
     <div
       class="story"
       [ngStyle]="{ 'background-image': 'url(&quot;' + story.media + '&quot;)' }"
@@ -19,6 +19,17 @@
         <img src="{{ story.user.profileImg }}" alt="User profile" />
       </div>
     </div>
+  </ng-container> -->
+  <ng-container *ngFor="let item of gropuedStories">
+    <div
+      class="story"
+      [ngStyle]="{
+        'background-image': 'url(&quot;' + item[0].user.profileImg + '&quot;)'
+      }"
+      (click)="showDialog()"
+    >
+      <span>{{ item[0].user.username }}</span>
+    </div>
   </ng-container>
 </div>
 <!-- Slider -->
@@ -27,6 +38,7 @@
   header="Stories"
   [(visible)]="visible"
   [modal]="true"
+  [style]="{ width: '50%' }"
   styleClass="transparent"
   [draggable]="false"
   [resizable]="false"
@@ -34,16 +46,47 @@
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <ng-container>
-        <div class="swiper-slide" *ngFor="let story of stories">
-          <div class="picture">
-            <img src="{{ story.media }}" alt="Story image" />
-            <div class="story-owner">
-              <div class="profile-photos">
-                <img src="{{ story.user.profileImg }}" alt="User profile" />
+        <div class="swiper mySwiper swiper-h">
+          <div class="swiper-wrapper">
+            <ng-container *ngFor="let item of gropuedStories">
+              <div
+                class="swiper-slide horizontal-slide"
+                *ngIf="item.length < 2; else elseBlock"
+              >
+                <img src="{{ item[0].media }}" alt="Storie Image" />
+                <div class="user-info">
+                  <p-avatar
+                    image="{{ item[0].user.profileImg }}"
+                    shape="circle"
+                  ></p-avatar>
+                  <p>{{ item[0].user.username }}</p>
+                </div>
               </div>
-              <p>{{ story.user.username }}</p>
-            </div>
+              <ng-template #elseBlock class="template">
+                <div class="swiper-slide">
+                  <div class="swiper mySwiper2 swiper-v">
+                    <div class="swiper-wrapper">
+                      <div
+                        class="swiper-slide vertical-slide"
+                        *ngFor="let el of item; index as i"
+                      >
+                        <img src="{{ item[i].media }}" alt="Storie Image" />
+                        <div class="user-info">
+                          <p-avatar
+                            image="{{ item[i].user.profileImg }}"
+                            shape="circle"
+                          ></p-avatar>
+                          <p>{{ item[i].user.username }}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
           </div>
+          <div class="swiper-pagination"></div>
         </div>
       </ng-container>
     </div>
@@ -69,9 +112,20 @@
       >
       </file-pond>
     </div>
-    <button (click)="createStory()" class="upload-btn" [disabled]="!enableButton" title="Create story button">
+    <button
+      (click)="createStory()"
+      class="upload-btn"
+      [disabled]="!enableButton"
+      title="Create story button"
+    >
       Upload
-      <p-badge styleClass="mr-2" severity="danger" value="Upload an image first" class="badge" [badgeDisabled]="enableButton"></p-badge>
+      <p-badge
+        styleClass="mr-2"
+        severity="danger"
+        value="Upload an image first"
+        class="badge"
+        [badgeDisabled]="enableButton"
+      ></p-badge>
     </button>
   </form>
 </p-dialog>
@@ -79,10 +133,10 @@
 <p-toast position="bottom-right" key="tc" ngClass="toast">
   <ng-template let-message pTemplate="message">
     <div class="flex flex-column" style="flex: 1">
-        <div class="toast-message">
-          <i class="pi pi-check" style="color: #4caf50"></i>
-            <p>{{message.detail}}</p>
-        </div>
+      <div class="toast-message">
+        <i class="pi pi-check" style="color: #4caf50"></i>
+        <p>{{ message.detail }}</p>
+      </div>
     </div>
-</ng-template>
+  </ng-template>
 </p-toast>

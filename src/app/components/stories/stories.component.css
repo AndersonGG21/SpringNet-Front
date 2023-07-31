@@ -41,6 +41,11 @@
   left: 0;
 }
 
+.story span {
+  z-index: 2;
+  font-weight: bolder;
+}
+
 .profile-photos {
   height: 2rem;
   width: 2rem;
@@ -77,25 +82,18 @@
   height: 500px;
 }
 
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 320px;
-  overflow: hidden;
-  border-radius: 8px;
-}
 .picture {
   width: 320px;
   height: 500px;
   overflow: hidden;
   position: relative;
 }
+
 .picture img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-
 }
 
 .story-owner{
@@ -117,9 +115,13 @@
   margin: 0;
 }
 
+::ng-deep .p-dialog-mask {
+  background: radial-gradient(#0e0d0d, #151515f6);
+}
+
 ::ng-deep .transparent  .p-dialog-content
 ,::ng-deep .transparent  .p-dialog-header{
-  background-color: #151515f3 !important;
+  background-color: #0e0d0d !important;
 }
 
 ::ng-deep .p-dialog .p-dialog-content::-webkit-scrollbar {
@@ -159,4 +161,75 @@
   opacity: 1;
   right: 0;
   bottom: -10px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  align-self: center;
+}
+
+.swiper-container {
+  width: 100%;
+}
+
+.swiper-slide{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-slide .user-info{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  place-items: center;
+  gap: 5px;
+  color: white;
+  backdrop-filter: blur(1px);
+}
+
+.swiper-v {
+  width: 100%;
+}
+
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+  top: 0;
+  left: 0;
+  height: 2px;
+  display: flex;
+}
+
+::ng-deep .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet{
+  flex: 1;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #1df164;
+  width: 50%;
+}
+
+
+::ng-deep .swiper-container-vertical > .swiper-pagination-bullets .swiper-pagination-bullet {
+  display: block;
+  background-color: #1df164ec;
+}
+
+::ng-deep .swiper-container-vertical > .swiper-pagination-bullets .swiper-pagination-bullet-active {
+  background-color: #1df164;
+}
+
+.swiper-wrapper {
+  display: flex;
+  height: 500px;
 }
