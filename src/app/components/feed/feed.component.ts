@@ -32,12 +32,12 @@ export class FeedComponent implements OnInit {
 
   constructor(private title : Title, private cookie : CookieService, private userService : UserService, private postService : PostService) {
 
-    // this.postService.getPost(Number(cookie.get("uuid"))).subscribe((posts) => {
-    //   this.posts = posts;
-    //   this.posts.sort((a,b) => b.id! - a.id!);
-    //   this.posts.length > 0 ? this.renderPlaceholder = false : this.renderPlaceholder = true;
-    //   this.skeleton = false;
-    // })
+    this.postService.getPost(Number(cookie.get("uuid"))).subscribe((posts) => {
+      this.posts = posts;
+      this.posts.sort((a,b) => b.id! - a.id!);
+      this.posts.length > 0 ? this.renderPlaceholder = false : this.renderPlaceholder = true;
+      this.skeleton = false;
+    })
 
     if (!this.renderPlaceholder) {
       this.userService.users$.subscribe(users => {

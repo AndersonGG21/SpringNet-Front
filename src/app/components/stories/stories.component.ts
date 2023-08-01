@@ -30,15 +30,14 @@ export class StoriesComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.storieService.getStories().subscribe(response => {
-    //   this.stories = response;
-    //   const groupedStories = this.groupBy(this.stories, s => s.user.id);
+    this.storieService.getStories().subscribe(response => {
+      this.stories = response;
+      const groupedStories = this.groupBy(this.stories, s => s.user.id);
 
-    //   const array = Object.values(groupedStories);
-    //   this.gropuedStories = array;
+      const array = Object.values(groupedStories);
+      this.gropuedStories = array;
 
-
-    // })
+    })
   }
 
   groupBy = <T, K extends keyof any>(list: T[], getKey: (item: T) => K) =>
