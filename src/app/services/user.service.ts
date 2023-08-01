@@ -10,7 +10,7 @@ import { User } from '../models/types';
 })
 export class UserService {
 
-  private API_URL  = 'http://18.117.253.243/api/users';
+  private API_URL  = 'http://3.16.159.39/api/users';
   users : User[] = [];
   private userSubject: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   public users$: Observable<User[]> = this.userSubject.asObservable();

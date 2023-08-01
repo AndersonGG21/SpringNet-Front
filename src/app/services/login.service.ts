@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
 
-  private API_LOGIN_URL  = "http://18.117.253.243/login";
-  private API_USERS_URL = "http://18.117.253.243/api/users"
+  private API_LOGIN_URL  = "http://3.16.159.39/login";
+  private API_USERS_URL = "http://3.16.159.39/api/users"
   private router = inject(Router);
 
   private options = {

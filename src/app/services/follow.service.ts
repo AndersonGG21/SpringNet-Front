@@ -9,7 +9,7 @@ import { Follow, User } from '../models/types';
 })
 export class FollowService {
 
-  private API_URL  = 'http://18.117.253.243/api/follows';
+  private API_URL  = 'http://3.16.159.39/api/follows';
 
 
   constructor(private http : HttpClient, private cookie : CookieService) { }

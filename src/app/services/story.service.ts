@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class StoryService {
 
-  private API_URL  = 'http://18.117.253.243/api/stories'
+  private API_URL  = 'http://3.16.159.39/api/stories'
 
   constructor(private http : HttpClient, private cookie : CookieService) { }
 
