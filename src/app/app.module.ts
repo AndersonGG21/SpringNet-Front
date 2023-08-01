@@ -98,13 +98,11 @@ registerPlugin(
     AutoCompleteModule,
     AvatarModule
   ],
-  providers: [MessageService, CookieService],
+  providers: [MessageService, CookieService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-// , {
-//   provide: HTTP_INTERCEPTORS,
-//   useClass: HttpInterceptor,
-//   multi: true
-// }
