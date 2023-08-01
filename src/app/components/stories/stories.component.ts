@@ -92,8 +92,6 @@ export class StoriesComponent implements OnInit {
 
   }
 
-  //FilePond
-
   imageUrl = '';
 
   onProcessFile(event: any) {
