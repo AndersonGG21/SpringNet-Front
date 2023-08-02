@@ -9,7 +9,7 @@ import { Comment, Like, Post, SavedPost } from '../models/types';
 })
 export class PostService {
 
-  private API_URL  = 'http://3.16.159.39/api/posts/';
+  private API_URL  = 'http://3.16.159.39:81/api/posts/';
   private postSubject: BehaviorSubject<Post[]> = new BehaviorSubject<Post[]>([]);
   public posts$: Observable<Post[]> = this.postSubject.asObservable();
   private savedPostsSubject: BehaviorSubject<SavedPost[]> = new BehaviorSubject<SavedPost[]>([]);
@@ -58,7 +58,7 @@ export class PostService {
    * @returns an Observable of type 'any'.
    */
   likePost(like : Like) : Observable<any> {
-    return this.http.post<any>(`http://3.16.159.39/api/posts/like`,like);
+    return this.http.post<any>(`http://3.16.159.39:81/api/posts/like`,like);
   }
 
   /**
@@ -109,7 +109,7 @@ export class PostService {
    * @returns an Observable of type `any`.
    */
   savePost(post : Post) : Observable<any> {
-    return this.http.post<any>(`http://3.16.159.39/api/saved-posts/save-post`, post);
+    return this.http.post<any>(`http://3.16.159.39:81/api/saved-posts/save-post`, post);
   }
 
   /**
@@ -120,7 +120,7 @@ export class PostService {
    * @returns an Observable of type 'any'.
    */
   getSavedPosts(userId : number) : Observable<any> {
-    return this.http.get<any>(`http://3.16.159.39/api/saved-posts/${userId}`);
+    return this.http.get<any>(`http://3.16.159.39:81/api/saved-posts/${userId}`);
   }
 
   /**
@@ -132,7 +132,7 @@ export class PostService {
    * @returns an Observable of type 'any'.
    */
   checkIfSaved(post : any) : Observable<any> {
-    return this.http.post<any>(`http://3.16.159.39/api/saved-posts/check`, post);
+    return this.http.post<any>(`http://3.16.159.39:81/api/saved-posts/check`, post);
   }
 
   /**
@@ -154,7 +154,7 @@ export class PostService {
   }
 
   getUserSavedPosts() {
-    this.http.get<SavedPost[]>(`http://3.16.159.39/api/saved-posts/${this.cookie.get("uuid")}`).pipe(
+    this.http.get<SavedPost[]>(`http://3.16.159.39:81/api/saved-posts/${this.cookie.get("uuid")}`).pipe(
       map((posts: SavedPost[]) => {
         this.savedPostsSubject.next(posts);
       })

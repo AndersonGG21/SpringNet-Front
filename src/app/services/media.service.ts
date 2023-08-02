@@ -10,6 +10,6 @@ export class MediaService {
   constructor(private http : HttpClient) { }
 
   uploadFile(formData : FormData) : Observable<any>{
-    return this.http.post('http://3.16.159.39/media/upload', formData);
+    return this.http.post('http://3.16.159.39:81/media/upload', formData);
   }
 }

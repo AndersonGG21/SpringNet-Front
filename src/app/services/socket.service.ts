@@ -14,7 +14,7 @@ export class SocketService implements OnInit {
 
   stompClient: any;
   privateTopic: string = "/direct/"
-  webSocketPoint : string = "http://3.16.159.39/spring-websocket";
+  webSocketPoint : string = "http://3.16.159.39:81/spring-websocket";
   messages : ChatMessage[] = [];
   connectUsers : string[] = [];
   private chats : Subject<ChatMessage> = new Subject<ChatMessage>();
