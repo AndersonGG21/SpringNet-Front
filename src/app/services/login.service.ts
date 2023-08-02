@@ -25,10 +25,11 @@ export class LoginService {
     this.http.post<HttpResponse<any>>(this.API_LOGIN_URL, login, {observe : 'response', headers : this.options.headers}).subscribe(
       (response) => {
         const token = response.headers.get("Authorization");
-        console.log(token);
-        // if (token){
-        //   this.cookie.set("Bearer", token.replace("Bearer", "").trim());
-        // }
+        //console.log(token);
+        //console.log(response);
+        if (token != null){
+          this.cookie.set("Bearer", token.replace("Bearer", "").trim());
+        }
       }, error => {
         alert("Wrong username or password");
       }, () => {
