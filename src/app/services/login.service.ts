@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Login, User } from '../models/types';
@@ -22,8 +22,8 @@ export class LoginService {
 
   login(login : Login){
     this.cookie.deleteAll();
-    this.http.post(this.API_LOGIN_URL, login).subscribe(
-      (response : any) => {
+    this.http.post<HttpResponse<any>>(this.API_LOGIN_URL, login, {observe : 'response', headers : this.options.headers}).subscribe(
+      (response) => {
         const token = response.headers.get("Authorization");
         console.log(token);
         // if (token){
