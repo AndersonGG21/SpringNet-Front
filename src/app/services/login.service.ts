@@ -22,13 +22,14 @@ export class LoginService {
 
   login(login : Login){
     this.cookie.deleteAll();
-    this.http.post(this.API_LOGIN_URL, login, {observe : 'response'}).subscribe(
-      response => {
-        const token = response.headers.getAll("Authorization");;
-        console.log(token);
-        // if (token){
-        //   this.cookie.set("Bearer", token.replace("Bearer", "").trim());
-        // }
+    this.http.post(this.API_LOGIN_URL, login).subscribe(
+      (response : any) => {
+        const token = response.headers.get("Authorization");
+
+        if (token){
+          this.cookie.deleteAll();
+          this.cookie.set("Bearer", token.replace("Bearer", "").trim());
+        }
       }, error => {
         alert("Wrong username or password");
       }, () => {
