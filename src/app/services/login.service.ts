@@ -3,7 +3,6 @@ import { Injectable, inject } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Login, User } from '../models/types';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
 
 
 @Injectable({
@@ -23,20 +22,24 @@ export class LoginService {
 
   login(login : Login){
     this.cookie.deleteAll();
-    this.http.post(this.API_LOGIN_URL, login, {observe : 'response'}).pipe(
-        map((response) => {
-          console.log(response.headers);
-        }
-      )
-      // () => {
-      //   this.http.get<User>(`${this.API_USERS_URL}/by-email/${login.email}`,{headers : this.options.headers}).subscribe((response) => {
-      //     const uuid = response.id;
-      //     this.cookie.set("uuid", String(uuid));
-      //     this.cookie.set("username", String(response.username));
-      //     this.cookie.set("user_profile_picture", String(response.profileImg));
-      //     // this.router.navigateByUrl("/feed").then(() => window.location.reload());
-      //   })
-      // }
+    this.http.post(this.API_LOGIN_URL, login, {observe : 'response'}).subscribe(
+      response => {
+        const token = response.headers;
+        console.log(token);
+        // if (token){
+        //   this.cookie.set("Bearer", token.replace("Bearer", "").trim());
+        // }
+      }, error => {
+        alert("Wrong username or password");
+      }, () => {
+        this.http.get<User>(`${this.API_USERS_URL}/by-email/${login.email}`,{headers : this.options.headers}).subscribe((response) => {
+          const uuid = response.id;
+          this.cookie.set("uuid", String(uuid));
+          this.cookie.set("username", String(response.username));
+          this.cookie.set("user_profile_picture", String(response.profileImg));
+          // this.router.navigateByUrl("/feed").then(() => window.location.reload());
+        })
+      }
     );
   }
 
