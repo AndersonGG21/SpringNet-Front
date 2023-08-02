@@ -38,7 +38,11 @@ export class LoginService {
           this.cookie.set("uuid", String(uuid));
           this.cookie.set("username", String(response.username));
           this.cookie.set("user_profile_picture", String(response.profileImg));
-          // this.router.navigateByUrl("/feed").then(() => window.location.reload());
+
+          if (this.cookie.check("Bearer")) {
+            this.router.navigateByUrl("/feed").then(() => window.location.reload());
+          }
+
         })
       }
     );
