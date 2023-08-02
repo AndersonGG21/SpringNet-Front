@@ -21,15 +21,14 @@ export class LoginService {
   constructor(private http : HttpClient, private cookie : CookieService) { }
 
   login(login : Login){
+    this.cookie.deleteAll();
     this.http.post(this.API_LOGIN_URL, login, {observe : 'response'}).subscribe(
       response => {
         const token = response.headers?.get("Authorization");
-
-        if (token != null) {
-          this.cookie.deleteAll();
+        console.log(token);
+        if (token){
           this.cookie.set("Bearer", token.replace("Bearer", "").trim());
         }
-
       }, error => {
         alert("Wrong username or password");
       }, () => {
