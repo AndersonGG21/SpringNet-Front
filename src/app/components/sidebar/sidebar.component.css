@@ -211,6 +211,14 @@ button {
   border: 1px solid #312F37;
 }
 
+::ng-deep .p-tooltip-text {
+  color: #fff;
+}
+
+button:disabled {
+  cursor: none;
+}
+
 .user-item img {
   border-radius: 50% ;
 }
