@@ -37,10 +37,11 @@
       <ng-container>
         <div class="swiper mySwiper swiper-h">
           <div class="swiper-wrapper">
-            <ng-container *ngFor="let item of gropuedStories">
+            <ng-container *ngFor="let item of gropuedStories; index as i">
               <div
                 class="swiper-slide horizontal-slide"
                 *ngIf="item.length < 2; else elseBlock"
+                (click)="slideTo(i)"
               >
                 <img src="{{ item[0].media }}" alt="Storie Image" />
                 <div class="user-info">
