@@ -59,19 +59,6 @@
           <span class="icon-title">Likes</span>
         </button>
       </li>
-      <li>
-        <button
-          class="icon-btn"
-          title="Nav icon"
-          [ngClass]="{ 'icon-btn-active': isLinkActive('/reels') }"
-          disabled
-          pTooltip="Comming Soon"
-          tooltipPosition="bottom"
-        >
-          <img src="https://springnet-angular-app.s3.us-east-2.amazonaws.com/reels-icon.svg" alt="Reels Icon" />
-          <span class="icon-title">Reels</span>
-        </button>
-      </li>
       <li (click)="redirectToSaved()">
         <button
           class="icon-btn"
