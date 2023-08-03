@@ -27,8 +27,6 @@ export class StoriesComponent implements OnInit {
   story !: Story;
   enableButton = false;
   gropuedStories : any = [];
-  loader = false;
-
 
   ngOnInit(): void {
     this.storieService.getStories().subscribe(response => {
@@ -125,7 +123,6 @@ export class StoriesComponent implements OnInit {
   }
 
   createStory() {
-    this.loader = true;
     this.mediaService.uploadFile(this.formData).subscribe((res) => {
       this.imageUrl = res.url;
 
@@ -138,7 +135,6 @@ export class StoriesComponent implements OnInit {
 
       this.storieService.createStory(this.story).subscribe(() => {
         this.sidebarVisible = false;
-        this.loader = false;
         this.messageService.add({key: 'tc', severity: 'success', detail: 'Story created', life: 1000});
       })
 
