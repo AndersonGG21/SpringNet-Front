@@ -76,9 +76,9 @@
       <div class="actionBox">
         <ul class="commentList">
           <ng-container *ngFor="let comment of comments">
-            <li>
+            <li [routerLink]="['/profile', comment.user?.id]">
               <div class="commenterImage">
-                <img src="{{ comment.user?.profileImg }}" alt="User profile"/>
+                <p-avatar image="{{ comment.user?.profileImg }}" shape="circle"></p-avatar>
               </div>
               <div class="commentText">
                 <p class="">{{ comment.comment }}</p>

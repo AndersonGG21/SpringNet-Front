@@ -237,6 +237,7 @@
   display: flex;
   gap: 10px;
   place-items: center;
+  cursor: pointer;
 }
 
 .commenterImage {
@@ -248,10 +249,9 @@
   align-items: center;
 }
 
-.commenterImage img {
+::ng-deep .commenterImage .p-avatar {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
 }
 
 .commentText p {
