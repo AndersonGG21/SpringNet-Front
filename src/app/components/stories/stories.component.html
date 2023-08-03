@@ -9,13 +9,13 @@
     </div>
   </div>
   <div class="action"></div>
-  <ng-container *ngFor="let item of gropuedStories">
+  <ng-container *ngFor="let item of gropuedStories; index as i">
     <div
       class="story"
       [ngStyle]="{
         'background-image': 'url(&quot;' + item[0].user.profileImg + '&quot;)'
       }"
-      (click)="showDialog()"
+      (click)="slideTo(i)"
     >
       <span>{{ item[0].user.username }}</span>
     </div>
@@ -41,7 +41,6 @@
               <div
                 class="swiper-slide horizontal-slide"
                 *ngIf="item.length < 2; else elseBlock"
-                (click)="slideTo(i)"
               >
                 <img src="{{ item[0].media }}" alt="Storie Image" />
                 <div class="user-info">
