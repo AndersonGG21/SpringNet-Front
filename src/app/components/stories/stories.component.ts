@@ -51,7 +51,7 @@ export class StoriesComponent implements OnInit {
   showDialog() : void {
     this.visible = true;
     setTimeout(() => {
-      var swiper = new Swiper(".mySwiper", {
+      this.swiper = new Swiper(".mySwiper", {
         spaceBetween: 50,
         pagination: {
           el: ".swiper-pagination",
