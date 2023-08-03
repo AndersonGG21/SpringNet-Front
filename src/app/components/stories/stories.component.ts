@@ -27,6 +27,7 @@ export class StoriesComponent implements OnInit {
   story !: Story;
   enableButton = false;
   gropuedStories : any = [];
+  loader = false;
 
 
   ngOnInit(): void {
@@ -113,8 +114,7 @@ export class StoriesComponent implements OnInit {
 
   formData = new FormData();
   pondHandleAddFile(event: any) {
-    console.log('A file was added', event.file.file);
-    // const formData = new FormData();
+    this.formData.delete('file');
     const file = event.file.file;
     this.formData.append('file', file);
     this.enableButton = true;
@@ -125,7 +125,7 @@ export class StoriesComponent implements OnInit {
   }
 
   createStory() {
-
+    this.loader = true;
     this.mediaService.uploadFile(this.formData).subscribe((res) => {
       this.imageUrl = res.url;
 
@@ -138,6 +138,7 @@ export class StoriesComponent implements OnInit {
 
       this.storieService.createStory(this.story).subscribe(() => {
         this.sidebarVisible = false;
+        this.loader = false;
         this.messageService.add({key: 'tc', severity: 'success', detail: 'Story created', life: 1000});
       })
 
