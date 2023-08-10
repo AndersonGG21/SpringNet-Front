@@ -39,7 +39,7 @@ export class LoginService {
           this.cookie.set("username", String(response.username));
           this.cookie.set("user_profile_picture", String(response.profileImg));
 
-          if (this.cookie.check("Bearer")) {
+          if (this.cookie.get("Bearer") != "") {
             this.router.navigateByUrl("/feed").then(() => window.location.reload());
           }
 
